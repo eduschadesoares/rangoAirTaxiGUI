@@ -1,4 +1,4 @@
-<img align="right" width="307" height="135" src="https://github.com/eduschadesoares/rangoAirTaxi/blob/master/media/helio.png">
+<img align="right" width="307" height="135" src="https://github.com/eduschadesoares/rangoAirTaxiGUI/blob/master/media/helio.png">
 
 # Rango AirTaxi
 
