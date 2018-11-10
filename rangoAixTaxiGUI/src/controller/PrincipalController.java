@@ -1,6 +1,9 @@
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.net.URL;
+import java.util.AbstractList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,14 +25,33 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+        ArrayList<Student> students = new ArrayList();
+        ArrayList<Student> students_volta = new ArrayList();
+
         AeronaveFiler objectIO = new AeronaveFiler();
 
         Student student = new Student("John", "Frost", 22);
-        objectIO.WriteObjectToFile(student);
+        students.add(student);
+        student = new Student("jose", "fa", 32);
+        students.add(student);
+        student = new Student("rafael", "sfasfasasf", 32);
+        students.add(student);
+        student = new Student("eduardo", "yeyq", 32);
+        students.add(student);
+        objectIO.WriteObjectToFile(students);
+
+        for (Student lista : students) {
+            System.out.println(lista);
+        }
 
         //Read object from file
-        Student st = (Student) objectIO.ReadObjectFromFile();
-        System.out.println(st);
+        students_volta = (ArrayList<Student>) objectIO.ReadObjectFromFile();
+        System.out.println(students_volta);
+
+        for (Student lista : students_volta) {
+            System.out.println(lista);
+        }
 
     }
 
