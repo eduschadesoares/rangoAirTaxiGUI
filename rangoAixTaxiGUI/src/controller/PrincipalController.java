@@ -7,8 +7,11 @@ import java.util.AbstractList;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Label;
+import javafx.scene.layout.AnchorPane;
 import utility.AeronaveFiler;
 import model.Student;
 
@@ -22,10 +25,17 @@ public class PrincipalController implements Initializable {
 //        System.out.println("You clicked me!");
 //        label.setText("Hello World!");
 //    }
+    @FXML
+    public AnchorPane rootPane;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
+            rootPane.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
 //        ArrayList<Student> students = new ArrayList();
 //        ArrayList<Student> students_volta = new ArrayList();
 //
@@ -52,7 +62,6 @@ public class PrincipalController implements Initializable {
 //        for (Student lista : students_volta) {
 //            System.out.println(lista);
 //        }
-
     }
 
 }
