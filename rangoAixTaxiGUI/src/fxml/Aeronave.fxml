@@ -7,9 +7,9 @@
 <?import javafx.scene.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import javafx.scene.control.cell.*?> 
-<?import javafx.collections.*?> 
-<?import fxmltableview.*?> 
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import fxmltableview.*?>
 
 <AnchorPane fx:id="aeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AeronaveController">
     <children>
@@ -44,7 +44,7 @@
                                     <children>
                                         <HBox alignment="CENTER">
                                             <children>
-                                                <Button mnemonicParsing="false" text="Criar Aeronave" />
+                                                <Button mnemonicParsing="false" onAction="#btnInsertAeronave" text="Inserir Aeronave" />
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER">
@@ -65,27 +65,27 @@
                                             <columns>
                                                 <TableColumn fx:id="colSerial" prefWidth="75.0" text="Serial">
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="serial"/>
+                                                        <PropertyValueFactory property="serial" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                                 <TableColumn fx:id="colModelo" prefWidth="75.0" text="Modelo">                                                    
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="modelo"/>
+                                                        <PropertyValueFactory property="modelo" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                                 <TableColumn fx:id="colStatusAeronave" prefWidth="75.0" text="Status">                                                    
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="statusAeronave"/>
+                                                        <PropertyValueFactory property="statusAeronave" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                                 <TableColumn fx:id="colIdade" prefWidth="75.0" text="Idade">                                                    
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="Idade"/>
+                                                        <PropertyValueFactory property="Idade" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                                 <TableColumn fx:id="colHoraVoo" prefWidth="133.0" text="Horas de Voo">                                                    
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="horaVoo"/>
+                                                        <PropertyValueFactory property="horaVoo" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                             </columns>
