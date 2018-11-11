@@ -25,6 +25,14 @@ public class PrincipalController implements Initializable {
     @FXML
     public AnchorPane rootPane;
 
+    public static void saveAeronaveList(List<Aeronave> lstAeronaves) {
+        dadosAeronave.SaveAeronave(lstAeronaves);
+    }
+
+    public void readAeronaveList() {
+        lstAeronaves = dadosAeronave.ReadAeronaveList();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 //        ArrayList<Aeronave> store = new ArrayList<>();
@@ -39,10 +47,7 @@ public class PrincipalController implements Initializable {
 //        store.add(aero);
 //
 //        dadosAeronave.SaveAeronave(store);
-
-     //   if (dadosAeronave.ReadList() != null) {
-            lstAeronaves = dadosAeronave.ReadList();
-     //   }
+        readAeronaveList();
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
