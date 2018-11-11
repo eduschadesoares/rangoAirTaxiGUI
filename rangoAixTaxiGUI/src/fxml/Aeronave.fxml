@@ -54,14 +54,14 @@
                                         </HBox>
                                         <HBox alignment="CENTER">
                                             <children>
-                                                <Button mnemonicParsing="false" text="Remover Aeronave" />
+                                                <Button mnemonicParsing="false" onAction="#btnDeleteAeronave" text="Remover Aeronave" />
                                             </children>
                                         </HBox>
                                     </children>
                                 </VBox>
                                 <VBox alignment="CENTER" prefWidth="590.0">
                                     <children>
-                                        <TableView fx:id="tblView" prefHeight="370.0" prefWidth="248.0">
+                                        <TableView fx:id="tblView" onMouseClicked="#tblViewEditAeronaveClick" prefHeight="370.0" prefWidth="248.0">
                                             <columns>
                                                 <TableColumn fx:id="colSerial" prefWidth="75.0" text="Serial">
                                                     <cellValueFactory>
