@@ -12,10 +12,15 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
-import utility.AeronaveFiler;
+import utility.Dados;
 import model.Student;
+import model.Aeronave;
 
 public class PrincipalController implements Initializable {
+
+    public static List<Aeronave> lstAeronaves = new ArrayList<Aeronave>();
+
+    public static Dados dadosAeronave = new Dados("aeronave");
 
 //    @FXML
 //    private Label label;
@@ -30,6 +35,24 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        ArrayList<Aeronave> store = new ArrayList<>();
+        ArrayList<Aeronave> read = new ArrayList();
+
+        Aeronave aero = new Aeronave(1, "kk", 1, 1, 1);
+        store.add(aero);
+        aero = new Aeronave(2, "qq", 1, 1, 1);
+        store.add(aero);
+        aero = new Aeronave(3, "rr", 1, 1, 1);
+        store.add(aero);
+        aero = new Aeronave(4, "gg", 1, 1, 1);
+        store.add(aero);
+
+//        Dados objectIO = new Dados();
+
+//        objectIO.WriteObjectToFile(store);
+
+//        lstAeronaves = (ArrayList<Aeronave>) objectIO.ReadObjectFromFile();
+
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             rootPane.getChildren().setAll(pane);
