@@ -50,7 +50,7 @@ public class AeronaveController implements Initializable {
     @FXML
     private void btnInsertAeronave(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUD/InsertAeronave.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/InsertAeronave.fxml"));
             aeronavePanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
@@ -63,7 +63,7 @@ public class AeronaveController implements Initializable {
         controller.EditAeronaveController.getAeronaveObj(aeronave);
 
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUD/EditAeronave.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/EditAeronave.fxml"));
             aeronavePanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
@@ -91,7 +91,7 @@ public class AeronaveController implements Initializable {
         controller.DeleteAeronaveController.getAeronaveObj(aeronave);
 
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUD/DeleteAeronave.fxml"));
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/DeleteAeronave.fxml"));
             aeronavePanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
