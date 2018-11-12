@@ -59,11 +59,11 @@ public class EditAeronaveController implements Initializable {
     @FXML
     void btnSaveEdition(ActionEvent event) {
         boolean duplicated = false;
-        int serial;
+        String serial;
         try {
             for (Aeronave each : lstAeronaves) {
                 if (each.getSerial() == aeronaveList.getSerial()) {
-                    serial = Integer.parseInt(txtFldSerial.getText());
+                    serial = txtFldSerial.getText();
                     for (Aeronave each2 : lstAeronaves) {
                         if (serial == each2.getSerial()) {
                             System.err.println("DUPLICOU");
@@ -76,7 +76,7 @@ public class EditAeronaveController implements Initializable {
                         }
                     }
                     if (!duplicated) {
-                        each.setSerial(Integer.parseInt(txtFldSerial.getText()));
+                        each.setSerial(txtFldSerial.getText());
                         each.setModelo(txtFldModelo.getText());
                         each.setIdade(Integer.parseInt(txtFldIdade.getText()));
                         each.setHoraVoo(Float.parseFloat(txtFldHoraVoo.getText()));
@@ -99,7 +99,7 @@ public class EditAeronaveController implements Initializable {
 
     public void setAllFields() {
 
-        txtFldSerial.setText(Integer.toString(aeronaveList.getSerial()));
+        txtFldSerial.setText(aeronaveList.getSerial());
         txtFldModelo.setText(aeronaveList.getModelo());
         txtFldIdade.setText(Integer.toString(aeronaveList.getIdade()));
         txtFldHoraVoo.setText(Float.toString(aeronaveList.getHoraVoo()));

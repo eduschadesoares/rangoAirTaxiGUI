@@ -4,6 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
 import java.util.AbstractList;
+import java.util.HashMap;
+import java.util.Hashtable;
+import java.util.LinkedHashMap;
+import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -15,6 +19,9 @@ import javafx.scene.layout.AnchorPane;
 import utility.Dados;
 import model.Student;
 import model.Aeronave;
+import model.DataDia;
+import model.DataMes;
+import model.DataSemana;
 
 public class PrincipalController implements Initializable {
 
@@ -35,6 +42,27 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+
+//        DataDia dt = new DataDia("Segunda");
+//
+//        Map<String, Boolean> hora2 = new LinkedHashMap<String, Boolean>();
+//
+//        hora2.put("06:00", true);
+//        hora2.put("06:30", true);
+//        hora2.put("07:00", true);
+//        hora2.put("07:30", true);
+//        hora2.put("08:00", true);
+//        hora2.put("08:30", true);
+//        hora2.put("09:00", true);
+//        hora2.put("09:30", true);
+//
+//        dt.setHora(hora2);
+        DataMes mes = new DataMes();
+        
+
+        System.out.println(mes.getSemana1().getDomingo().hora);
+
+//        System.out.println(dt.hora);
 //        ArrayList<Aeronave> store = new ArrayList<>();
 //        
 //        Aeronave aero = new Aeronave(1, "kk", 1, 1, "Disponível");

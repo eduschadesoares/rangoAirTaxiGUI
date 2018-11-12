@@ -6,6 +6,7 @@ import java.util.List;
 import java.net.URL;
 import java.util.AbstractList;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -56,17 +57,18 @@ public class InsertAeronaveController implements Initializable {
     void btnSaveInsertion(ActionEvent event) {
         boolean duplicated = false;
         try {
-            controller.aeronave.setSerial(Integer.parseInt(txtFldSerial.getText()));
+            controller.aeronave.setSerial(txtFldSerial.getText());
             controller.aeronave.setModelo(txtFldModelo.getText());
             controller.aeronave.setIdade(Integer.parseInt(txtFldIdade.getText()));
             controller.aeronave.setHoraVoo(Integer.parseInt(txtFldHoraVoo.getText()));
             controller.aeronave.setStatusAeronave(cmbBoxStatus.getValue().toString());
 
             for (Aeronave each : PrincipalController.lstAeronaves) {
-                if (controller.aeronave.getSerial() == each.getSerial()) {
+                if (controller.aeronave.getSerial().equals(each.getSerial())) {
                     System.err.println("Serial duplicated");
-                    lblDuplicatedSerial.setText("Serial já existente");
-                    txtFldSerial.requestFocus();
+//                    lblDuplicatedSerial.setText("Serial já existente");
+                    createSerial();
+//                    txtFldSerial.requestFocus();
                     duplicated = true;
                 }
             }
@@ -82,8 +84,16 @@ public class InsertAeronaveController implements Initializable {
         }
     }
 
+    public void createSerial() {
+        //Creates a random serial
+        UUID uuid = UUID.randomUUID();
+        String serialRandom = uuid.toString();
+        txtFldSerial.setText(serialRandom);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        createSerial();
         cmbBoxStatus.getItems().addAll(statusChoices);
         cmbBoxStatus.setValue(statusChoices[0]);
     }

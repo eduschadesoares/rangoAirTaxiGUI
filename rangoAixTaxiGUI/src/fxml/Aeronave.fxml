@@ -49,12 +49,12 @@
                                         </HBox>
                                         <HBox alignment="CENTER">
                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#btnEditAeronave" text="Editar Aeronave" />
+                                                <Button fx:id="btnEditAeronaveHide" mnemonicParsing="false" onAction="#btnEditAeronave" text="Editar Aeronave" />
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER">
                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#btnDeleteAeronave" text="Remover Aeronave" />
+                                                <Button fx:id="btnDeleteAeronaveHide" mnemonicParsing="false" onAction="#btnDeleteAeronave" text="Remover Aeronave" />
                                             </children>
                                         </HBox>
                                     </children>

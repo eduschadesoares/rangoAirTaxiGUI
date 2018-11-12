@@ -13,6 +13,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
@@ -31,6 +32,10 @@ public class AeronaveController implements Initializable {
     public AnchorPane aeronavePanel;
     @FXML
     public TableView<Aeronave> tblView;
+    @FXML
+    public Button btnDeleteAeronaveHide;
+    @FXML
+    public Button btnEditAeronaveHide;
 
     @FXML
     private void btnCallMenuScene(ActionEvent event) {
@@ -102,6 +107,11 @@ public class AeronaveController implements Initializable {
             tblView.getSelectionModel().selectFirst();
             tblView.refresh();
         });
+        
+        if(lstAeronaves.isEmpty()) {
+            btnDeleteAeronaveHide.setDisable(true);
+            btnEditAeronaveHide.setDisable(true);
+        }
     }
 
     public AeronaveController() {
