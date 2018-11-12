@@ -39,6 +39,8 @@ public class InsertAeronaveController implements Initializable {
     public TextField txtFldHoraVoo;
     @FXML
     public ComboBox cmbBoxStatus;
+    @FXML
+    public Label lblDuplicatedSerial;
 
     @FXML
     private void btnCancelInsertion(ActionEvent event) {
@@ -52,17 +54,29 @@ public class InsertAeronaveController implements Initializable {
 
     @FXML
     void btnSaveInsertion(ActionEvent event) {
+        boolean duplicated = false;
         try {
             controller.aeronave.setSerial(Integer.parseInt(txtFldSerial.getText()));
             controller.aeronave.setModelo(txtFldModelo.getText());
             controller.aeronave.setIdade(Integer.parseInt(txtFldIdade.getText()));
             controller.aeronave.setHoraVoo(Integer.parseInt(txtFldHoraVoo.getText()));
             controller.aeronave.setStatusAeronave(cmbBoxStatus.getValue().toString());
-            PrincipalController.lstAeronaves.add(controller.aeronave);
-            PrincipalController.saveAeronaveList(lstAeronaves);
-            
-            btnCancelInsertion(event);
-            
+
+            for (Aeronave each : PrincipalController.lstAeronaves) {
+                if (controller.aeronave.getSerial() == each.getSerial()) {
+                    System.err.println("Serial duplicated");
+                    lblDuplicatedSerial.setText("Serial já existente");
+                    txtFldSerial.requestFocus();
+                    duplicated = true;
+                }
+            }
+
+            if (!duplicated) {
+                PrincipalController.lstAeronaves.add(controller.aeronave);
+                PrincipalController.saveAeronaveList(lstAeronaves);
+                btnCancelInsertion(event);
+            }
+
         } catch (Exception e) {
             System.out.println(e);
         }

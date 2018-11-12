@@ -28,7 +28,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0">
                      <children>
-                        <Label alignment="CENTER" text="Inserir uma Aeronave" />
+                        <Label fx:id="lblDuplicatedSerial" alignment="CENTER" text="Editar Aeronave" />
                      </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="300.0">

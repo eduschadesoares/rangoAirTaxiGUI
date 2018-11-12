@@ -43,6 +43,8 @@ public class EditAeronaveController implements Initializable {
     public TextField txtFldHoraVoo;
     @FXML
     public ComboBox cmbBoxStatus;
+    @FXML
+    public Label lblDuplicatedSerial;
 
     @FXML
     private void btnCancelEditon(ActionEvent event) {
@@ -56,25 +58,43 @@ public class EditAeronaveController implements Initializable {
 
     @FXML
     void btnSaveEdition(ActionEvent event) {
+        boolean duplicated = false;
+        int serial;
         try {
             for (Aeronave each : lstAeronaves) {
                 if (each.getSerial() == aeronaveList.getSerial()) {
-                    each.setSerial(Integer.parseInt(txtFldSerial.getText()));
-                    each.setModelo(txtFldModelo.getText());
-                    each.setIdade(Integer.parseInt(txtFldIdade.getText()));
-                    each.setHoraVoo(Float.parseFloat(txtFldHoraVoo.getText()));
-                    each.setStatusAeronave(cmbBoxStatus.getValue().toString());
+                    serial = Integer.parseInt(txtFldSerial.getText());
+                    for (Aeronave each2 : lstAeronaves) {
+                        if (serial == each2.getSerial()) {
+                            System.err.println("DUPLICOU");
+                            lblDuplicatedSerial.setText("Serial já existente");
+                            txtFldSerial.requestFocus();
+                            duplicated = true;
+                            break;
+                        } else {
+                            duplicated = false;
+                        }
+                    }
+                    if (!duplicated) {
+                        each.setSerial(Integer.parseInt(txtFldSerial.getText()));
+                        each.setModelo(txtFldModelo.getText());
+                        each.setIdade(Integer.parseInt(txtFldIdade.getText()));
+                        each.setHoraVoo(Float.parseFloat(txtFldHoraVoo.getText()));
+                        each.setStatusAeronave(cmbBoxStatus.getValue().toString());
+                        break;
+                    }
                 }
             }
 
+            if (!duplicated) {
 //            PrincipalController.lstAeronaves.add(controller.aeronave);
-            PrincipalController.saveAeronaveList(lstAeronaves);
-
+                PrincipalController.saveAeronaveList(lstAeronaves);
+                btnCancelEditon(event);
+            }
         } catch (Exception e) {
             System.out.println(e);
         }
 
-        btnCancelEditon(event);
     }
 
     public void setAllFields() {
