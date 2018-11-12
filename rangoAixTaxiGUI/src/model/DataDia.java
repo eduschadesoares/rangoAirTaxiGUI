@@ -7,10 +7,12 @@ import java.util.Map;
 
 public class DataDia {
 
-    public Map<String, Boolean> hora;
+    public Map<String, Boolean> agendaServico;
+    public Map<String, Boolean> agendaManutencao;
 
-    public DataDia(Map<String, Boolean> hora) {
-        this.hora = hora;
+    public DataDia(Map<String, Boolean> agendaServico, Map<String, Boolean> agendaManutencao) {
+        this.agendaServico = agendaServico;
+        this.agendaManutencao = agendaManutencao;
     }
 
 }
