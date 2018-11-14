@@ -104,11 +104,17 @@ public class AeronaveController implements Initializable {
         Platform.runLater(() -> {
             tblView.setItems(FXCollections.observableList(lstAeronaves));
             tblView.requestFocus();
-            tblView.getSelectionModel().selectFirst();
+
+            // Select last added item
+            if (lstAeronaves.size() > 1) {
+                tblView.getSelectionModel().select(lstAeronaves.get(lstAeronaves.size() - 1));
+            } else {
+                tblView.getSelectionModel().selectFirst();
+            }
             tblView.refresh();
         });
-        
-        if(lstAeronaves.isEmpty()) {
+
+        if (lstAeronaves.isEmpty()) {
             btnDeleteAeronaveHide.setDisable(true);
             btnEditAeronaveHide.setDisable(true);
         }

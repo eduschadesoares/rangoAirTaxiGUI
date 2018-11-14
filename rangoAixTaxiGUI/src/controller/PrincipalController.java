@@ -62,6 +62,7 @@ public class PrincipalController implements Initializable {
         System.out.println(mes.getSemana1().getDomingo().agendaManutencao.get("06:30"));
         System.out.println(mes.getSemana1().getDomingo().agendaManutencao.replace("06:30", false));
         System.out.println(mes.getSemana1().getDomingo().agendaManutencao.get("06:30"));
+        System.out.println(mes.getSemana1().getDomingo().agendaServico.get("06:30"));
 
 //        System.out.println(dt.hora);
 //        ArrayList<Aeronave> store = new ArrayList<>();
