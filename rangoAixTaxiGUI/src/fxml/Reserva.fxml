@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import fxmltableview.*?>
+
+<AnchorPane fx:id="reservaPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ReservaController">
+    <children>
+        <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <top>
+                <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="50.0">
+                            <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="255.0">
+                           <children>
+                                      <Button mnemonicParsing="false" onAction="#btnCallMenuScene" text="Voltar para o menu">
+                                          <HBox.margin>
+                                              <Insets left="10.0" />
+                                          </HBox.margin>
+                                          <font>
+                                              <Font size="12.0" />
+                                          </font>
+                                      </Button>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="100.0" prefWidth="255.0">
+                           <children>
+                                      <Label text="Aeronaves">
+                                          <font>
+                                              <Font size="25.0" />
+                                          </font>
+                                      </Label>
+                           </children>
+                        </HBox>
+                        <HBox prefHeight="100.0" prefWidth="255.0" />
+                            </children>
+                        </HBox>
+                        <HBox />
+                    </children>
+                </VBox>
+            </top>
+         <center>
+            <TabPane prefHeight="200.0" prefWidth="200.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
+              <tabs>
+                <Tab text="Reserva de Viagens">
+                  <content>
+                    <!--fx:include source="ReservaViagens.fxml" /-->
+                  </content>
+                </Tab>
+                <Tab text="Reserva de Manuteção">
+                  <content>
+                    <!--fx:include source="ReservaManutencao.fxml" /-->
+                  </content>
+                </Tab>
+              </tabs>
+            </TabPane>
+         </center>
+        </BorderPane>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</AnchorPane>

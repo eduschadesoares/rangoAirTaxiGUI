@@ -39,6 +39,16 @@ public class MenuController implements Initializable {
     }
 
     @FXML
+    private void btnCallReservaScene(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Reserva.fxml"));
+            menuPanel.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    @FXML
     private void btnExitProgram(ActionEvent event) {
         System.exit(0);
     }
