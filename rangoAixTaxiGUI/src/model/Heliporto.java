@@ -1,14 +1,18 @@
 package model;
 
-public class Heliporto {
+import java.io.Serializable;
+
+public class Heliporto implements Serializable {
 
     private String codigoHeliporto;
     private int kmHeliporto;
+    private String nomeHeliporto;
     private String cidade;
 
-    public Heliporto(String codigoHeliporto, int kmHeliporto, String cidade) {
+    public Heliporto(String codigoHeliporto, int kmHeliporto, String nomeHeliporto, String cidade) {
         this.codigoHeliporto = codigoHeliporto;
         this.kmHeliporto = kmHeliporto;
+        this.nomeHeliporto = nomeHeliporto;
         this.cidade = cidade;
     }
 
@@ -31,6 +35,14 @@ public class Heliporto {
         this.kmHeliporto = kmHeliporto;
     }
 
+    public String getNomeHeliporto() {
+        return nomeHeliporto;
+    }
+
+    public void setNomeHeliporto(String nomeHeliporto) {
+        this.nomeHeliporto = nomeHeliporto;
+    }
+
     public String getCidade() {
         return cidade;
     }
@@ -41,7 +53,7 @@ public class Heliporto {
 
     @Override
     public String toString() {
-        return "Heliporto{" + "codigoHeliporto=" + codigoHeliporto + ", kmHeliporto=" + kmHeliporto + ", cidade=" + cidade + '}';
+        return "Heliporto{" + "codigoHeliporto=" + codigoHeliporto + ", kmHeliporto=" + kmHeliporto + ", nomeHeliporto=" + nomeHeliporto + ", cidade=" + cidade + '}';
     }
 
 }

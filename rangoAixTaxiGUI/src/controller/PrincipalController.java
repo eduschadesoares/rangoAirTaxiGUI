@@ -22,6 +22,7 @@ import model.Piloto;
 import model.DataDia;
 import model.DataMes;
 import model.DataSemana;
+import model.Heliporto;
 import model.ModeloAeronave;
 
 public class PrincipalController implements Initializable {
@@ -29,6 +30,7 @@ public class PrincipalController implements Initializable {
     public static List<Aeronave> lstAeronaves = new ArrayList<Aeronave>();
     public static List<ModeloAeronave> lstModelosAeronaves = new ArrayList<ModeloAeronave>();
     public static List<Piloto> lstPilotos = new ArrayList<Piloto>();
+    public static List<Heliporto> lstHeliportos = new ArrayList<Heliporto>();
 
     public static Dados dados = new Dados();
 
@@ -51,7 +53,7 @@ public class PrincipalController implements Initializable {
         lstPilotos = dados.ReadPilotoList();
     }
 
-    public void createModelosList() {
+    public void createModeloList() {
         ModeloAeronave modelo1 = new ModeloAeronave("EUROCOPTER EC120 B", 400);
         ModeloAeronave modelo2 = new ModeloAeronave("ROBINSON R66", 350);
         ModeloAeronave modelo3 = new ModeloAeronave("AGUSTA A109E", 600);
@@ -63,13 +65,35 @@ public class PrincipalController implements Initializable {
         lstModelosAeronaves.add(modelo4);
         lstModelosAeronaves.add(modelo5);
         dados.SaveModeloAeronave(lstModelosAeronaves);
+    }
+
+    public void readModeloList() {
         lstModelosAeronaves = dados.ReadModeloAeronaveList();
+    }
+
+    public void createHeliportoList() {
+        Heliporto heliporto1 = new Heliporto("PET", 0, "Heliporto de Pelotas", "Pelotas - RS");
+        lstHeliportos.add(heliporto1);
+        heliporto1 = new Heliporto("FLN", 570, "Heliporto de Florianópolis", "Florianópolis - SC");
+        lstHeliportos.add(heliporto1);
+        heliporto1 = new Heliporto("CWB", 750, "Heliporto de Curitiba", "Curitiba - PR");
+        lstHeliportos.add(heliporto1);
+        heliporto1 = new Heliporto("GRU", 1050, "Heliporto de Guarulhos", "São Paulo - SP");
+        lstHeliportos.add(heliporto1);
+        heliporto1 = new Heliporto("NAT", 3300, "Heliporto de Natal", "Natal - RN");
+        lstHeliportos.add(heliporto1);
+        dados.SaveHeliporto(lstHeliportos);
+    }
+
+    public void readHeliportoList() {
+        lstHeliportos = dados.ReadHeliportoList();
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
-        createModelosList();
+//        createModeloList();
+//        createHeliportoList();
 
 //        DataDia dt = new DataDia("Segunda");
 //
@@ -93,20 +117,13 @@ public class PrincipalController implements Initializable {
 //        System.out.println(mes.getSemana1().getDomingo().agendaServico.get("06:30"));
 //        System.out.println(dt.hora);
 //        ArrayList<Aeronave> store = new ArrayList<>();
-//        
-//        Aeronave aero = new Aeronave(1, "kk", 1, 1, "Disponível");
-//        store.add(aero);
-//        aero = new Aeronave(2, "qq", 1, 1, "Disponível");
-//        store.add(aero);
-//        aero = new Aeronave(3, "rr", 1, 1,"Manutenção");
-//        store.add(aero);
-//        aero = new Aeronave(4, "gg", 1, 1, "Manutenção");
-//        store.add(aero);
-//
-//        dadosAeronave.SaveAeronave(store);
+
         readAeronaveList();
         readPilotoList();
+        readModeloList();
+        readHeliportoList();
 
+        
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             rootPane.getChildren().setAll(pane);

@@ -11,6 +11,7 @@ import java.util.List;
 import model.Aeronave;
 import model.ModeloAeronave;
 import model.Piloto;
+import model.Heliporto;
 
 public class Dados {
 
@@ -18,11 +19,13 @@ public class Dados {
     private final String AERONAVE = "aeronave";
     private final String MODELOAERONAVE = "modeloAeronave";
     private final String PILOTO = "piloto";
+    private final String HELIPORTO = "heliporto";
 
     public Dados() {
 
     }
 
+    //--------------------------------------------------------------------------    
     //AERONAVE STUFF
     public void SaveAeronave(List<Aeronave> aeronave) {
         try {
@@ -58,6 +61,43 @@ public class Dados {
         }
     }
 
+    //--------------------------------------------------------------------------
+    //MODELO AERONAVE STUFF
+    public void SaveModeloAeronave(List<ModeloAeronave> modeloAeronave) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + SOURCES + MODELOAERONAVE);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(modeloAeronave);
+            objectOut.close();
+            // System.out.println("The Object  was succesfully written to a file");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public List<ModeloAeronave> ReadModeloAeronaveList() {
+        List<ModeloAeronave> temp = new ArrayList<>();
+        try {
+            File f = new File(System.getProperty("user.dir") + SOURCES + MODELOAERONAVE);
+            if (f.exists() && !f.isDirectory()) {
+                FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + SOURCES + MODELOAERONAVE);
+                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+                temp = (List<ModeloAeronave>) objectIn.readObject();
+                objectIn.close();
+                return temp;
+            } else {
+                //GAMBIARRA FEROZ
+                System.err.println("Creating a " + MODELOAERONAVE + " file");
+                SaveModeloAeronave(temp);
+                return temp;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    //--------------------------------------------------------------------------
     //PILOTO STUFF
     public void SavePiloto(List<Piloto> piloto) {
         try {
@@ -93,12 +133,13 @@ public class Dados {
         }
     }
 
-    //MODELO AERONAVE STUFF
-    public void SaveModeloAeronave(List<ModeloAeronave> modeloAeronave) {
+    //--------------------------------------------------------------------------
+    //HELIPORTO STUFF
+    public void SaveHeliporto(List<Heliporto> heliporto) {
         try {
-            FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + SOURCES + MODELOAERONAVE);
+            FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + SOURCES + HELIPORTO);
             ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-            objectOut.writeObject(modeloAeronave);
+            objectOut.writeObject(heliporto);
             objectOut.close();
             // System.out.println("The Object  was succesfully written to a file");
         } catch (Exception ex) {
@@ -106,20 +147,20 @@ public class Dados {
         }
     }
 
-    public List<ModeloAeronave> ReadModeloAeronaveList() {
-        List<ModeloAeronave> temp = new ArrayList<>();
+    public List<Heliporto> ReadHeliportoList() {
+        List<Heliporto> temp = new ArrayList<>();
         try {
-            File f = new File(System.getProperty("user.dir") + SOURCES + MODELOAERONAVE);
+            File f = new File(System.getProperty("user.dir") + SOURCES + HELIPORTO);
             if (f.exists() && !f.isDirectory()) {
-                FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + SOURCES + MODELOAERONAVE);
+                FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + SOURCES + HELIPORTO);
                 ObjectInputStream objectIn = new ObjectInputStream(fileIn);
-                temp = (List<ModeloAeronave>) objectIn.readObject();
+                temp = (List<Heliporto>) objectIn.readObject();
                 objectIn.close();
                 return temp;
             } else {
                 //GAMBIARRA FEROZ
-                System.err.println("Creating a " + MODELOAERONAVE + " file");
-                SaveModeloAeronave(temp);
+                System.err.println("Creating a " + HELIPORTO + " file");
+                SaveHeliporto(temp);
                 return temp;
             }
         } catch (Exception ex) {
