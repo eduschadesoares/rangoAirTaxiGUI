@@ -6,7 +6,6 @@ public class ModeloAeronave implements Serializable {
 
     private String modelo;
     private int limiteHorasManutencao;
-    private int anoModelo;
 
     public String getModelo() {
         return modelo;
@@ -24,18 +23,9 @@ public class ModeloAeronave implements Serializable {
         this.limiteHorasManutencao = limiteHorasManutencao;
     }
 
-    public int getAnoModelo() {
-        return anoModelo;
-    }
-
-    public void setAnoModelo(int anoModelo) {
-        this.anoModelo = anoModelo;
-    }
-
-    public ModeloAeronave(String modelo, int limiteHorasManutencao, int anoModelo) {
+    public ModeloAeronave(String modelo, int limiteHorasManutencao) {
         this.modelo = modelo;
         this.limiteHorasManutencao = limiteHorasManutencao;
-        this.anoModelo = anoModelo;
     }
 
     public ModeloAeronave() {

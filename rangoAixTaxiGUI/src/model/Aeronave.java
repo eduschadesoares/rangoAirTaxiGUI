@@ -3,19 +3,27 @@ package model;
 import java.io.Serializable;
 
 public class Aeronave implements Serializable {
-    ModeloAeronave modelo;
-    
-    private String serial;
-    private int idade;
-    private float horaVoo;
-    private String statusAeronave;
 
-    public String getSerial() {
-        return serial;
+    private ModeloAeronave modelo;
+
+    private String serial;
+    private int anoAeronave;
+    private float valorHoraVoo;
+    private float proxRevisao;
+    private float horaTotalVoo;
+    private boolean statusAeronave;
+
+    public Aeronave() {
     }
 
-    public void setSerial(String serial) {
+    public Aeronave(ModeloAeronave modelo, String serial, int anoAeronave, float valorHoraVoo, float proxRevisao, float horaTotalVoo, boolean statusAeronave) {
+        this.modelo = modelo;
         this.serial = serial;
+        this.anoAeronave = anoAeronave;
+        this.valorHoraVoo = valorHoraVoo;
+        this.proxRevisao = proxRevisao;
+        this.horaTotalVoo = horaTotalVoo;
+        this.statusAeronave = statusAeronave;
     }
 
     public ModeloAeronave getModelo() {
@@ -26,44 +34,57 @@ public class Aeronave implements Serializable {
         this.modelo = modelo;
     }
 
-    public int getIdade() {
-        return idade;
+    public String getSerial() {
+        return serial;
     }
 
-    public void setIdade(int idade) {
-        this.idade = idade;
+    public void setSerial(String serial) {
+        this.serial = serial;
     }
 
-    public float getHoraVoo() {
-        return horaVoo;
+    public int getAnoAeronave() {
+        return anoAeronave;
     }
 
-    public void setHoraVoo(float horaVoo) {
-        this.horaVoo = horaVoo;
+    public void setAnoAeronave(int anoAeronave) {
+        this.anoAeronave = anoAeronave;
     }
 
-    public String getStatusAeronave() {
+    public float getValorHoraVoo() {
+        return valorHoraVoo;
+    }
+
+    public void setValorHoraVoo(float valorHoraVoo) {
+        this.valorHoraVoo = valorHoraVoo;
+    }
+
+    public float getProxRevisao() {
+        return proxRevisao;
+    }
+
+    public void setProxRevisao(float proxRevisao) {
+        this.proxRevisao = proxRevisao;
+    }
+
+    public float getHoraTotalVoo() {
+        return horaTotalVoo;
+    }
+
+    public void setHoraTotalVoo(float horaTotalVoo) {
+        this.horaTotalVoo = horaTotalVoo;
+    }
+
+    public boolean isStatusAeronave() {
         return statusAeronave;
     }
 
-    public void setStatusAeronave(String statusAeronave) {
-        this.statusAeronave = statusAeronave;
-    }
-
-    public Aeronave() {
-    }
-
-    public Aeronave(String serial, ModeloAeronave modelo, int idade, float horaVoo, String statusAeronave) {
-        this.serial = serial;
-        this.modelo = modelo;
-        this.idade = idade;
-        this.horaVoo = horaVoo;
+    public void setStatusAeronave(boolean statusAeronave) {
         this.statusAeronave = statusAeronave;
     }
 
     @Override
     public String toString() {
-        return "Aeronave{" + "serial=" + serial + ", modelo=" + modelo + ", idade=" + idade + ", horaVoo=" + horaVoo + ", statusAeronave=" + statusAeronave + '}';
+        return "Aeronave{" + "modelo=" + modelo + ", serial=" + serial + ", anoAeronave=" + anoAeronave + ", valorHoraVoo=" + valorHoraVoo + ", proxRevisao=" + proxRevisao + ", horaTotalVoo=" + horaTotalVoo + ", statusAeronave=" + statusAeronave + '}';
     }
 
 }

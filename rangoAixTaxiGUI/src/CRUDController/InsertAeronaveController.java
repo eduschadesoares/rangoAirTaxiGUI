@@ -60,11 +60,11 @@ public class InsertAeronaveController implements Initializable {
     void btnSaveInsertion(ActionEvent event) {
         boolean duplicated = false;
         try {
-            controller.aeronave.setSerial(txtFldSerial.getText());
-            controller.aeronave.setModelo((ModeloAeronave) cmbBoxModelo.getSelectionModel().getSelectedItem());
-            controller.aeronave.setIdade(Integer.parseInt(txtFldIdade.getText()));
-            controller.aeronave.setHoraVoo(Integer.parseInt(txtFldHoraVoo.getText()));
-            controller.aeronave.setStatusAeronave(cmbBoxStatus.getValue().toString());
+//            controller.aeronave.setSerial(txtFldSerial.getText());
+//            controller.aeronave.setModelo((ModeloAeronave) cmbBoxModelo.getSelectionModel().getSelectedItem());
+//            controller.aeronave.setIdade(Integer.parseInt(txtFldIdade.getText()));
+//            controller.aeronave.setHoraVoo(Integer.parseInt(txtFldHoraVoo.getText()));
+//            controller.aeronave.setStatusAeronave(cmbBoxStatus.getValue().toString());
 
             for (Aeronave each : PrincipalController.lstAeronaves) {
                 if (controller.aeronave.getSerial().equals(each.getSerial())) {

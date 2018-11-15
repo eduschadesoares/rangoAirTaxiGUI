@@ -52,11 +52,11 @@ public class PrincipalController implements Initializable {
     }
 
     public void createModelosList() {
-        ModeloAeronave modelo1 = new ModeloAeronave("EUROCOPTER EC120 B", 400, 1999);
-        ModeloAeronave modelo2 = new ModeloAeronave("ROBINSON R66", 350, 2013);
-        ModeloAeronave modelo3 = new ModeloAeronave("AGUSTA A109E", 600, 1999);
-        ModeloAeronave modelo4 = new ModeloAeronave("ESQUILO AS350 B", 950, 1990);
-        ModeloAeronave modelo5 = new ModeloAeronave("EUROCOPTER EC130 T2", 750, 2016);
+        ModeloAeronave modelo1 = new ModeloAeronave("EUROCOPTER EC120 B", 400);
+        ModeloAeronave modelo2 = new ModeloAeronave("ROBINSON R66", 350);
+        ModeloAeronave modelo3 = new ModeloAeronave("AGUSTA A109E", 600);
+        ModeloAeronave modelo4 = new ModeloAeronave("ESQUILO AS350 B", 950);
+        ModeloAeronave modelo5 = new ModeloAeronave("EUROCOPTER EC130 T2", 750);
         lstModelosAeronaves.add(modelo1);
         lstModelosAeronaves.add(modelo2);
         lstModelosAeronaves.add(modelo3);
