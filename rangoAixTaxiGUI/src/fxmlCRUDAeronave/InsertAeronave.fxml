@@ -11,7 +11,7 @@
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
 
-<AnchorPane fx:id="InsertAeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InsertAeronaveController">
+<AnchorPane fx:id="InsertAeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRUDController.InsertAeronaveController">
     <children>
         <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <top>
@@ -50,7 +50,7 @@
                                     <VBox alignment="CENTER">
                                        <children>
                                           <Label text="Modelo" />
-                                          <TextField fx:id="txtFldModelo" />
+                                          <ComboBox fx:id="cmbBoxModelo" prefWidth="150.0" />
                                        </children>
                                     </VBox>
                                             </children>

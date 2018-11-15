@@ -11,7 +11,7 @@
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
 
-<AnchorPane fx:id="EditAeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.EditAeronaveController">
+<AnchorPane fx:id="EditPilotoPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRUDController.EditPilotoController">
     <children>
         <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <top>
@@ -40,7 +40,7 @@
                                     <VBox alignment="CENTER">
                                        <children>
                                           <Label text="Serial" />
-                                          <TextField fx:id="txtFldSerial" />
+                                          <TextField fx:id="txtFldId" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -50,31 +50,11 @@
                                     <VBox alignment="CENTER">
                                        <children>
                                           <Label text="Modelo" />
-                                          <TextField fx:id="txtFldModelo" />
+                                          <TextField fx:id="txtFldNome" />
                                        </children>
                                     </VBox>
                                             </children>
                                         </HBox>
-                              <HBox alignment="CENTER">
-                                 <children>
-                                    <VBox alignment="CENTER">
-                                       <children>
-                                          <Label text="Idade" />
-                                          <TextField fx:id="txtFldIdade" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER">
-                                 <children>
-                                    <VBox alignment="CENTER">
-                                       <children>
-                                          <Label text="Hora de Voo" />
-                                          <TextField fx:id="txtFldHoraVoo" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
                               <HBox alignment="CENTER">
                                  <children>
                                     <VBox alignment="CENTER">

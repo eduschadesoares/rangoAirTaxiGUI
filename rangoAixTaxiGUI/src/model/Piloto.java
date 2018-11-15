@@ -4,16 +4,16 @@ import java.io.Serializable;
 
 public class Piloto implements Serializable {
 
-    private String id;
+    private String idPiloto;
     private String nomePiloto;
     private String statusPiloto;
 
-    public String getId() {
-        return id;
+    public String getIdPiloto() {
+        return idPiloto;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setIdPiloto(String idPiloto) {
+        this.idPiloto = idPiloto;
     }
 
     public String getNomePiloto() {
@@ -32,15 +32,19 @@ public class Piloto implements Serializable {
         this.statusPiloto = statusPiloto;
     }
 
-    public Piloto(String id, String nomePiloto, String statusPiloto) {
-        this.id = id;
+    public Piloto(String idPiloto, String nomePiloto, String statusPiloto) {
+        this.idPiloto = idPiloto;
         this.nomePiloto = nomePiloto;
         this.statusPiloto = statusPiloto;
     }
 
+    public Piloto() {
+    }
+
+       
     @Override
     public String toString() {
-        return "Piloto{" + "id=" + id + ", nomePiloto=" + nomePiloto + ", statusPiloto=" + statusPiloto + '}';
+        return "Piloto{" + "id=" + idPiloto + ", nomePiloto=" + nomePiloto + ", statusPiloto=" + statusPiloto + '}';
     }
 
 }

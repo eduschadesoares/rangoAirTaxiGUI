@@ -3,8 +3,9 @@ package model;
 import java.io.Serializable;
 
 public class Aeronave implements Serializable {
+    ModeloAeronave modelo;
+    
     private String serial;
-    private String modelo;
     private int idade;
     private float horaVoo;
     private String statusAeronave;
@@ -17,11 +18,11 @@ public class Aeronave implements Serializable {
         this.serial = serial;
     }
 
-    public String getModelo() {
+    public ModeloAeronave getModelo() {
         return modelo;
     }
 
-    public void setModelo(String modelo) {
+    public void setModelo(ModeloAeronave modelo) {
         this.modelo = modelo;
     }
 
@@ -52,7 +53,7 @@ public class Aeronave implements Serializable {
     public Aeronave() {
     }
 
-    public Aeronave(String serial, String modelo, int idade, float horaVoo, String statusAeronave) {
+    public Aeronave(String serial, ModeloAeronave modelo, int idade, float horaVoo, String statusAeronave) {
         this.serial = serial;
         this.modelo = modelo;
         this.idade = idade;

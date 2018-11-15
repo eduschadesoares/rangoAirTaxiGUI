@@ -12,7 +12,6 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.Label;
 import javafx.scene.layout.AnchorPane;
 import utility.Dados;
-import model.Student;
 
 public class MenuController implements Initializable {
 
@@ -23,6 +22,16 @@ public class MenuController implements Initializable {
     private void btnCallAeronaveScene(ActionEvent event) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Aeronave.fxml"));
+            menuPanel.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    @FXML
+    private void btnCallPilotoScene(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Piloto.fxml"));
             menuPanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);

@@ -1,6 +1,9 @@
-package controller;
+package CRUDController;
 
+import controller.PilotoController;
+import controller.PrincipalController;
 import static controller.PrincipalController.lstAeronaves;
+import static controller.PrincipalController.lstPilotos;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -18,29 +21,27 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
+import model.Piloto;
 import utility.Dados;
-import model.Student;
 
-public class DeleteAeronaveController implements Initializable {
+public class DeletePilotoController implements Initializable {
 
-    String[] statusChoices = new String[]{"Disponível", "Manutenção", "Fora de Uso"};
-
-    static Aeronave aeronaveList;
+    static Piloto pilotoList;
 
     static int indexList;
 
-    private AeronaveController controller = new AeronaveController();
+    private PilotoController controller = new PilotoController();
 
     @FXML
-    public AnchorPane DeleteAeronavePanel;
+    public AnchorPane DeletePilotoPanel;
     @FXML
-    public Label lblInfoAeronave;
+    public Label lblInfoPiloto;
 
     @FXML
     private void btnCancelDeletion(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Aeronave.fxml"));
-            DeleteAeronavePanel.getChildren().setAll(pane);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Piloto.fxml"));
+            DeletePilotoPanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -49,8 +50,8 @@ public class DeleteAeronaveController implements Initializable {
     @FXML
     void btnSaveDeletion(ActionEvent event) {
         try {
-            PrincipalController.lstAeronaves.remove(aeronaveList);
-            PrincipalController.saveAeronaveList(lstAeronaves);
+            PrincipalController.lstPilotos.remove(pilotoList);
+            PrincipalController.savePilotoList(lstPilotos);
 
         } catch (Exception e) {
             System.out.println(e);
@@ -60,13 +61,13 @@ public class DeleteAeronaveController implements Initializable {
     }
 
     public void setAllFields() {
-        lblInfoAeronave.setText(aeronaveList.toString());
+        lblInfoPiloto.setText(pilotoList.toString());
     }
 
-    public static void getAeronaveObj(Aeronave aeronave) {
-        for (Aeronave each : lstAeronaves) {
-            if (each.getSerial() == aeronave.getSerial()) {
-                aeronaveList = each;
+    public static void getPilotoObj(Piloto piloto) {
+        for (Piloto each : lstPilotos) {
+            if (each.getIdPiloto() == piloto.getIdPiloto()) {
+                pilotoList = each;
             }
         }
     }
@@ -76,7 +77,7 @@ public class DeleteAeronaveController implements Initializable {
         setAllFields();
     }
 
-    public DeleteAeronaveController() {
+    public DeletePilotoController() {
 
     }
 

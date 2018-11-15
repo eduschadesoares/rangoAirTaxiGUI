@@ -22,7 +22,6 @@ import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
 import utility.Dados;
-import model.Student;
 
 public class AeronaveController implements Initializable {
 
@@ -59,15 +58,15 @@ public class AeronaveController implements Initializable {
 
     @FXML
     private void btnEditAeronave(ActionEvent event) {
-        aeronave = tblView.getSelectionModel().getSelectedItem();
-        controller.EditAeronaveController.getAeronaveObj(aeronave);
-
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/EditAeronave.fxml"));
-            aeronavePanel.getChildren().setAll(pane);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
+//        aeronave = tblView.getSelectionModel().getSelectedItem();
+//        CRUDController.EditAeronaveController.getAeronaveObj(aeronave);
+//
+//        try {
+//            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/EditAeronave.fxml"));
+//            aeronavePanel.getChildren().setAll(pane);
+//        } catch (Exception e) {
+//            System.err.println(e);
+//        }
     }
 
     @FXML
@@ -88,7 +87,7 @@ public class AeronaveController implements Initializable {
     @FXML
     private void btnDeleteAeronave(ActionEvent event) {
         aeronave = tblView.getSelectionModel().getSelectedItem();
-        controller.DeleteAeronaveController.getAeronaveObj(aeronave);
+        CRUDController.DeleteAeronaveController.getAeronaveObj(aeronave);
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/DeleteAeronave.fxml"));

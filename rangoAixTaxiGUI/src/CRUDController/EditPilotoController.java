@@ -1,6 +1,9 @@
-package controller;
+package CRUDController;
 
+import controller.PilotoController;
+import controller.PrincipalController;
 import static controller.PrincipalController.lstAeronaves;
+import static controller.PrincipalController.lstPilotos;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -18,29 +21,25 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
+import model.Piloto;
 import utility.Dados;
-import model.Student;
 
-public class EditAeronaveController implements Initializable {
+public class EditPilotoController implements Initializable {
 
-    String[] statusChoices = new String[]{"Disponível", "Manutenção", "Fora de Uso"};
+    String[] statusChoices = new String[]{"Disponível", "Manutenção", "Descanso"};
 
-    static Aeronave aeronaveList;
+    static Piloto pilotoList;
 
     static int indexList;
 
-    private AeronaveController controller = new AeronaveController();
+    private PilotoController controller = new PilotoController();
 
     @FXML
-    public AnchorPane EditAeronavePanel;
+    public AnchorPane EditPilotoPanel;
     @FXML
-    public TextField txtFldSerial;
+    public TextField txtFldId;
     @FXML
-    public TextField txtFldModelo;
-    @FXML
-    public TextField txtFldIdade;
-    @FXML
-    public TextField txtFldHoraVoo;
+    public TextField txtFldNome;
     @FXML
     public ComboBox cmbBoxStatus;
     @FXML
@@ -49,8 +48,8 @@ public class EditAeronaveController implements Initializable {
     @FXML
     private void btnCancelEditon(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Aeronave.fxml"));
-            EditAeronavePanel.getChildren().setAll(pane);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Piloto.fxml"));
+            EditPilotoPanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -59,16 +58,16 @@ public class EditAeronaveController implements Initializable {
     @FXML
     void btnSaveEdition(ActionEvent event) {
         boolean duplicated = false;
-        String serial;
+        String id;
         try {
-            for (Aeronave each : lstAeronaves) {
-                if (each.getSerial() == aeronaveList.getSerial()) {
-                    serial = txtFldSerial.getText();
-                    for (Aeronave each2 : lstAeronaves) {
-                        if (serial == each2.getSerial()) {
+            for (Piloto each : lstPilotos) {
+                if (each.getIdPiloto() == pilotoList.getIdPiloto()) {
+                    id = txtFldId.getText();
+                    for (Piloto each2 : lstPilotos) {
+                        if (id == each2.getIdPiloto()) {
                             System.err.println("DUPLICOU");
-                            lblDuplicatedSerial.setText("Serial já existente");
-                            txtFldSerial.requestFocus();
+                            lblDuplicatedSerial.setText("Id já existente");
+                            txtFldId.requestFocus();
                             duplicated = true;
                             break;
                         } else {
@@ -76,11 +75,9 @@ public class EditAeronaveController implements Initializable {
                         }
                     }
                     if (!duplicated) {
-                        each.setSerial(txtFldSerial.getText());
-                        each.setModelo(txtFldModelo.getText());
-                        each.setIdade(Integer.parseInt(txtFldIdade.getText()));
-                        each.setHoraVoo(Float.parseFloat(txtFldHoraVoo.getText()));
-                        each.setStatusAeronave(cmbBoxStatus.getValue().toString());
+                        each.setIdPiloto(txtFldId.getText());
+                        each.setNomePiloto(txtFldNome.getText());
+                        each.setStatusPiloto(cmbBoxStatus.getValue().toString());
                         break;
                     }
                 }
@@ -88,7 +85,7 @@ public class EditAeronaveController implements Initializable {
 
             if (!duplicated) {
 //            PrincipalController.lstAeronaves.add(controller.aeronave);
-                PrincipalController.saveAeronaveList(lstAeronaves);
+                PrincipalController.savePilotoList(lstPilotos);
                 btnCancelEditon(event);
             }
         } catch (Exception e) {
@@ -99,18 +96,16 @@ public class EditAeronaveController implements Initializable {
 
     public void setAllFields() {
 
-        txtFldSerial.setText(aeronaveList.getSerial());
-        txtFldModelo.setText(aeronaveList.getModelo());
-        txtFldIdade.setText(Integer.toString(aeronaveList.getIdade()));
-        txtFldHoraVoo.setText(Float.toString(aeronaveList.getHoraVoo()));
+        txtFldId.setText(pilotoList.getIdPiloto());
+        txtFldNome.setText(pilotoList.getNomePiloto());
         cmbBoxStatus.getItems().addAll(statusChoices);
-        cmbBoxStatus.setValue(aeronaveList.getStatusAeronave());
+        cmbBoxStatus.setValue(pilotoList.getStatusPiloto());
     }
 
-    public static void getAeronaveObj(Aeronave aeronave) {
-        for (Aeronave each : lstAeronaves) {
-            if (each.getSerial() == aeronave.getSerial()) {
-                aeronaveList = each;
+    public static void getPilotoObj(Piloto piloto) {
+        for (Piloto each : lstPilotos) {
+            if (each.getIdPiloto()== piloto.getIdPiloto()) {
+                pilotoList = each;
             }
         }
     }
@@ -120,7 +115,7 @@ public class EditAeronaveController implements Initializable {
         setAllFields();
     }
 
-    public EditAeronaveController() {
+    public EditPilotoController() {
 
     }
 

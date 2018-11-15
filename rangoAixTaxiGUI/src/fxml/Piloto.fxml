@@ -11,7 +11,7 @@
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
 
-<AnchorPane fx:id="aeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AeronaveController">
+<AnchorPane fx:id="pilotoPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.PilotoController">
     <children>
         <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <top>
@@ -19,7 +19,7 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="50.0">
                             <children>
-                                <Label text="Aeronaves">
+                                <Label text="Pilotos">
                                     <font>
                                         <Font size="25.0" />
                                     </font>
@@ -44,48 +44,38 @@
                                     <children>
                                         <HBox alignment="CENTER">
                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#btnInsertAeronave" text="Inserir Aeronave" />
+                                                <Button mnemonicParsing="false" onAction="#btnInsertPiloto" text="Inserir Piloto" />
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER">
                                             <children>
-                                                <Button fx:id="btnEditAeronaveHide" mnemonicParsing="false" onAction="#btnEditAeronave" text="Editar Aeronave" />
+                                                <Button fx:id="btnEditPilotoHide" mnemonicParsing="false" onAction="#btnEditPiloto" text="Editar Piloto" />
                                             </children>
                                         </HBox>
                                         <HBox alignment="CENTER">
                                             <children>
-                                                <Button fx:id="btnDeleteAeronaveHide" mnemonicParsing="false" onAction="#btnDeleteAeronave" text="Remover Aeronave" />
+                                                <Button fx:id="btnDeletePilotoHide" mnemonicParsing="false" onAction="#btnDeletePiloto" text="Remover Piloto" />
                                             </children>
                                         </HBox>
                                     </children>
                                 </VBox>
                                 <VBox alignment="CENTER" prefWidth="590.0">
                                     <children>
-                                        <TableView fx:id="tblView" onMouseClicked="#tblViewEditAeronaveClick" prefHeight="370.0" prefWidth="248.0">
+                                        <TableView fx:id="tblView" onMouseClicked="#tblViewEditPilotoClick" prefHeight="370.0" prefWidth="248.0">
                                             <columns>
-                                                <TableColumn fx:id="colSerial" prefWidth="75.0" text="Serial">
+                                                <TableColumn fx:id="colIdPiloto" prefWidth="150.0" text="Id">
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="serial" />
+                                                        <PropertyValueFactory property="idPiloto" />
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn fx:id="colModelo" prefWidth="75.0" text="Modelo">                                                    
+                                                <TableColumn fx:id="colNomePiloto" minWidth="0.0" prefWidth="233.0" text="Nome">                                                    
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="modelo" />
+                                                        <PropertyValueFactory property="nomePiloto" />
                                                     </cellValueFactory>
                                                 </TableColumn>
-                                                <TableColumn fx:id="colStatusAeronave" prefWidth="75.0" text="Status">                                                    
+                                                <TableColumn fx:id="colStatusPiloto" minWidth="0.0" prefWidth="157.0" text="Status">                                                    
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="statusAeronave" />
-                                                    </cellValueFactory>
-                                                </TableColumn>
-                                                <TableColumn fx:id="colIdade" prefWidth="75.0" text="Idade">                                                    
-                                                    <cellValueFactory>
-                                                        <PropertyValueFactory property="Idade" />
-                                                    </cellValueFactory>
-                                                </TableColumn>
-                                                <TableColumn fx:id="colHoraVoo" prefWidth="133.0" text="Horas de Voo">                                                    
-                                                    <cellValueFactory>
-                                                        <PropertyValueFactory property="horaVoo" />
+                                                        <PropertyValueFactory property="statusPiloto" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                             </columns>

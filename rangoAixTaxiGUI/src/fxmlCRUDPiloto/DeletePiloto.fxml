@@ -11,7 +11,7 @@
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
 
-<AnchorPane fx:id="DeleteAeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.DeleteAeronaveController">
+<AnchorPane fx:id="DeletePilotoPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRUDController.DeletePilotoController">
     <children>
         <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <top>
@@ -19,7 +19,7 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="50.0">
                             <children>
-                                <Label text="Aeronaves">
+                                <Label text="Pilotos">
                                     <font>
                                         <Font size="25.0" />
                                     </font>
@@ -28,7 +28,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0">
                      <children>
-                        <Label alignment="CENTER" text="Remover Aeronave" />
+                        <Label alignment="CENTER" text="Remover Piloto" />
                      </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="300.0">
@@ -40,7 +40,7 @@
                                     <VBox alignment="CENTER" prefHeight="30.0" prefWidth="500.0">
                                        <children>
                                           <Label text="Info" />
-                                          <Label fx:id="lblInfoAeronave" />
+                                          <Label fx:id="lblInfoPiloto" />
                                        </children>
                                     </VBox>
                                  </children>

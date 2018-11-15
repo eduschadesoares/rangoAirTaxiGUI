@@ -1,5 +1,7 @@
-package controller;
+package CRUDController;
 
+import controller.AeronaveController;
+import controller.PrincipalController;
 import static controller.PrincipalController.lstAeronaves;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
 import utility.Dados;
-import model.Student;
 
 public class DeleteAeronaveController implements Initializable {
 

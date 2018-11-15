@@ -11,7 +11,7 @@
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
 
-<AnchorPane fx:id="InsertAeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.InsertAeronaveController">
+<AnchorPane fx:id="InsertPilotoPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CRUDController.InsertPilotoController">
     <children>
         <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
             <top>
@@ -19,7 +19,7 @@
                     <children>
                         <HBox alignment="CENTER" prefHeight="50.0">
                             <children>
-                                <Label text="Aeronaves">
+                                <Label text="Pilotos">
                                     <font>
                                         <Font size="25.0" />
                                     </font>
@@ -28,7 +28,7 @@
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="40.0">
                      <children>
-                        <Label fx:id="lblDuplicatedSerial" alignment="CENTER" text="Inserir uma Aeronave" />
+                        <Label fx:id="lblDuplicatedSerial" alignment="CENTER" text="Inserir um piloto" />
                      </children>
                         </HBox>
                         <HBox alignment="CENTER" prefHeight="300.0">
@@ -39,8 +39,8 @@
                                  <children>
                                     <VBox alignment="CENTER">
                                        <children>
-                                          <Label text="Serial" />
-                                          <TextField fx:id="txtFldSerial" />
+                                          <Label text="ID" />
+                                          <TextField fx:id="txtFldId" />
                                        </children>
                                     </VBox>
                                  </children>
@@ -49,32 +49,12 @@
                                             <children>
                                     <VBox alignment="CENTER">
                                        <children>
-                                          <Label text="Modelo" />
-                                          <TextField fx:id="txtFldModelo" />
+                                          <Label text="Nome" />
+                                          <TextField fx:id="txtFldNome" />
                                        </children>
                                     </VBox>
                                             </children>
                                         </HBox>
-                              <HBox alignment="CENTER">
-                                 <children>
-                                    <VBox alignment="CENTER">
-                                       <children>
-                                          <Label text="Idade" />
-                                          <TextField fx:id="txtFldIdade" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
-                              <HBox alignment="CENTER">
-                                 <children>
-                                    <VBox alignment="CENTER">
-                                       <children>
-                                          <Label text="Hora de Voo" />
-                                          <TextField fx:id="txtFldHoraVoo" />
-                                       </children>
-                                    </VBox>
-                                 </children>
-                              </HBox>
                               <HBox alignment="CENTER">
                                  <children>
                                     <VBox alignment="CENTER">

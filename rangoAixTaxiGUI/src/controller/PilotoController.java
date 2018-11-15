@@ -1,6 +1,7 @@
 package controller;
 
 import static controller.PrincipalController.lstAeronaves;
+import static controller.PrincipalController.lstPilotos;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -21,78 +22,78 @@ import javafx.scene.input.MouseEvent;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
+import model.Piloto;
 import utility.Dados;
-import model.Student;
 
-public class AeronaveController implements Initializable {
+public class PilotoController implements Initializable {
 
-    public Aeronave aeronave = new Aeronave();
+    public Piloto piloto = new Piloto();
 
     @FXML
-    public AnchorPane aeronavePanel;
+    public AnchorPane pilotoPanel;
     @FXML
-    public TableView<Aeronave> tblView;
+    public TableView<Piloto> tblView;
     @FXML
-    public Button btnDeleteAeronaveHide;
+    public Button btnDeletePilotoHide;
     @FXML
-    public Button btnEditAeronaveHide;
+    public Button btnEditPilotoHide;
 
     @FXML
     private void btnCallMenuScene(ActionEvent event) {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
-            aeronavePanel.getChildren().setAll(pane);
+            pilotoPanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
         }
     }
 
     @FXML
-    private void btnInsertAeronave(ActionEvent event) {
+    private void btnInsertPiloto(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/InsertAeronave.fxml"));
-            aeronavePanel.getChildren().setAll(pane);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDPiloto/InsertPiloto.fxml"));
+            pilotoPanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
         }
     }
 
     @FXML
-    private void btnEditAeronave(ActionEvent event) {
-        aeronave = tblView.getSelectionModel().getSelectedItem();
-        controller.EditAeronaveController.getAeronaveObj(aeronave);
+    private void btnEditPiloto(ActionEvent event) {
+        piloto = tblView.getSelectionModel().getSelectedItem();
+        CRUDController.EditPilotoController.getPilotoObj(piloto);
 
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/EditAeronave.fxml"));
-            aeronavePanel.getChildren().setAll(pane);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDPiloto/EditPiloto.fxml"));
+            pilotoPanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
         }
     }
 
     @FXML
-    private void tblViewEditAeronaveClick(Event event) {
+    private void tblViewEditPilotoClick(Event event) {
         MouseEvent me = null;
         if (event.getEventType() == MOUSE_CLICKED) {
             me = (MouseEvent) event;
             if (me.getClickCount() == 2) {
-                aeronave = tblView.getSelectionModel().getSelectedItem();
-                if (aeronave != null) {
+                piloto = tblView.getSelectionModel().getSelectedItem();
+                if (piloto != null) {
                     ActionEvent callFuncEvent = new ActionEvent();
-                    btnEditAeronave(callFuncEvent);
+                    btnEditPiloto(callFuncEvent);
                 }
             }
         }
     }
 
     @FXML
-    private void btnDeleteAeronave(ActionEvent event) {
-        aeronave = tblView.getSelectionModel().getSelectedItem();
-        controller.DeleteAeronaveController.getAeronaveObj(aeronave);
+    private void btnDeletePiloto(ActionEvent event) {
+        piloto = tblView.getSelectionModel().getSelectedItem();
+        CRUDController.DeletePilotoController.getPilotoObj(piloto);
 
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/DeleteAeronave.fxml"));
-            aeronavePanel.getChildren().setAll(pane);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDPiloto/DeletePiloto.fxml"));
+            pilotoPanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -102,25 +103,25 @@ public class AeronaveController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
 
         Platform.runLater(() -> {
-            tblView.setItems(FXCollections.observableList(lstAeronaves));
+            tblView.setItems(FXCollections.observableList(lstPilotos));
             tblView.requestFocus();
 
             // Select last added item
-            if (lstAeronaves.size() > 1) {
-                tblView.getSelectionModel().select(lstAeronaves.get(lstAeronaves.size() - 1));
+            if (lstPilotos.size() > 1) {
+                tblView.getSelectionModel().select(lstPilotos.get(lstPilotos.size() - 1));
             } else {
                 tblView.getSelectionModel().selectFirst();
             }
             tblView.refresh();
         });
 
-        if (lstAeronaves.isEmpty()) {
-            btnDeleteAeronaveHide.setDisable(true);
-            btnEditAeronaveHide.setDisable(true);
+        if (lstPilotos.isEmpty()) {
+            btnDeletePilotoHide.setDisable(true);
+            btnEditPilotoHide.setDisable(true);
         }
     }
 
-    public AeronaveController() {
+    public PilotoController() {
 
     }
 

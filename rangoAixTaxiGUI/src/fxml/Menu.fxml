@@ -40,6 +40,18 @@
                   </HBox>
                   <HBox alignment="CENTER">
                      <children>
+                        <Button mnemonicParsing="false" onAction="#btnCallPilotoScene" text="Pilotos">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                        </Button>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
+                     </padding>
+                  </HBox>
+                  <HBox alignment="CENTER">
+                     <children>
                         <Button mnemonicParsing="false" onAction="#btnExitProgram" text="Sair">
                            <font>
                               <Font size="20.0" />

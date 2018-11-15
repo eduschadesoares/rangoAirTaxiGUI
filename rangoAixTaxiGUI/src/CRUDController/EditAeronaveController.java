@@ -1,5 +1,7 @@
-package controller;
+package CRUDController;
 
+import controller.AeronaveController;
+import controller.PrincipalController;
 import static controller.PrincipalController.lstAeronaves;
 import java.util.ArrayList;
 import java.util.List;
@@ -19,7 +21,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
 import utility.Dados;
-import model.Student;
 
 public class EditAeronaveController implements Initializable {
 
@@ -58,53 +59,53 @@ public class EditAeronaveController implements Initializable {
 
     @FXML
     void btnSaveEdition(ActionEvent event) {
-        boolean duplicated = false;
-        String serial;
-        try {
-            for (Aeronave each : lstAeronaves) {
-                if (each.getSerial() == aeronaveList.getSerial()) {
-                    serial = txtFldSerial.getText();
-                    for (Aeronave each2 : lstAeronaves) {
-                        if (serial == each2.getSerial()) {
-                            System.err.println("DUPLICOU");
-                            lblDuplicatedSerial.setText("Serial já existente");
-                            txtFldSerial.requestFocus();
-                            duplicated = true;
-                            break;
-                        } else {
-                            duplicated = false;
-                        }
-                    }
-                    if (!duplicated) {
-                        each.setSerial(txtFldSerial.getText());
-                        each.setModelo(txtFldModelo.getText());
-                        each.setIdade(Integer.parseInt(txtFldIdade.getText()));
-                        each.setHoraVoo(Float.parseFloat(txtFldHoraVoo.getText()));
-                        each.setStatusAeronave(cmbBoxStatus.getValue().toString());
-                        break;
-                    }
-                }
-            }
-
-            if (!duplicated) {
-//            PrincipalController.lstAeronaves.add(controller.aeronave);
-                PrincipalController.saveAeronaveList(lstAeronaves);
-                btnCancelEditon(event);
-            }
-        } catch (Exception e) {
-            System.out.println(e);
-        }
+//        boolean duplicated = false;
+//        String serial;
+//        try {
+//            for (Aeronave each : lstAeronaves) {
+//                if (each.getSerial() == aeronaveList.getSerial()) {
+//                    serial = txtFldSerial.getText();
+//                    for (Aeronave each2 : lstAeronaves) {
+//                        if (serial == each2.getSerial()) {
+//                            System.err.println("DUPLICOU");
+//                            lblDuplicatedSerial.setText("Serial já existente");
+//                            txtFldSerial.requestFocus();
+//                            duplicated = true;
+//                            break;
+//                        } else {
+//                            duplicated = false;
+//                        }
+//                    }
+//                    if (!duplicated) {
+//                        each.setSerial(txtFldSerial.getText());
+//                        each.setModelo(txtFldModelo.getText());
+//                        each.setIdade(Integer.parseInt(txtFldIdade.getText()));
+//                        each.setHoraVoo(Float.parseFloat(txtFldHoraVoo.getText()));
+//                        each.setStatusAeronave(cmbBoxStatus.getValue().toString());
+//                        break;
+//                    }
+//                }
+//            }
+//
+//            if (!duplicated) {
+////            PrincipalController.lstAeronaves.add(controller.aeronave);
+//                PrincipalController.saveAeronaveList(lstAeronaves);
+//                btnCancelEditon(event);
+//            }
+//        } catch (Exception e) {
+//            System.out.println(e);
+//        }
 
     }
 
     public void setAllFields() {
-
-        txtFldSerial.setText(aeronaveList.getSerial());
-        txtFldModelo.setText(aeronaveList.getModelo());
-        txtFldIdade.setText(Integer.toString(aeronaveList.getIdade()));
-        txtFldHoraVoo.setText(Float.toString(aeronaveList.getHoraVoo()));
-        cmbBoxStatus.getItems().addAll(statusChoices);
-        cmbBoxStatus.setValue(aeronaveList.getStatusAeronave());
+//
+//        txtFldSerial.setText(aeronaveList.getSerial());
+//        txtFldModelo.setText(aeronaveList.getModelo());
+//        txtFldIdade.setText(Integer.toString(aeronaveList.getIdade()));
+//        txtFldHoraVoo.setText(Float.toString(aeronaveList.getHoraVoo()));
+//        cmbBoxStatus.getItems().addAll(statusChoices);
+//        cmbBoxStatus.setValue(aeronaveList.getStatusAeronave());
     }
 
     public static void getAeronaveObj(Aeronave aeronave) {

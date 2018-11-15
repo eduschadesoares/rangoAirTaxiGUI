@@ -1,6 +1,9 @@
-package controller;
+package CRUDController;
 
+import controller.AeronaveController;
+import controller.PrincipalController;
 import static controller.PrincipalController.lstAeronaves;
+import static controller.PrincipalController.lstModelosAeronaves;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -19,8 +22,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
+import model.ModeloAeronave;
 import utility.Dados;
-import model.Student;
 
 public class InsertAeronaveController implements Initializable {
 
@@ -33,11 +36,11 @@ public class InsertAeronaveController implements Initializable {
     @FXML
     public TextField txtFldSerial;
     @FXML
-    public TextField txtFldModelo;
-    @FXML
     public TextField txtFldIdade;
     @FXML
     public TextField txtFldHoraVoo;
+    @FXML
+    public ComboBox cmbBoxModelo;
     @FXML
     public ComboBox cmbBoxStatus;
     @FXML
@@ -58,7 +61,7 @@ public class InsertAeronaveController implements Initializable {
         boolean duplicated = false;
         try {
             controller.aeronave.setSerial(txtFldSerial.getText());
-            controller.aeronave.setModelo(txtFldModelo.getText());
+            controller.aeronave.setModelo((ModeloAeronave) cmbBoxModelo.getSelectionModel().getSelectedItem());
             controller.aeronave.setIdade(Integer.parseInt(txtFldIdade.getText()));
             controller.aeronave.setHoraVoo(Integer.parseInt(txtFldHoraVoo.getText()));
             controller.aeronave.setStatusAeronave(cmbBoxStatus.getValue().toString());
@@ -91,11 +94,18 @@ public class InsertAeronaveController implements Initializable {
         txtFldSerial.setText(serialRandom);
     }
 
+    public void setComboBox() {
+        cmbBoxModelo.getItems().addAll(lstModelosAeronaves);
+        cmbBoxModelo.setValue(lstModelosAeronaves.get(0));
+        
+        cmbBoxStatus.getItems().addAll(statusChoices);
+        cmbBoxStatus.setValue(statusChoices[0]);
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         createSerial();
-        cmbBoxStatus.getItems().addAll(statusChoices);
-        cmbBoxStatus.setValue(statusChoices[0]);
+        setComboBox();
     }
 
 }
