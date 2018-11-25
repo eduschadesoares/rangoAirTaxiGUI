@@ -26,9 +26,11 @@ public class DataMes implements Serializable {
     }
 
     public DataMes() {
-        this.semana1 = new DataSemana();
-        this.semana2 = new DataSemana();
-        this.semana3 = new DataSemana();
-        this.semana4 = new DataSemana();
+        this.semana1 = new DataSemana("Semana 1");
+        this.semana2 = new DataSemana("Semana 2");
+        this.semana3 = new DataSemana("Semana 3");
+        this.semana4 = new DataSemana("Semana 4");
     }
+    
+    
 }

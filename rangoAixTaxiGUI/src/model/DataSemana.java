@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class DataSemana implements Serializable {
 
+    private String nomeSemana;
     private DataDia segunda;
     private DataDia terca;
     private DataDia quarta;
@@ -102,14 +103,28 @@ public class DataSemana implements Serializable {
         return domingo;
     }
 
-    public DataSemana() {
-        this.segunda = new DataDia(agendaServicoTemp, agendaManutencaoTemp);
-        this.terca = new DataDia(agendaServicoTemp, agendaManutencaoTemp);
-        this.quarta = new DataDia(agendaServicoTemp, agendaManutencaoTemp);
-        this.quinta = new DataDia(agendaServicoTemp, agendaManutencaoTemp);
-        this.sexta = new DataDia(agendaServicoTemp, agendaManutencaoTemp);
-        this.sabado = new DataDia(agendaServicoTemp, agendaManutencaoTemp);
-        this.domingo = new DataDia(agendaServicoTemp, agendaManutencaoTemp);
+    public String getNomeSemana() {
+        return nomeSemana;
+    }
+
+    public void setNomeSemana(String nomeSemana) {
+        this.nomeSemana = nomeSemana;
+    }
+
+    public DataSemana(String nomeSemana) {
+        this.nomeSemana = nomeSemana;
+        this.segunda = new DataDia("Segunda", agendaServicoTemp, agendaManutencaoTemp);
+        this.terca = new DataDia("Terça", agendaServicoTemp, agendaManutencaoTemp);
+        this.quarta = new DataDia("Quarta", agendaServicoTemp, agendaManutencaoTemp);
+        this.quinta = new DataDia("Quinta", agendaServicoTemp, agendaManutencaoTemp);
+        this.sexta = new DataDia("Sexta", agendaServicoTemp, agendaManutencaoTemp);
+        this.sabado = new DataDia("Sábado", agendaServicoTemp, agendaManutencaoTemp);
+        this.domingo = new DataDia("Domingo", agendaServicoTemp, agendaManutencaoTemp);
+    }
+
+    @Override
+    public String toString() {
+        return nomeSemana;
     }
 
 }

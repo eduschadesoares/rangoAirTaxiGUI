@@ -60,7 +60,22 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
                                  <children>
+                                    <Label text="Semana" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Dia" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
                                     <Label text="Horario" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label />
                                  </children>
                               </HBox>
                            </children>
@@ -69,7 +84,22 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox prefWidth="150.0" />
+                                    <ComboBox fx:id="cmbBoxSemana" onAction="#cmbBoxSemanaSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxDia" disable="true" onAction="#cmbBoxDiaSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxHorario" disable="true" onAction="#cmbBoxHorarioSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <CheckBox fx:id="chBoxConfirmarHorario" disable="true" mnemonicParsing="false" onMouseClicked="#confirmaHorario" text="Confirmar" />
                                  </children>
                               </HBox>
                            </children>
