@@ -12,6 +12,7 @@ import model.Aeronave;
 import model.ModeloAeronave;
 import model.Piloto;
 import model.Heliporto;
+import model.Reserva;
 
 public class Dados {
 
@@ -20,6 +21,7 @@ public class Dados {
     private final String MODELOAERONAVE = "modeloAeronave";
     private final String PILOTO = "piloto";
     private final String HELIPORTO = "heliporto";
+    private final String RESERVA = "reserva";
 
     public Dados() {
 
@@ -161,6 +163,42 @@ public class Dados {
                 //GAMBIARRA FEROZ
                 System.err.println("Creating a " + HELIPORTO + " file");
                 SaveHeliporto(temp);
+                return temp;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
+    }
+
+    //--------------------------------------------------------------------------
+    //RESERVA STUFF
+    public void SaveReserva(List<Reserva> reserva) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + SOURCES + RESERVA);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(reserva);
+            objectOut.close();
+            // System.out.println("The Object  was succesfully written to a file");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public List<Reserva> ReadReservaList() {
+        List<Reserva> temp = new ArrayList<>();
+        try {
+            File f = new File(System.getProperty("user.dir") + SOURCES + RESERVA);
+            if (f.exists() && !f.isDirectory()) {
+                FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + SOURCES + RESERVA);
+                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+                temp = (List<Reserva>) objectIn.readObject();
+                objectIn.close();
+                return temp;
+            } else {
+                //GAMBIARRA FEROZ
+                System.err.println("Creating a " + RESERVA + " file");
+                SaveReserva(temp);
                 return temp;
             }
         } catch (Exception ex) {

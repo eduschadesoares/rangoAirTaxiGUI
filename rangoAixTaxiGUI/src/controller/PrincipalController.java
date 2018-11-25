@@ -24,6 +24,7 @@ import model.DataMes;
 import model.DataSemana;
 import model.Heliporto;
 import model.ModeloAeronave;
+import model.Reserva;
 
 public class PrincipalController implements Initializable {
 
@@ -31,6 +32,7 @@ public class PrincipalController implements Initializable {
     public static List<ModeloAeronave> lstModelosAeronaves = new ArrayList<ModeloAeronave>();
     public static List<Piloto> lstPilotos = new ArrayList<Piloto>();
     public static List<Heliporto> lstHeliportos = new ArrayList<Heliporto>();
+    public static List<Reserva> lstReservas = new ArrayList<Reserva>();
 
     public static Dados dados = new Dados();
 
@@ -89,12 +91,23 @@ public class PrincipalController implements Initializable {
         lstHeliportos = dados.ReadHeliportoList();
     }
 
+    public void saveReservaList() {
+
+    }
+
+    public static void saveReservaList(List<Reserva> lstReservas) {
+        dados.SaveReserva(lstReservas);
+    }
+
+    public void readReservaList() {
+        lstReservas = dados.ReadReservaList();
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
 //        createModeloList();
 //        createHeliportoList();
-
 //        DataDia dt = new DataDia("Segunda");
 //
 //        Map<String, Boolean> hora2 = new LinkedHashMap<String, Boolean>();
@@ -117,13 +130,12 @@ public class PrincipalController implements Initializable {
 //        System.out.println(mes.getSemana1().getDomingo().agendaServico.get("06:30"));
 //        System.out.println(dt.hora);
 //        ArrayList<Aeronave> store = new ArrayList<>();
-
         readAeronaveList();
         readPilotoList();
         readModeloList();
         readHeliportoList();
+        readReservaList();
 
-        
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
             rootPane.getChildren().setAll(pane);

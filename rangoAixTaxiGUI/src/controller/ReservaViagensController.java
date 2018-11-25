@@ -30,8 +30,7 @@ public class ReservaViagensController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        System.out.println("oasfasfasfafai");
-        System.out.println(" ");
+        
     }
 
 }
