@@ -1,4 +1,4 @@
-package CRUDController;
+package controllerCRUD;
 
 import controller.PilotoController;
 import controller.PrincipalController;

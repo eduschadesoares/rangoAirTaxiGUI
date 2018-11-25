@@ -61,7 +61,7 @@ public class PilotoController implements Initializable {
     @FXML
     private void btnEditPiloto(ActionEvent event) {
         piloto = tblView.getSelectionModel().getSelectedItem();
-        CRUDController.EditPilotoController.getPilotoObj(piloto);
+        controllerCRUD.EditPilotoController.getPilotoObj(piloto);
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDPiloto/EditPiloto.fxml"));
@@ -89,7 +89,7 @@ public class PilotoController implements Initializable {
     @FXML
     private void btnDeletePiloto(ActionEvent event) {
         piloto = tblView.getSelectionModel().getSelectedItem();
-        CRUDController.DeletePilotoController.getPilotoObj(piloto);
+        controllerCRUD.DeletePilotoController.getPilotoObj(piloto);
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDPiloto/DeletePiloto.fxml"));

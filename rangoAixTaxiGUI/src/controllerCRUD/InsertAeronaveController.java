@@ -1,9 +1,9 @@
-package CRUDController;
+package controllerCRUD;
 
-import controller.PilotoController;
+import controller.AeronaveController;
 import controller.PrincipalController;
 import static controller.PrincipalController.lstAeronaves;
-import static controller.PrincipalController.lstPilotos;
+import static controller.PrincipalController.lstModelosAeronaves;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -22,21 +22,25 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
-import model.Piloto;
+import model.ModeloAeronave;
 import utility.Dados;
 
-public class InsertPilotoController implements Initializable {
+public class InsertAeronaveController implements Initializable {
 
-    String[] statusChoices = new String[]{"Disponível", "Manutenção", "Descanso"};
+    String[] statusChoices = new String[]{"Disponível", "Manutenção", "Fora de Uso"};
 
-    private PilotoController controller = new PilotoController();
+    private AeronaveController controller = new AeronaveController();
 
     @FXML
-    public AnchorPane InsertPilotoPanel;
+    public AnchorPane InsertAeronavePanel;
     @FXML
-    public TextField txtFldId;
+    public TextField txtFldSerial;
     @FXML
-    public TextField txtFldNome;
+    public TextField txtFldIdade;
+    @FXML
+    public TextField txtFldHoraVoo;
+    @FXML
+    public ComboBox cmbBoxModelo;
     @FXML
     public ComboBox cmbBoxStatus;
     @FXML
@@ -45,8 +49,8 @@ public class InsertPilotoController implements Initializable {
     @FXML
     private void btnCancelInsertion(ActionEvent event) {
         try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Piloto.fxml"));
-            InsertPilotoPanel.getChildren().setAll(pane);
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Aeronave.fxml"));
+            InsertAeronavePanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
         }
@@ -56,12 +60,14 @@ public class InsertPilotoController implements Initializable {
     void btnSaveInsertion(ActionEvent event) {
         boolean duplicated = false;
         try {
-            controller.piloto.setIdPiloto(txtFldId.getText());
-            controller.piloto.setNomePiloto(txtFldNome.getText());
-            controller.piloto.setStatusPiloto(cmbBoxStatus.getValue().toString());
+//            controller.aeronave.setSerial(txtFldSerial.getText());
+//            controller.aeronave.setModelo((ModeloAeronave) cmbBoxModelo.getSelectionModel().getSelectedItem());
+//            controller.aeronave.setIdade(Integer.parseInt(txtFldIdade.getText()));
+//            controller.aeronave.setHoraVoo(Integer.parseInt(txtFldHoraVoo.getText()));
+//            controller.aeronave.setStatusAeronave(cmbBoxStatus.getValue().toString());
 
-            for (Piloto each : PrincipalController.lstPilotos) {
-                if (controller.piloto.getIdPiloto().equals(each.getIdPiloto())) {
+            for (Aeronave each : PrincipalController.lstAeronaves) {
+                if (controller.aeronave.getSerial().equals(each.getSerial())) {
                     System.err.println("Serial duplicated");
 //                    lblDuplicatedSerial.setText("Serial já existente");
                     createSerial();
@@ -71,8 +77,8 @@ public class InsertPilotoController implements Initializable {
             }
 
             if (!duplicated) {
-                PrincipalController.lstPilotos.add(controller.piloto);
-                PrincipalController.savePilotoList(lstPilotos);
+                PrincipalController.lstAeronaves.add(controller.aeronave);
+                PrincipalController.saveAeronaveList(lstAeronaves);
                 btnCancelInsertion(event);
             }
 
@@ -85,14 +91,21 @@ public class InsertPilotoController implements Initializable {
         //Creates a random serial
         UUID uuid = UUID.randomUUID();
         String serialRandom = uuid.toString();
-        txtFldId.setText(serialRandom);
+        txtFldSerial.setText(serialRandom);
+    }
+
+    public void setComboBox() {
+        cmbBoxModelo.getItems().addAll(lstModelosAeronaves);
+        cmbBoxModelo.setValue(lstModelosAeronaves.get(0));
+        
+        cmbBoxStatus.getItems().addAll(statusChoices);
+        cmbBoxStatus.setValue(statusChoices[0]);
     }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         createSerial();
-        cmbBoxStatus.getItems().addAll(statusChoices);
-        cmbBoxStatus.setValue(statusChoices[0]);
+        setComboBox();
     }
 
 }

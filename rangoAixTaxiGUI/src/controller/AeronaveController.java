@@ -87,7 +87,7 @@ public class AeronaveController implements Initializable {
     @FXML
     private void btnDeleteAeronave(ActionEvent event) {
         aeronave = tblView.getSelectionModel().getSelectedItem();
-        CRUDController.DeleteAeronaveController.getAeronaveObj(aeronave);
+        controllerCRUD.DeleteAeronaveController.getAeronaveObj(aeronave);
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/DeleteAeronave.fxml"));

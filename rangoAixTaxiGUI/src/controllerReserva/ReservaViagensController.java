@@ -1,4 +1,4 @@
-package controller;
+package controllerReserva;
 
 import static controller.PrincipalController.lstAeronaves;
 import java.util.ArrayList;
@@ -28,9 +28,19 @@ public class ReservaViagensController implements Initializable {
     @FXML
     public AnchorPane reservaViagensPanel;
 
+    @FXML
+    private void btnAgendarVoo(ActionEvent event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlReservas/InsertReserva.fxml"));
+            reservaViagensPanel.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        
+
     }
 
 }
