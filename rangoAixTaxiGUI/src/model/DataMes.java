@@ -1,6 +1,8 @@
 package model;
 
-public class DataMes {
+import java.io.Serializable;
+
+public class DataMes implements Serializable {
 
     private DataSemana semana1;
     private DataSemana semana2;

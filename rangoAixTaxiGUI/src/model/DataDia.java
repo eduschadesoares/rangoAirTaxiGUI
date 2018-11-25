@@ -1,11 +1,12 @@
 package model;
 
+import java.io.Serializable;
 import java.util.Hashtable;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class DataDia {
+public class DataDia implements Serializable {
 
     public Map<String, Boolean> agendaServico;
     public Map<String, Boolean> agendaManutencao;

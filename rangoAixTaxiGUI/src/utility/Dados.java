@@ -9,6 +9,7 @@ import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 import model.Aeronave;
+import model.DataMes;
 import model.ModeloAeronave;
 import model.Piloto;
 import model.Heliporto;
@@ -17,6 +18,7 @@ import model.Reserva;
 public class Dados {
 
     private final String SOURCES = "/sources/";
+    private final String MES = "mes";
     private final String AERONAVE = "aeronave";
     private final String MODELOAERONAVE = "modeloAeronave";
     private final String PILOTO = "piloto";
@@ -25,6 +27,42 @@ public class Dados {
 
     public Dados() {
 
+    }
+
+    //--------------------------------------------------------------------------    
+    //MES STUFF
+    public void SaveMes(DataMes mes) {
+        try {
+            FileOutputStream fileOut = new FileOutputStream(System.getProperty("user.dir") + SOURCES + MES);
+            ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+            objectOut.writeObject(mes);
+            objectOut.close();
+            // System.out.println("The Object  was succesfully written to a file");
+        } catch (Exception ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public DataMes ReadMes() {
+        DataMes temp = new DataMes();
+        try {
+            File f = new File(System.getProperty("user.dir") + SOURCES + MES);
+            if (f.exists() && !f.isDirectory()) {
+                FileInputStream fileIn = new FileInputStream(System.getProperty("user.dir") + SOURCES + MES);
+                ObjectInputStream objectIn = new ObjectInputStream(fileIn);
+                temp = (DataMes) objectIn.readObject();
+                objectIn.close();
+                return temp;
+            } else {
+                //GAMBIARRA FEROZ
+                System.err.println("Creating a " + MES + " file");
+                SaveMes(temp);
+                return temp;
+            }
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            return null;
+        }
     }
 
     //--------------------------------------------------------------------------    

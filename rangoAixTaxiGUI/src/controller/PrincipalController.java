@@ -28,6 +28,7 @@ import model.Reserva;
 
 public class PrincipalController implements Initializable {
 
+    public static DataMes mes = new DataMes();
     public static List<Aeronave> lstAeronaves = new ArrayList<Aeronave>();
     public static List<ModeloAeronave> lstModelosAeronaves = new ArrayList<ModeloAeronave>();
     public static List<Piloto> lstPilotos = new ArrayList<Piloto>();
@@ -38,6 +39,14 @@ public class PrincipalController implements Initializable {
 
     @FXML
     public AnchorPane rootPane;
+
+    public static void saveMonth(DataMes mes) {
+        dados.SaveMes(mes);
+    }
+
+    public static void readMes() {
+        mes = dados.ReadMes();
+    }
 
     public static void saveAeronaveList(List<Aeronave> lstAeronaves) {
         dados.SaveAeronave(lstAeronaves);
@@ -101,7 +110,6 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
 //        createModeloList();
 //        createHeliportoList();
 //        DataDia dt = new DataDia("Segunda");
@@ -126,11 +134,13 @@ public class PrincipalController implements Initializable {
 //        System.out.println(mes.getSemana1().getDomingo().agendaServico.get("06:30"));
 //        System.out.println(dt.hora);
 //        ArrayList<Aeronave> store = new ArrayList<>();
+        readMes();
         readAeronaveList();
         readPilotoList();
         readModeloList();
         readHeliportoList();
         readReservaList();
+        
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));

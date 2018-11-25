@@ -1,9 +1,10 @@
 package model;
 
+import java.io.Serializable;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
-public class DataSemana {
+public class DataSemana implements Serializable {
 
     private DataDia segunda;
     private DataDia terca;
