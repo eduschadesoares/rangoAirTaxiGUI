@@ -10,7 +10,6 @@ import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.event.Event;
-import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -24,38 +23,15 @@ import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
 import utility.Dados;
 
-public class ReservaController implements Initializable {
+public class ReservaViagensController implements Initializable {
 
     @FXML
-    public AnchorPane reservaPanel, reservaDeViagensPanel;
-
-    @FXML
-    private void btnCallMenuScene(ActionEvent event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
-            reservaPanel.getChildren().setAll(pane);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }
-
-    @FXML
-    private void selectionReservasDeViagens(Event event) {
-        try {
-            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlReservas/ReservaViagens.fxml"));
-            reservaDeViagensPanel.getChildren().setAll(pane);
-        } catch (Exception e) {
-            System.err.println(e);
-        }
-    }
+    public AnchorPane reservaViagensPanel;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-
-    }
-
-    public ReservaController() {
-
+        System.out.println("oasfasfasfafai");
+        System.out.println(" ");
     }
 
 }
