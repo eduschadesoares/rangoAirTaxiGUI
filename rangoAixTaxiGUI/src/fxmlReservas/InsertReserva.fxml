@@ -34,18 +34,24 @@
                                     <Label text="Destino" />
                                  </children>
                               </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" />
                            </children>
                         </HBox>
                         <HBox alignment="CENTER">
                            <children>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox prefWidth="150.0" />
+                                    <ComboBox fx:id="cmbBoxOrigem" onAction="#cmbBoxOrigemSelected" prefWidth="150.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox prefWidth="150.0" />
+                                    <ComboBox fx:id="cmbBoxDestino" disable="true" onAction="#cmbBoxDestinoSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <CheckBox fx:id="chBoxConfirmarDestinos" disable="true" mnemonicParsing="false" onMouseClicked="#confirmaDestinos" text="Confirmar" />
                                  </children>
                               </HBox>
                            </children>
@@ -108,7 +114,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                                  <children>
-                                    <Button mnemonicParsing="false" text="Confirmar" />
+                                    <Button mnemonicParsing="false" onAction="#btnConfirmInsertion" text="Confirmar" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">

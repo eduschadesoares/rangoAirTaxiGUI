@@ -53,7 +53,7 @@ public class Heliporto implements Serializable {
 
     @Override
     public String toString() {
-        return "Heliporto{" + "codigoHeliporto=" + codigoHeliporto + ", kmHeliporto=" + kmHeliporto + ", nomeHeliporto=" + nomeHeliporto + ", cidade=" + cidade + '}';
+        return cidade;
     }
 
 }

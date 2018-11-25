@@ -91,10 +91,6 @@ public class PrincipalController implements Initializable {
         lstHeliportos = dados.ReadHeliportoList();
     }
 
-    public void saveReservaList() {
-
-    }
-
     public static void saveReservaList(List<Reserva> lstReservas) {
         dados.SaveReserva(lstReservas);
     }

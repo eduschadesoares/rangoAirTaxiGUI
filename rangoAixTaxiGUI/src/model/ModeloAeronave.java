@@ -6,7 +6,8 @@ public class ModeloAeronave implements Serializable {
 
     private String modelo;
     private int limiteHorasManutencao;
-
+    //ADD VALOR HORA VOO AERONAVE 
+    
     public String getModelo() {
         return modelo;
     }
