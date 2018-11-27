@@ -110,8 +110,15 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        createModeloList();
-        createHeliportoList();
+//        createModeloList();
+//        createHeliportoList();
+//        
+//        
+//        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "UAHUAHAUAH", 0, 0, 0, 0, true);
+//        lstAeronaves.add(aero);
+//        saveAeronaveList(lstAeronaves);
+
+
 //        DataDia dt = new DataDia("Segunda");
 //
 //        Map<String, Boolean> hora2 = new LinkedHashMap<String, Boolean>();

@@ -36,7 +36,13 @@ import utility.Dados;
 
 public class InsertReservaController implements Initializable {
 
+    //Variable to sum distance between two heliportos
     int distOrigem, distDestino = 0;
+
+    DataMes mesSelected;
+    DataDia diaSelected;
+    DataSemana semanaSelected;
+    String horarioSelected;
 
     @FXML
     public AnchorPane InsertReservaPanel;
@@ -139,6 +145,8 @@ public class InsertReservaController implements Initializable {
         cmbBoxOrigem.getItems().addAll(lstHeliportos);
     }
 
+    //--------------------------------------------------------------------------
+    //DATA STUFF
     private void setComboBoxSemanas() {
         cmbBoxSemana.setDisable(false);
         cmbBoxSemana.getItems().addAll(mes.getSemana1());
@@ -162,10 +170,9 @@ public class InsertReservaController implements Initializable {
 
     @FXML
     private void cmbBoxSemanaSelected(Event event) {
-        DataSemana semanaSelected;
         semanaSelected = (DataSemana) cmbBoxSemana.getSelectionModel().getSelectedItem();
-        System.out.println(semanaSelected);
 
+//        System.out.println(semanaSelected);
         cmbBoxDia.setDisable(false);
         cmbBoxDia.getItems().clear();
 
@@ -182,23 +189,19 @@ public class InsertReservaController implements Initializable {
 
     @FXML
     private void cmbBoxDiaSelected(Event event) {
-        DataDia diaSelected;
         diaSelected = (DataDia) cmbBoxDia.getSelectionModel().getSelectedItem();
-        System.out.println(diaSelected);
+//        System.out.println(diaSelected);
 
         cmbBoxHorario.setDisable(false);
         cmbBoxHorario.getItems().clear();
-
         cmbBoxHorario.getItems().addAll(diaSelected.agendaServico.keySet());
 
     }
 
     @FXML
     private void cmbBoxHorarioSelected(Event event) {
-        String horario;
-
-        horario = cmbBoxHorario.getSelectionModel().getSelectedItem().toString();
-        System.out.println(horario);
+        horarioSelected = cmbBoxHorario.getSelectionModel().getSelectedItem().toString();
+//        System.out.println(horario);
 
         chBoxConfirmarHorario.setDisable(false);
     }
@@ -209,11 +212,91 @@ public class InsertReservaController implements Initializable {
             cmbBoxSemana.setDisable(true);
             cmbBoxDia.setDisable(true);
             cmbBoxHorario.setDisable(true);
+            accessData();
         } else {
             cmbBoxSemana.setDisable(false);
             cmbBoxDia.setDisable(false);
             cmbBoxHorario.setDisable(false);
         }
+    }
+
+    private void accessData() {
+//        System.out.println(mes.getSemana1().getDomingo().agendaManutencao.replace("06:30", false));
+//        System.out.println("Semana: " + semanaSelected);
+//        System.out.println("Dia: " + diaSelected);
+//        System.out.println("Hora: " + horarioSelected);
+
+        System.out.println("FIRST " + lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.get(horarioSelected));
+        
+        if (semanaSelected.toString().equals("Semana 1")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
+            } else if (diaSelected.toString().equals("Terça")) {
+
+            } else if (diaSelected.toString().equals("Quarta")) {
+
+            } else if (diaSelected.toString().equals("Quinta")) {
+
+            } else if (diaSelected.toString().equals("Sexta")) {
+
+            } else if (diaSelected.toString().equals("Sábado")) {
+
+            } else if (diaSelected.toString().equals("Domingo")) {
+
+            }
+        } else if (semanaSelected.toString().equals("Semana 2")) {
+            if (diaSelected.toString().equals("Segunda")) {
+
+            } else if (diaSelected.toString().equals("Terça")) {
+
+            } else if (diaSelected.toString().equals("Quarta")) {
+
+            } else if (diaSelected.toString().equals("Quinta")) {
+
+            } else if (diaSelected.toString().equals("Sexta")) {
+
+            } else if (diaSelected.toString().equals("Sábado")) {
+
+            } else if (diaSelected.toString().equals("Domingo")) {
+
+            }
+
+        } else if (semanaSelected.toString().equals("Semana 3")) {
+            if (diaSelected.toString().equals("Segunda")) {
+
+            } else if (diaSelected.toString().equals("Terça")) {
+
+            } else if (diaSelected.toString().equals("Quarta")) {
+
+            } else if (diaSelected.toString().equals("Quinta")) {
+
+            } else if (diaSelected.toString().equals("Sexta")) {
+
+            } else if (diaSelected.toString().equals("Sábado")) {
+
+            } else if (diaSelected.toString().equals("Domingo")) {
+
+            }
+        } else if (semanaSelected.toString().equals("Semana 4")) {
+            if (diaSelected.toString().equals("Segunda")) {
+
+            } else if (diaSelected.toString().equals("Terça")) {
+
+            } else if (diaSelected.toString().equals("Quarta")) {
+
+            } else if (diaSelected.toString().equals("Quinta")) {
+
+            } else if (diaSelected.toString().equals("Sexta")) {
+
+            } else if (diaSelected.toString().equals("Sábado")) {
+
+            } else if (diaSelected.toString().equals("Domingo")) {
+
+            }
+        }
+
+//        mes2.getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
+        System.out.println("DEU " + lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.get(horarioSelected));
     }
 
     @Override
