@@ -57,6 +57,8 @@ public class InsertReservaController implements Initializable {
     @FXML
     public ComboBox cmbBoxHorario;
     @FXML
+    public ComboBox cmbBoxAeronave;
+    @FXML
     public CheckBox chBoxConfirmarDestinos;
     @FXML
     public CheckBox chBoxConfirmarHorario;
@@ -212,91 +214,117 @@ public class InsertReservaController implements Initializable {
             cmbBoxSemana.setDisable(true);
             cmbBoxDia.setDisable(true);
             cmbBoxHorario.setDisable(true);
-            accessData();
+            setComboBoxAeronaves();
         } else {
             cmbBoxSemana.setDisable(false);
             cmbBoxDia.setDisable(false);
             cmbBoxHorario.setDisable(false);
+            clearComboBoxAeronaves();
         }
     }
 
-    private void accessData() {
-//        System.out.println(mes.getSemana1().getDomingo().agendaManutencao.replace("06:30", false));
-//        System.out.println("Semana: " + semanaSelected);
-//        System.out.println("Dia: " + diaSelected);
-//        System.out.println("Hora: " + horarioSelected);
+    //--------------------------------------------------------------------------
+    //AERONAVE STUFF
+    @FXML
+    private void cmbBoxAeronaveSelected(Event event) {
 
-        System.out.println("FIRST " + lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.get(horarioSelected));
-        
-        if (semanaSelected.toString().equals("Semana 1")) {
-            if (diaSelected.toString().equals("Segunda")) {
-                lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
-            } else if (diaSelected.toString().equals("Terça")) {
+    }
 
-            } else if (diaSelected.toString().equals("Quarta")) {
+    private void clearComboBoxAeronaves() {
+        cmbBoxAeronave.getItems().clear();
+        cmbBoxAeronave.setDisable(true);
+    }
 
-            } else if (diaSelected.toString().equals("Quinta")) {
+    private void setComboBoxAeronaves() {
+        List<Aeronave> lstAeronavesAvailable = new ArrayList<Aeronave>();
+        lstAeronavesAvailable = checkAeronavesAvailable();
 
-            } else if (diaSelected.toString().equals("Sexta")) {
+        cmbBoxAeronave.getItems().addAll(lstAeronavesAvailable);
+        cmbBoxAeronave.setDisable(false);
+    }
 
-            } else if (diaSelected.toString().equals("Sábado")) {
+    private List<Aeronave> checkAeronavesAvailable() {
 
-            } else if (diaSelected.toString().equals("Domingo")) {
+        List<Aeronave> lstAeronavesTemp = new ArrayList<Aeronave>();
 
-            }
-        } else if (semanaSelected.toString().equals("Semana 2")) {
-            if (diaSelected.toString().equals("Segunda")) {
+        for (Aeronave each : lstAeronaves) {
+            if (semanaSelected.toString().equals("Semana 1")) {
+                if (diaSelected.toString().equals("Segunda")) {
+                    lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
+                } else if (diaSelected.toString().equals("Terça")) {
 
-            } else if (diaSelected.toString().equals("Terça")) {
+                } else if (diaSelected.toString().equals("Quarta")) {
 
-            } else if (diaSelected.toString().equals("Quarta")) {
+                } else if (diaSelected.toString().equals("Quinta")) {
 
-            } else if (diaSelected.toString().equals("Quinta")) {
+                } else if (diaSelected.toString().equals("Sexta")) {
 
-            } else if (diaSelected.toString().equals("Sexta")) {
+                } else if (diaSelected.toString().equals("Sábado")) {
 
-            } else if (diaSelected.toString().equals("Sábado")) {
+                } else if (diaSelected.toString().equals("Domingo")) {
 
-            } else if (diaSelected.toString().equals("Domingo")) {
+                }
+            } else if (semanaSelected.toString()
+                    .equals("Semana 2")) {
+                if (diaSelected.toString().equals("Segunda")) {
 
-            }
+                } else if (diaSelected.toString().equals("Terça")) {
 
-        } else if (semanaSelected.toString().equals("Semana 3")) {
-            if (diaSelected.toString().equals("Segunda")) {
+                } else if (diaSelected.toString().equals("Quarta")) {
 
-            } else if (diaSelected.toString().equals("Terça")) {
+                } else if (diaSelected.toString().equals("Quinta")) {
 
-            } else if (diaSelected.toString().equals("Quarta")) {
+                } else if (diaSelected.toString().equals("Sexta")) {
 
-            } else if (diaSelected.toString().equals("Quinta")) {
+                } else if (diaSelected.toString().equals("Sábado")) {
 
-            } else if (diaSelected.toString().equals("Sexta")) {
+                } else if (diaSelected.toString().equals("Domingo")) {
 
-            } else if (diaSelected.toString().equals("Sábado")) {
+                }
 
-            } else if (diaSelected.toString().equals("Domingo")) {
+            } else if (semanaSelected.toString()
+                    .equals("Semana 3")) {
+                if (diaSelected.toString().equals("Segunda")) {
 
-            }
-        } else if (semanaSelected.toString().equals("Semana 4")) {
-            if (diaSelected.toString().equals("Segunda")) {
+                } else if (diaSelected.toString().equals("Terça")) {
 
-            } else if (diaSelected.toString().equals("Terça")) {
+                } else if (diaSelected.toString().equals("Quarta")) {
 
-            } else if (diaSelected.toString().equals("Quarta")) {
+                } else if (diaSelected.toString().equals("Quinta")) {
 
-            } else if (diaSelected.toString().equals("Quinta")) {
+                } else if (diaSelected.toString().equals("Sexta")) {
 
-            } else if (diaSelected.toString().equals("Sexta")) {
+                } else if (diaSelected.toString().equals("Sábado")) {
 
-            } else if (diaSelected.toString().equals("Sábado")) {
+                } else if (diaSelected.toString().equals("Domingo")) {
 
-            } else if (diaSelected.toString().equals("Domingo")) {
+                }
+            } else if (semanaSelected.toString()
+                    .equals("Semana 4")) {
+                if (diaSelected.toString().equals("Segunda")) {
 
+                } else if (diaSelected.toString().equals("Terça")) {
+
+                } else if (diaSelected.toString().equals("Quarta")) {
+
+                } else if (diaSelected.toString().equals("Quinta")) {
+
+                } else if (diaSelected.toString().equals("Sexta")) {
+
+                } else if (diaSelected.toString().equals("Sábado")) {
+
+                } else if (diaSelected.toString().equals("Domingo")) {
+
+                }
             }
         }
 
+//        System.out.println(
+//                "FIRST " + lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.get(horarioSelected));
 //        mes2.getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
-        System.out.println("DEU " + lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.get(horarioSelected));
+//        System.out.println(
+//                "DEU " + lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.get(horarioSelected));
+        return lstAeronavesTemp;
     }
 
     @Override
