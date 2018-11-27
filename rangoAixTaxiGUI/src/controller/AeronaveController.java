@@ -1,6 +1,7 @@
 package controller;
 
 import static controller.PrincipalController.lstAeronaves;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -13,6 +14,7 @@ import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.fxml.LoadException;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
@@ -51,7 +53,7 @@ public class AeronaveController implements Initializable {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/InsertAeronave.fxml"));
             aeronavePanel.getChildren().setAll(pane);
-        } catch (Exception e) {
+        } catch (IOException e) {
             System.err.println(e);
         }
     }

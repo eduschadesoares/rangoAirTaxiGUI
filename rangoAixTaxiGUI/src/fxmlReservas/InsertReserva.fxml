@@ -84,7 +84,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox fx:id="cmbBoxSemana" onAction="#cmbBoxSemanaSelected" prefWidth="150.0" />
+                                    <ComboBox fx:id="cmbBoxSemana" disable="true" onAction="#cmbBoxSemanaSelected" prefWidth="150.0" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">

@@ -95,16 +95,20 @@ public class EditPilotoController implements Initializable {
     }
 
     public void setAllFields() {
-
-        txtFldId.setText(pilotoList.getIdPiloto());
-        txtFldNome.setText(pilotoList.getNomePiloto());
-        cmbBoxStatus.getItems().addAll(statusChoices);
-        cmbBoxStatus.setValue(pilotoList.getStatusPiloto());
+        //check later
+        try {
+            txtFldId.setText(pilotoList.getIdPiloto());
+            txtFldNome.setText(pilotoList.getNomePiloto());
+            cmbBoxStatus.getItems().addAll(statusChoices);
+            cmbBoxStatus.setValue(pilotoList.getStatusPiloto());
+        } catch (Exception e) {
+            System.err.println(e);
+        }
     }
 
     public static void getPilotoObj(Piloto piloto) {
         for (Piloto each : lstPilotos) {
-            if (each.getIdPiloto()== piloto.getIdPiloto()) {
+            if (each.getIdPiloto() == piloto.getIdPiloto()) {
                 pilotoList = each;
             }
         }

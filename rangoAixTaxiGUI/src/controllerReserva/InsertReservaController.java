@@ -2,6 +2,7 @@ package controllerReserva;
 
 import static controller.PrincipalController.lstAeronaves;
 import static controller.PrincipalController.lstHeliportos;
+import static controller.PrincipalController.lstModelosAeronaves;
 import static controller.PrincipalController.mes;
 import java.util.ArrayList;
 import java.util.List;
@@ -30,6 +31,7 @@ import model.DataDia;
 import model.DataMes;
 import model.DataSemana;
 import model.Heliporto;
+import model.ModeloAeronave;
 import utility.Dados;
 
 public class InsertReservaController implements Initializable {
@@ -108,9 +110,11 @@ public class InsertReservaController implements Initializable {
             cmbBoxOrigem.setDisable(true);
             cmbBoxDestino.setDisable(true);
             calculaDistanciaCidades(distOrigem, distDestino);
+            setComboBoxSemanas();
         } else {
             cmbBoxOrigem.setDisable(false);
             cmbBoxDestino.setDisable(false);
+            clearComboBoxSemanas();
         }
     }
 
@@ -120,20 +124,40 @@ public class InsertReservaController implements Initializable {
         if (distancia < 0) {
             distancia *= -1;
         }
+
+        for (ModeloAeronave each : lstModelosAeronaves) {
+            float tempo = (float) distancia / (float) each.getVelocidadeMedia();
+            int hora = (int) tempo;
+            int minutos = (int) (60 * (tempo - hora));
+            System.out.println(each.getModelo() + ": " + hora + "h " + minutos + "m ");
+        }
         System.out.println(distancia);
+
     }
 
-    private void setComboBox() {
+    private void setComboBoxOrigem() {
         cmbBoxOrigem.getItems().addAll(lstHeliportos);
+    }
 
+    private void setComboBoxSemanas() {
+        cmbBoxSemana.setDisable(false);
         cmbBoxSemana.getItems().addAll(mes.getSemana1());
         cmbBoxSemana.getItems().addAll(mes.getSemana2());
         cmbBoxSemana.getItems().addAll(mes.getSemana3());
         cmbBoxSemana.getItems().addAll(mes.getSemana4());
 
-//        cmbBoxOrigem.setValue(lstHeliportos.get(0));
-//        cmbBoxDestino.getItems().addAll(lstHeliportos);
-//        cmbBoxDestino.setValue(lstHeliportos.get(1));
+    }
+
+    private void clearComboBoxSemanas() {
+        cmbBoxSemana.getItems().clear();
+        cmbBoxDia.getItems().clear();
+        cmbBoxHorario.getItems().clear();
+
+        cmbBoxSemana.setDisable(true);
+        cmbBoxDia.setDisable(true);
+        cmbBoxHorario.setDisable(true);
+        chBoxConfirmarHorario.setSelected(false);
+        chBoxConfirmarHorario.setDisable(true);
     }
 
     @FXML
@@ -194,7 +218,7 @@ public class InsertReservaController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        setComboBox();
+        setComboBoxOrigem();
     }
 
 }

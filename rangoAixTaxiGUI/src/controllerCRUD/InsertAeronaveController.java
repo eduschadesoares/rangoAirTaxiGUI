@@ -95,11 +95,16 @@ public class InsertAeronaveController implements Initializable {
     }
 
     public void setComboBox() {
-        cmbBoxModelo.getItems().addAll(lstModelosAeronaves);
-        cmbBoxModelo.setValue(lstModelosAeronaves.get(0));
-        
-        cmbBoxStatus.getItems().addAll(statusChoices);
-        cmbBoxStatus.setValue(statusChoices[0]);
+        try {
+            cmbBoxModelo.getItems().addAll(lstModelosAeronaves);
+            cmbBoxModelo.setValue(lstModelosAeronaves.get(0));
+
+            cmbBoxStatus.getItems().addAll(statusChoices);
+            cmbBoxStatus.setValue(statusChoices[0]);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+
     }
 
     @Override

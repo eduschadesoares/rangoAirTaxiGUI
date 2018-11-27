@@ -65,11 +65,11 @@ public class PrincipalController implements Initializable {
     }
 
     public void createModeloList() {
-        ModeloAeronave modelo1 = new ModeloAeronave("EUROCOPTER EC120 B", 400);
-        ModeloAeronave modelo2 = new ModeloAeronave("ROBINSON R66", 350);
-        ModeloAeronave modelo3 = new ModeloAeronave("AGUSTA A109E", 600);
-        ModeloAeronave modelo4 = new ModeloAeronave("ESQUILO AS350 B", 950);
-        ModeloAeronave modelo5 = new ModeloAeronave("EUROCOPTER EC130 T2", 750);
+        ModeloAeronave modelo1 = new ModeloAeronave("EUROCOPTER EC120 B", 260, 20, 3);
+        ModeloAeronave modelo2 = new ModeloAeronave("ROBINSON R66", 210, 15, 4);
+        ModeloAeronave modelo3 = new ModeloAeronave("AGUSTA A109E", 270, 18, 5);
+        ModeloAeronave modelo4 = new ModeloAeronave("ESQUILO AS350 B", 250, 18, 2);
+        ModeloAeronave modelo5 = new ModeloAeronave("EUROCOPTER EC130 T2", 245, 13, 2);
         lstModelosAeronaves.add(modelo1);
         lstModelosAeronaves.add(modelo2);
         lstModelosAeronaves.add(modelo3);
@@ -110,8 +110,8 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        createModeloList();
-//        createHeliportoList();
+        createModeloList();
+        createHeliportoList();
 //        DataDia dt = new DataDia("Segunda");
 //
 //        Map<String, Boolean> hora2 = new LinkedHashMap<String, Boolean>();
@@ -140,7 +140,6 @@ public class PrincipalController implements Initializable {
         readModeloList();
         readHeliportoList();
         readReservaList();
-        
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
