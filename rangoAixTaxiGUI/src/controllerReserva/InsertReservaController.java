@@ -8,6 +8,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
 import java.util.AbstractList;
+import java.util.LinkedHashMap;
+import java.util.Map;
+import java.util.Map.Entry;
 import java.util.ResourceBundle;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
@@ -37,7 +40,7 @@ import utility.Dados;
 public class InsertReservaController implements Initializable {
 
     //Variable to sum distance between two heliportos
-    int distOrigem, distDestino = 0;
+    int distOrigem, distDestino, distViagem, maiorTempoDeViagem = 0;
 
     DataMes mesSelected;
     DataDia diaSelected;
@@ -127,23 +130,54 @@ public class InsertReservaController implements Initializable {
     }
 
     private void calculaDistanciaCidades(int origem, int destino) {
-        int distancia;
-        
-        distancia = origem - destino;
-        if (distancia < 0) {
-            distancia *= -1;
+        distViagem = origem - destino;
+        if (distViagem < 0) {
+            distViagem *= -1;
         }
+        System.out.println(distViagem);
+    }
 
+    private void calculaTempoDeViagens(String horaSaida) {
+        int tempoDeVoo;
         for (ModeloAeronave each : lstModelosAeronaves) {
-            float tempo = (float) distancia / (float) each.getVelocidadeMedia();
+            float tempo = (float) distViagem / (float) each.getVelocidadeMedia();
             int hora = (int) tempo;
             int minutos = (int) (60 * (tempo - hora));
-            System.out.println(each.getModelo() + ": " + hora + "h " + minutos + "m ");
-            System.out.println("Arredondado: " + (int) Math.ceil(tempo));
-            System.out.println("Medidas de Tempo na agenda: " + (((int) Math.ceil(tempo) * 2) + 1));
-        }
-        System.out.println(distancia);
+            System.out.println("\nModelo: " + each.getModelo() + "\nEstimativa tempo de Viagem: " + hora + "h " + minutos + "m ");
 
+            tempoDeVoo = ((((int) Math.ceil(tempo) * 2) + 1));
+
+            System.out.println("Hora de Saída: " + horaSaida);
+            int keySaida = 0;
+            for (Entry<Integer, String> entry : diaSelected.tableHours.entrySet()) {
+                if (entry.getValue().equals(horaSaida)) {
+                    keySaida = entry.getKey();
+                }
+            }
+            System.out.println("Hora de volta: " + diaSelected.tableHours.get(keySaida + tempoDeVoo));
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+    private Map verificaHorariosDisponiveis() {
+        Map<Integer, String> tableHoursTemp = new LinkedHashMap<>(diaSelected.tableHours.size());
+        int tempoViagem;
+        for (ModeloAeronave each : lstModelosAeronaves) {
+            float tempo = (float) distViagem / (float) each.getVelocidadeMedia();
+
+            tempoViagem = ((((int) Math.ceil(tempo) * 2) + 1));
+            if(tempoViagem > maiorTempoDeViagem) {
+                maiorTempoDeViagem = tempoViagem;
+            }   
+        }
+
+        for(int i = 0; i < (diaSelected.tableHours.size() - maiorTempoDeViagem); i++) {
+            tableHoursTemp.put(i, diaSelected.tableHours.get(i));
+        }
+        
+        System.out.println(tableHoursTemp);
+        
+        return tableHoursTemp;
     }
 
     private void setComboBoxOrigem() {
@@ -199,16 +233,18 @@ public class InsertReservaController implements Initializable {
 
         cmbBoxHorario.setDisable(false);
         cmbBoxHorario.getItems().clear();
-        
-        cmbBoxHorario.getItems().addAll(diaSelected.tableHours.keySet());
+        //Get from table of hours
+
+        cmbBoxHorario.getItems().addAll(verificaHorariosDisponiveis().values());
+//        cmbBoxHorario.getItems().addAll(diaSelected.tableHours.values());
 
     }
 
     @FXML
     private void cmbBoxHorarioSelected(Event event) {
         horarioSelected = cmbBoxHorario.getSelectionModel().getSelectedItem().toString();
-        
-        System.out.println(diaSelected.tableHours.get(horarioSelected));
+
+        calculaTempoDeViagens(horarioSelected);
 
         chBoxConfirmarHorario.setDisable(false);
     }
