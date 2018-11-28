@@ -128,6 +128,7 @@ public class InsertReservaController implements Initializable {
 
     private void calculaDistanciaCidades(int origem, int destino) {
         int distancia;
+        
         distancia = origem - destino;
         if (distancia < 0) {
             distancia *= -1;
@@ -138,6 +139,8 @@ public class InsertReservaController implements Initializable {
             int hora = (int) tempo;
             int minutos = (int) (60 * (tempo - hora));
             System.out.println(each.getModelo() + ": " + hora + "h " + minutos + "m ");
+            System.out.println("Arredondado: " + (int) Math.ceil(tempo));
+            System.out.println("Medidas de Tempo na agenda: " + (((int) Math.ceil(tempo) * 2) + 1));
         }
         System.out.println(distancia);
 
@@ -196,14 +199,16 @@ public class InsertReservaController implements Initializable {
 
         cmbBoxHorario.setDisable(false);
         cmbBoxHorario.getItems().clear();
-        cmbBoxHorario.getItems().addAll(diaSelected.agendaServico.keySet());
+        
+        cmbBoxHorario.getItems().addAll(diaSelected.tableHours.keySet());
 
     }
 
     @FXML
     private void cmbBoxHorarioSelected(Event event) {
         horarioSelected = cmbBoxHorario.getSelectionModel().getSelectedItem().toString();
-//        System.out.println(horario);
+        
+        System.out.println(diaSelected.tableHours.get(horarioSelected));
 
         chBoxConfirmarHorario.setDisable(false);
     }
@@ -250,7 +255,8 @@ public class InsertReservaController implements Initializable {
         for (Aeronave each : lstAeronaves) {
             if (semanaSelected.toString().equals("Semana 1")) {
                 if (diaSelected.toString().equals("Segunda")) {
-                    lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
+//                    lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
+
                 } else if (diaSelected.toString().equals("Terça")) {
 
                 } else if (diaSelected.toString().equals("Quarta")) {

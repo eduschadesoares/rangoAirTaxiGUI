@@ -7,6 +7,7 @@ import java.util.AbstractList;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -110,14 +111,13 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        createModeloList();
-//        createHeliportoList();
+        createModeloList();
+        createHeliportoList();
 //        
 //        
 //        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "UAHUAHAUAH", 0, 0, 0, 0, true);
 //        lstAeronaves.add(aero);
 //        saveAeronaveList(lstAeronaves);
-
 
 //        DataDia dt = new DataDia("Segunda");
 //
@@ -138,7 +138,12 @@ public class PrincipalController implements Initializable {
 //        System.out.println(mes.getSemana1().getDomingo().agendaManutencao.get("06:30"));
 //        System.out.println(mes.getSemana1().getDomingo().agendaManutencao.replace("06:30", false));
 //        System.out.println(mes.getSemana1().getDomingo().agendaManutencao.get("06:30"));
-//        System.out.println(mes.getSemana1().getDomingo().agendaServico.get("06:30"));
+//        for (Object each : mes.getSemana1().getDomingo().agendaServico) {
+//
+//            System.out.println(each);
+//        }
+//        System.out.println("\n\n" + mes.getSemana1().getSegunda().agendaServico.size());
+
 //        System.out.println(dt.hora);
 //        ArrayList<Aeronave> store = new ArrayList<>();
         readMes();
