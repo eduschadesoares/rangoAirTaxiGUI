@@ -84,7 +84,7 @@ public class Aeronave implements Serializable {
         this.horaTotalVoo = horaTotalVoo;
     }
 
-    public boolean isStatusAeronave() {
+    public boolean getStatusAeronave() {
         return statusAeronave;
     }
 

@@ -76,20 +76,12 @@ public class DataSemana implements Serializable {
 //        agendaManutencaoTemp.put("14:00", true);
 //        agendaManutencaoTemp.put("14:30", true);
 //    }
-    ArrayList<Boolean> agendaTemp = new ArrayList<Boolean>();
+    public ArrayList<Boolean> agendaTemp = new ArrayList<>();
 
     {
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
-        agendaTemp.add(true);
+        for (int i = 0; i < 48; i++) {
+            agendaTemp.add(true);
+        }
     }
 
     public DataDia getSegunda() {

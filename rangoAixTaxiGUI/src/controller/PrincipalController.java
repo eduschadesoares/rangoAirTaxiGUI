@@ -113,6 +113,7 @@ public class PrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         createModeloList();
         createHeliportoList();
+
 //        
 //        
 //        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "UAHUAHAUAH", 0, 0, 0, 0, true);
@@ -152,6 +153,17 @@ public class PrincipalController implements Initializable {
         readModeloList();
         readHeliportoList();
         readReservaList();
+
+        
+//        Aeronave opa = new Aeronave(lstModelosAeronaves.get(0), mes, "aushasfasfasuhas", 0, 0, 0, 0, true);
+//        try{
+//        opa.getMes().getSemana1().getSegunda().agendaServico.set(7, false);
+//        } catch (NullPointerException e) {
+//            System.out.println(e);
+//        }
+//        lstAeronaves.add(opa);
+//        saveAeronaveList(lstAeronaves);
+//        System.out.println(lstAeronaves);
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));

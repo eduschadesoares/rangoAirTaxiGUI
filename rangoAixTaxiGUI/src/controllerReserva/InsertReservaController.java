@@ -41,6 +41,7 @@ public class InsertReservaController implements Initializable {
 
     //Variable to sum distance between two heliportos
     int distOrigem, distDestino, distViagem, maiorTempoDeViagem = 0;
+    int tempoDeVooIdaVolta = 0;
 
     DataMes mesSelected;
     DataDia diaSelected;
@@ -81,6 +82,8 @@ public class InsertReservaController implements Initializable {
 
     }
 
+    //--------------------------------------------------------------------------
+    //ORIGEM DESTINO STUFF
     @FXML
     private void cmbBoxOrigemSelected(Event event) {
         Heliporto origem;
@@ -127,57 +130,6 @@ public class InsertReservaController implements Initializable {
             cmbBoxDestino.setDisable(false);
             clearComboBoxSemanas();
         }
-    }
-
-    private void calculaDistanciaCidades(int origem, int destino) {
-        distViagem = origem - destino;
-        if (distViagem < 0) {
-            distViagem *= -1;
-        }
-        System.out.println(distViagem);
-    }
-
-    private void calculaTempoDeViagens(String horaSaida) {
-        int tempoDeVoo;
-        for (ModeloAeronave each : lstModelosAeronaves) {
-            float tempo = (float) distViagem / (float) each.getVelocidadeMedia();
-            int hora = (int) tempo;
-            int minutos = (int) (60 * (tempo - hora));
-            System.out.println("\nModelo: " + each.getModelo() + "\nEstimativa tempo de Viagem: " + hora + "h " + minutos + "m ");
-
-            tempoDeVoo = ((((int) Math.ceil(tempo) * 2) + 1));
-
-            System.out.println("Hora de Saída: " + horaSaida);
-            int keySaida = 0;
-            for (Entry<Integer, String> entry : diaSelected.tableHours.entrySet()) {
-                if (entry.getValue().equals(horaSaida)) {
-                    keySaida = entry.getKey();
-                }
-            }
-            System.out.println("Hora de volta: " + diaSelected.tableHours.get(keySaida + tempoDeVoo));
-            System.out.println("-----------------------------------------------------------");
-        }
-    }
-
-    private Map verificaHorariosDisponiveis() {
-        Map<Integer, String> tableHoursTemp = new LinkedHashMap<>(diaSelected.tableHours.size());
-        int tempoViagem;
-        for (ModeloAeronave each : lstModelosAeronaves) {
-            float tempo = (float) distViagem / (float) each.getVelocidadeMedia();
-
-            tempoViagem = ((((int) Math.ceil(tempo) * 2) + 1));
-            if(tempoViagem > maiorTempoDeViagem) {
-                maiorTempoDeViagem = tempoViagem;
-            }   
-        }
-
-        for(int i = 0; i < (diaSelected.tableHours.size() - maiorTempoDeViagem); i++) {
-            tableHoursTemp.put(i, diaSelected.tableHours.get(i));
-        }
-        
-        System.out.println(tableHoursTemp);
-        
-        return tableHoursTemp;
     }
 
     private void setComboBoxOrigem() {
@@ -243,9 +195,7 @@ public class InsertReservaController implements Initializable {
     @FXML
     private void cmbBoxHorarioSelected(Event event) {
         horarioSelected = cmbBoxHorario.getSelectionModel().getSelectedItem().toString();
-
         calculaTempoDeViagens(horarioSelected);
-
         chBoxConfirmarHorario.setDisable(false);
     }
 
@@ -278,95 +228,161 @@ public class InsertReservaController implements Initializable {
 
     private void setComboBoxAeronaves() {
         List<Aeronave> lstAeronavesAvailable = new ArrayList<Aeronave>();
-        lstAeronavesAvailable = checkAeronavesAvailable();
+        lstAeronavesAvailable = getListAeronavesAvailable();
 
         cmbBoxAeronave.getItems().addAll(lstAeronavesAvailable);
         cmbBoxAeronave.setDisable(false);
     }
 
-    private List<Aeronave> checkAeronavesAvailable() {
+    private List<Aeronave> getListAeronavesAvailable() {
 
-        List<Aeronave> lstAeronavesTemp = new ArrayList<Aeronave>();
+        List<Aeronave> lstAeronavesTemp = new ArrayList<>();
 
         for (Aeronave each : lstAeronaves) {
-            if (semanaSelected.toString().equals("Semana 1")) {
-                if (diaSelected.toString().equals("Segunda")) {
-//                    lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
-
-                } else if (diaSelected.toString().equals("Terça")) {
-
-                } else if (diaSelected.toString().equals("Quarta")) {
-
-                } else if (diaSelected.toString().equals("Quinta")) {
-
-                } else if (diaSelected.toString().equals("Sexta")) {
-
-                } else if (diaSelected.toString().equals("Sábado")) {
-
-                } else if (diaSelected.toString().equals("Domingo")) {
-
-                }
-            } else if (semanaSelected.toString()
-                    .equals("Semana 2")) {
-                if (diaSelected.toString().equals("Segunda")) {
-
-                } else if (diaSelected.toString().equals("Terça")) {
-
-                } else if (diaSelected.toString().equals("Quarta")) {
-
-                } else if (diaSelected.toString().equals("Quinta")) {
-
-                } else if (diaSelected.toString().equals("Sexta")) {
-
-                } else if (diaSelected.toString().equals("Sábado")) {
-
-                } else if (diaSelected.toString().equals("Domingo")) {
-
-                }
-
-            } else if (semanaSelected.toString()
-                    .equals("Semana 3")) {
-                if (diaSelected.toString().equals("Segunda")) {
-
-                } else if (diaSelected.toString().equals("Terça")) {
-
-                } else if (diaSelected.toString().equals("Quarta")) {
-
-                } else if (diaSelected.toString().equals("Quinta")) {
-
-                } else if (diaSelected.toString().equals("Sexta")) {
-
-                } else if (diaSelected.toString().equals("Sábado")) {
-
-                } else if (diaSelected.toString().equals("Domingo")) {
-
-                }
-            } else if (semanaSelected.toString()
-                    .equals("Semana 4")) {
-                if (diaSelected.toString().equals("Segunda")) {
-
-                } else if (diaSelected.toString().equals("Terça")) {
-
-                } else if (diaSelected.toString().equals("Quarta")) {
-
-                } else if (diaSelected.toString().equals("Quinta")) {
-
-                } else if (diaSelected.toString().equals("Sexta")) {
-
-                } else if (diaSelected.toString().equals("Sábado")) {
-
-                } else if (diaSelected.toString().equals("Domingo")) {
-
+            if (each.getStatusAeronave()) {
+                if (verificaAgendaAeronave(each)) {
+                    lstAeronavesTemp.add(each);
                 }
             }
         }
-
-//        System.out.println(
-//                "FIRST " + lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.get(horarioSelected));
-//        mes2.getSemana1().getSegunda().agendaServico.replace(horarioSelected, false);
-//        System.out.println(
-//                "DEU " + lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.get(horarioSelected));
         return lstAeronavesTemp;
+    }
+
+    //--------------------------------------------------------------------------
+    //FUNCOES GLOBAIS
+    private void calculaDistanciaCidades(int origem, int destino) {
+        distViagem = origem - destino;
+        if (distViagem < 0) {
+            distViagem *= -1;
+        }
+//        System.out.println("Viagem de " + distViagem + " km");
+    }
+
+    private void calculaTempoDeViagens(String horaSaida) {
+        System.out.println("\n\nEstimativa baseada em modelos");
+        for (ModeloAeronave each : lstModelosAeronaves) {
+            float tempo = (float) distViagem / (float) each.getVelocidadeMedia();
+            int hora = (int) tempo;
+            int minutos = (int) (60 * (tempo - hora));
+            System.out.println("Modelo: " + each.getModelo() + "\nEstimativa tempo de Viagem: " + hora + "h " + minutos + "m ");
+            tempoDeVooIdaVolta = ((((int) Math.ceil(tempo) * 2) + 1));
+            System.out.println("Hora de Saída: " + horaSaida);
+            System.out.println("Hora de volta: " + diaSelected.tableHours.get(horaValueToKey(horaSaida) + tempoDeVooIdaVolta));
+            System.out.println("-----------------------------------------------------------");
+        }
+    }
+
+    private Map verificaHorariosDisponiveis() {
+        Map<Integer, String> tableHoursTemp = new LinkedHashMap<>(diaSelected.tableHours.size());
+        int tempoViagem;
+        for (ModeloAeronave each : lstModelosAeronaves) {
+            float tempo = (float) distViagem / (float) each.getVelocidadeMedia();
+            tempoViagem = ((((int) Math.ceil(tempo) * 2) + 1));
+            if (tempoViagem > maiorTempoDeViagem) {
+                maiorTempoDeViagem = tempoViagem;
+            }
+        }
+        //Copia para um map temporário as horas possíveis
+        for (int i = 0; i < (diaSelected.tableHours.size() - maiorTempoDeViagem); i++) {
+            tableHoursTemp.put(i, diaSelected.tableHours.get(i));
+        }
+        return tableHoursTemp;
+    }
+
+    private String horaKeyToValue(int key) {
+        String value;
+        return value = diaSelected.tableHours.get(key);
+    }
+
+    private int horaValueToKey(String value) {
+        int key = 0;
+        for (Entry<Integer, String> entry : diaSelected.tableHours.entrySet()) {
+            if (entry.getValue().equals(value)) {
+                key = entry.getKey();
+            }
+        }
+        return key;
+    }
+
+    private boolean verificaAgendaAeronave(Aeronave aeronave) {
+
+        if (semanaSelected.toString().equals("Semana 1")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if(!aeronave.getMes().getSemana1().getSegunda().agendaServico.get(i)){
+                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+
+            } else if (diaSelected.toString().equals("Quarta")) {
+
+            } else if (diaSelected.toString().equals("Quinta")) {
+
+            } else if (diaSelected.toString().equals("Sexta")) {
+
+            } else if (diaSelected.toString().equals("Sábado")) {
+
+            } else if (diaSelected.toString().equals("Domingo")) {
+
+            }
+        } else if (semanaSelected.toString()
+                .equals("Semana 2")) {
+            if (diaSelected.toString().equals("Segunda")) {
+
+            } else if (diaSelected.toString().equals("Terça")) {
+
+            } else if (diaSelected.toString().equals("Quarta")) {
+
+            } else if (diaSelected.toString().equals("Quinta")) {
+
+            } else if (diaSelected.toString().equals("Sexta")) {
+
+            } else if (diaSelected.toString().equals("Sábado")) {
+
+            } else if (diaSelected.toString().equals("Domingo")) {
+
+            }
+
+        } else if (semanaSelected.toString()
+                .equals("Semana 3")) {
+            if (diaSelected.toString().equals("Segunda")) {
+
+            } else if (diaSelected.toString().equals("Terça")) {
+
+            } else if (diaSelected.toString().equals("Quarta")) {
+
+            } else if (diaSelected.toString().equals("Quinta")) {
+
+            } else if (diaSelected.toString().equals("Sexta")) {
+
+            } else if (diaSelected.toString().equals("Sábado")) {
+
+            } else if (diaSelected.toString().equals("Domingo")) {
+
+            }
+        } else if (semanaSelected.toString()
+                .equals("Semana 4")) {
+            if (diaSelected.toString().equals("Segunda")) {
+
+            } else if (diaSelected.toString().equals("Terça")) {
+
+            } else if (diaSelected.toString().equals("Quarta")) {
+
+            } else if (diaSelected.toString().equals("Quinta")) {
+
+            } else if (diaSelected.toString().equals("Sexta")) {
+
+            } else if (diaSelected.toString().equals("Sábado")) {
+
+            } else if (diaSelected.toString().equals("Domingo")) {
+
+            }
+        }
+
+                        System.out.println("trupu");
+        return true;
     }
 
     @Override
