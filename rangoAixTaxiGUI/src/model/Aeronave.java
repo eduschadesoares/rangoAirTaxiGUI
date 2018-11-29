@@ -94,7 +94,7 @@ public class Aeronave implements Serializable {
 
     @Override
     public String toString() {
-        return "Aeronave{" + "modelo=" + modelo + ", serial=" + serial + ", anoAeronave=" + anoAeronave + ", valorHoraVoo=" + valorHoraVoo + ", proxRevisao=" + proxRevisao + ", horaTotalVoo=" + horaTotalVoo + ", statusAeronave=" + statusAeronave + '}';
+        return modelo + " - " + serial;
     }
-
+    
 }

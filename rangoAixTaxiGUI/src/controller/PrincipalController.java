@@ -155,7 +155,7 @@ public class PrincipalController implements Initializable {
         readReservaList();
 
         
-//        Aeronave opa = new Aeronave(lstModelosAeronaves.get(0), mes, "aushasfasfasuhas", 0, 0, 0, 0, true);
+//        Aeronave opa = new Aeronave(lstModelosAeronaves.get(0), mes, "affasfasfasuhas", 0, 0, 0, 0, true);
 //        try{
 //        opa.getMes().getSemana1().getSegunda().agendaServico.set(7, false);
 //        } catch (NullPointerException e) {
