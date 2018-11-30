@@ -1,6 +1,7 @@
 package controller;
 
 import static controller.PrincipalController.lstAeronaves;
+import static controller.PrincipalController.lstReservas;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -22,9 +23,15 @@ import javafx.scene.input.MouseEvent;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
+import model.Reserva;
 import utility.Dados;
 
 public class ReservaController implements Initializable {
+
+    public Reserva reserva = new Reserva();
+    
+    @FXML
+    public TableView<Reserva> tblViewReservas;
 
     @FXML
     public AnchorPane reservaPanel, reservaDeViagensPanel;
@@ -52,6 +59,23 @@ public class ReservaController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        Platform.runLater(() -> {
+            tblViewReservas.setItems(FXCollections.observableList(lstReservas));
+            tblViewReservas.requestFocus();
+
+            // Select last added item
+            if (lstReservas.size() > 1) {
+                tblViewReservas.getSelectionModel().select(lstReservas.get(lstReservas.size() - 1));
+            } else {
+                tblViewReservas.getSelectionModel().selectFirst();
+            }
+            tblViewReservas.refresh();
+        });
+
+//        if (lstAeronaves.isEmpty()) {
+//            btnDeleteAeronaveHide.setDisable(true);
+//            btnEditAeronaveHide.setDisable(true);
+//        }
     }
 
     public ReservaController() {

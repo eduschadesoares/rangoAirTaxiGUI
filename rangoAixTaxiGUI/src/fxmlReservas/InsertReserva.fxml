@@ -26,6 +26,24 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
                                  <children>
+                                    <Label text="Cliente" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="30.0">
+                                 <children>
+                                    <TextField fx:id="txtFldCliente" prefWidth="300.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
                                     <Label text="Origem" />
                                  </children>
                               </HBox>

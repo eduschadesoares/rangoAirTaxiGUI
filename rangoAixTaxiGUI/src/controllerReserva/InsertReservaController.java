@@ -1,11 +1,14 @@
 package controllerReserva;
 
 import com.sun.javafx.css.Combinator;
+import controller.PrincipalController;
 import static controller.PrincipalController.lstAeronaves;
 import static controller.PrincipalController.lstHeliportos;
 import static controller.PrincipalController.lstModelosAeronaves;
 import static controller.PrincipalController.lstPilotos;
+import static controller.PrincipalController.lstReservas;
 import static controller.PrincipalController.mes;
+import controller.ReservaController;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -14,6 +17,7 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.ResourceBundle;
+import java.util.UUID;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
@@ -28,6 +32,7 @@ import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableView;
+import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 import javafx.scene.layout.AnchorPane;
@@ -51,6 +56,8 @@ public class InsertReservaController implements Initializable {
     DataSemana semanaSelected;
     String horarioSelected;
 
+    private ReservaController controller = new ReservaController();
+
     @FXML
     public AnchorPane InsertReservaPanel;
     @FXML
@@ -73,6 +80,8 @@ public class InsertReservaController implements Initializable {
     public CheckBox chBoxConfirmarDestinos;
     @FXML
     public CheckBox chBoxConfirmarHorario;
+    @FXML
+    public TextField txtFldCliente;
 
     @FXML
     private void btnCancelInsertion(ActionEvent event) {
@@ -86,7 +95,46 @@ public class InsertReservaController implements Initializable {
 
     @FXML
     private void btnConfirmInsertion(ActionEvent event) {
+        Aeronave aeroSelected;
+        Piloto piloSelected;
 
+        Aeronave aeroToReserva = null;
+        Piloto piloToReserva = null;
+
+        aeroSelected = (Aeronave) cmbBoxAeronave.getSelectionModel().getSelectedItem();
+        piloSelected = (Piloto) cmbBoxPiloto.getSelectionModel().getSelectedItem();
+
+        for (Aeronave each : lstAeronaves) {
+            if (each.equals(aeroSelected)) {
+                salvaAgendaAeronave(each);
+                PrincipalController.saveAeronaveList(lstAeronaves);
+                aeroToReserva = each;
+            }
+        }
+
+        for (Piloto each : lstPilotos) {
+            if (each.equals(piloSelected)) {
+                salvaAgendaPiloto(each);
+                PrincipalController.savePilotoList(lstPilotos);
+                piloToReserva = each;
+            }
+        }
+
+        controller.reserva.setCliente(txtFldCliente.getText());
+        controller.reserva.setIdReserva(createID());
+        controller.reserva.setOrigem((Heliporto) cmbBoxOrigem.getSelectionModel().getSelectedItem());
+        controller.reserva.setDestino((Heliporto) cmbBoxDestino.getSelectionModel().getSelectedItem());
+        controller.reserva.setSemana(cmbBoxSemana.getSelectionModel().getSelectedItem().toString());
+        controller.reserva.setDia(cmbBoxDia.getSelectionModel().getSelectedItem().toString());
+        controller.reserva.setHora(cmbBoxHorario.getSelectionModel().getSelectedItem().toString());
+        controller.reserva.setAeronave(aeroToReserva);
+        controller.reserva.setPiloto(piloToReserva);
+
+        PrincipalController.lstReservas.add(controller.reserva);
+        PrincipalController.saveReservaList(lstReservas);
+
+        System.out.println(lstReservas);
+        
     }
 
     //--------------------------------------------------------------------------
@@ -218,7 +266,7 @@ public class InsertReservaController implements Initializable {
             clearComboBoxAeronaves();
             clearComboBoxPilotos();
             btnConfirmInsertionID.setDisable(true);
-       }
+        }
     }
 
     //--------------------------------------------------------------------------
@@ -775,6 +823,445 @@ public class InsertReservaController implements Initializable {
 
         System.out.println("trupu");
         return true;
+    }
+
+    private boolean salvaAgendaAeronave(Aeronave aeronave) {
+
+        if (semanaSelected.toString().equals("Semana 1")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana1().getSegunda().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana1().getTerca().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quarta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana1().getQuarta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quinta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana1().getQuinta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sexta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana1().getSexta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sábado")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana1().getSabado().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Domingo")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana1().getDomingo().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            }
+        } else if (semanaSelected.toString()
+                .equals("Semana 2")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana2().getSegunda().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana2().getTerca().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quarta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana2().getQuarta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quinta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana2().getQuinta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sexta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana2().getSexta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sábado")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana2().getSabado().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Domingo")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana2().getDomingo().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            }
+
+        } else if (semanaSelected.toString()
+                .equals("Semana 3")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana3().getSegunda().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana3().getTerca().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quarta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana3().getQuarta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quinta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana3().getQuinta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sexta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana3().getSexta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sábado")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana3().getSabado().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Domingo")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana3().getDomingo().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            }
+        } else if (semanaSelected.toString()
+                .equals("Semana 4")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana4().getSegunda().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana4().getTerca().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quarta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana4().getQuarta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quinta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana4().getQuinta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sexta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana4().getSexta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sábado")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana4().getSabado().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Domingo")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!aeronave.getMes().getSemana4().getDomingo().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            }
+        }
+
+        System.out.println("trupu");
+        return true;
+    }
+
+    private boolean salvaAgendaPiloto(Piloto piloto) {
+
+        if (semanaSelected.toString().equals("Semana 1")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana1().getSegunda().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana1().getTerca().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quarta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana1().getQuarta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quinta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana1().getQuinta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sexta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana1().getSexta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sábado")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana1().getSabado().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Domingo")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana1().getDomingo().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            }
+        } else if (semanaSelected.toString()
+                .equals("Semana 2")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana2().getSegunda().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana2().getTerca().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quarta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana2().getQuarta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quinta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana2().getQuinta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sexta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana2().getSexta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sábado")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana2().getSabado().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Domingo")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana2().getDomingo().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            }
+
+        } else if (semanaSelected.toString()
+                .equals("Semana 3")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana3().getSegunda().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana3().getTerca().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quarta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana3().getQuarta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quinta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana3().getQuinta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sexta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana3().getSexta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sábado")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana3().getSabado().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Domingo")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana3().getDomingo().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            }
+        } else if (semanaSelected.toString()
+                .equals("Semana 4")) {
+            if (diaSelected.toString().equals("Segunda")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana4().getSegunda().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Terça")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana4().getTerca().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quarta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana4().getQuarta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Quinta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana4().getQuinta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sexta")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana4().getSexta().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Sábado")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana4().getSabado().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            } else if (diaSelected.toString().equals("Domingo")) {
+                for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    if (!piloto.getMes().getSemana4().getDomingo().agendaServico.get(i)) {
+//                        System.out.println("false");
+                        return false;
+                    }
+                }
+            }
+        }
+
+        System.out.println("trupu");
+        return true;
+    }
+
+    private String createID() {
+        //Creates a random serial
+        UUID uuid = UUID.randomUUID();
+        String serialRandom = uuid.toString();
+        return serialRandom;
     }
 
     @Override

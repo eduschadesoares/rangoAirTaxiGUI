@@ -14,6 +14,10 @@ public class Reserva implements Serializable {
     private String idReserva;
     private String cliente;
 
+    private String Semana;
+    private String Dia;
+    private String Hora;
+
     public Aeronave getAeronave() {
         return aeronave;
     }
@@ -60,6 +64,30 @@ public class Reserva implements Serializable {
 
     public void setCliente(String cliente) {
         this.cliente = cliente;
+    }
+
+    public String getSemana() {
+        return Semana;
+    }
+
+    public void setSemana(String Semana) {
+        this.Semana = Semana;
+    }
+
+    public String getDia() {
+        return Dia;
+    }
+
+    public void setDia(String Dia) {
+        this.Dia = Dia;
+    }
+
+    public String getHora() {
+        return Hora;
+    }
+
+    public void setHora(String Hora) {
+        this.Hora = Hora;
     }
 
     public Reserva() {
