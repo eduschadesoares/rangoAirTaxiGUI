@@ -54,6 +54,8 @@ public class InsertReservaController implements Initializable {
     @FXML
     public AnchorPane InsertReservaPanel;
     @FXML
+    public Button btnConfirmInsertionID;
+    @FXML
     public ComboBox cmbBoxOrigem;
     @FXML
     public ComboBox cmbBoxDestino;
@@ -136,6 +138,7 @@ public class InsertReservaController implements Initializable {
             clearComboBoxSemanas();
             clearComboBoxAeronaves();
             clearComboBoxPilotos();
+            btnConfirmInsertionID.setDisable(true);
         }
     }
 
@@ -208,21 +211,21 @@ public class InsertReservaController implements Initializable {
             cmbBoxDia.setDisable(true);
             cmbBoxHorario.setDisable(true);
             setComboBoxAeronaves();
-            setComboBoxPilotos();
         } else {
             cmbBoxSemana.setDisable(false);
             cmbBoxDia.setDisable(false);
             cmbBoxHorario.setDisable(false);
             clearComboBoxAeronaves();
             clearComboBoxPilotos();
-        }
+            btnConfirmInsertionID.setDisable(true);
+       }
     }
 
     //--------------------------------------------------------------------------
     //AERONAVE STUFF
     @FXML
     private void cmbBoxAeronaveSelected(Event event) {
-
+        setComboBoxPilotos();
     }
 
     private void clearComboBoxAeronaves() {
@@ -255,8 +258,8 @@ public class InsertReservaController implements Initializable {
     //--------------------------------------------------------------------------
     //PILOTO STUFF
     @FXML
-    private void cmbBoxPilotoSelected(Event event) {
-
+    private void cmbBoxPilotosSelected(Event event) {
+        btnConfirmInsertionID.setDisable(false);
     }
 
     private void setComboBoxPilotos() {

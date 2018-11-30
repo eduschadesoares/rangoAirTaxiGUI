@@ -135,7 +135,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox fx:id="cmbBoxPiloto" disable="true" onAction="#cmbBoxPilotoSelected" prefWidth="150.0" />
+                                    <ComboBox fx:id="cmbBoxPiloto" disable="true" onAction="#cmbBoxPilotosSelected" prefWidth="150.0" />
                                  </children>
                               </HBox>
                            </children>
@@ -144,7 +144,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
                                  <children>
-                                    <Button mnemonicParsing="false" onAction="#btnConfirmInsertion" text="Confirmar" />
+                                    <Button fx:id="btnConfirmInsertionID" disable="true" mnemonicParsing="false" onAction="#btnConfirmInsertion" text="Confirmar" />
                                  </children>
                               </HBox>
                               <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">

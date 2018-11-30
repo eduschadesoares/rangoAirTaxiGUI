@@ -116,7 +116,7 @@ public class PrincipalController implements Initializable {
 
 //        
 //        
-//        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "UAHUAHAUAH", 0, 0, 0, 0, true);
+//        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "asasgatashfuafh", 0, 0, 0, true);
 //        lstAeronaves.add(aero);
 //        saveAeronaveList(lstAeronaves);
 
@@ -165,9 +165,9 @@ public class PrincipalController implements Initializable {
 //        saveAeronaveList(lstAeronaves);
 //        System.out.println(lstAeronaves);
 
-        Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0);
-        lstPilotos.add(ope);
-        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
+//        Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0);
+//        lstPilotos.add(ope);
+//        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
 //        savePilotoList(lstPilotos);
 
         try {
