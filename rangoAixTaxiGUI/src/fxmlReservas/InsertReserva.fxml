@@ -135,7 +135,7 @@
                            <children>
                               <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
                                  <children>
-                                    <ComboBox prefWidth="150.0" />
+                                    <ComboBox fx:id="cmbBoxPiloto" disable="true" onAction="#cmbBoxPilotoSelected" prefWidth="150.0" />
                                  </children>
                               </HBox>
                            </children>

@@ -77,7 +77,7 @@ public class EditPilotoController implements Initializable {
                     if (!duplicated) {
                         each.setIdPiloto(txtFldId.getText());
                         each.setNomePiloto(txtFldNome.getText());
-                        each.setStatusPiloto(cmbBoxStatus.getValue().toString());
+//                        each.setStatusPiloto(cmbBoxStatus.getValue().toString());
                         break;
                     }
                 }
@@ -100,7 +100,7 @@ public class EditPilotoController implements Initializable {
             txtFldId.setText(pilotoList.getIdPiloto());
             txtFldNome.setText(pilotoList.getNomePiloto());
             cmbBoxStatus.getItems().addAll(statusChoices);
-            cmbBoxStatus.setValue(pilotoList.getStatusPiloto());
+//            cmbBoxStatus.setValue(pilotoList.getStatusPiloto());
         } catch (Exception e) {
             System.err.println(e);
         }

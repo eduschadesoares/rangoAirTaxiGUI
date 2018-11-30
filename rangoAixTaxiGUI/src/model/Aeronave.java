@@ -8,8 +8,7 @@ public class Aeronave implements Serializable {
     private DataMes mes;
 
     private String serial;
-    private int anoAeronave;
-    private float valorHoraVoo;
+    private int idadeAeronave;
     private float proxRevisao;
     private float horaTotalVoo;
     private boolean statusAeronave;
@@ -17,12 +16,11 @@ public class Aeronave implements Serializable {
     public Aeronave() {
     }
 
-    public Aeronave(ModeloAeronave modelo, DataMes mes, String serial, int anoAeronave, float valorHoraVoo, float proxRevisao, float horaTotalVoo, boolean statusAeronave) {
+    public Aeronave(ModeloAeronave modelo, DataMes mes, String serial, int idadeAeronave, float proxRevisao, float horaTotalVoo, boolean statusAeronave) {
         this.modelo = modelo;
         this.mes = mes;
         this.serial = serial;
-        this.anoAeronave = anoAeronave;
-        this.valorHoraVoo = valorHoraVoo;
+        this.idadeAeronave = idadeAeronave;
         this.proxRevisao = proxRevisao;
         this.horaTotalVoo = horaTotalVoo;
         this.statusAeronave = statusAeronave;
@@ -52,20 +50,12 @@ public class Aeronave implements Serializable {
         this.serial = serial;
     }
 
-    public int getAnoAeronave() {
-        return anoAeronave;
+    public int getIdadeAeronave() {
+        return idadeAeronave;
     }
 
-    public void setAnoAeronave(int anoAeronave) {
-        this.anoAeronave = anoAeronave;
-    }
-
-    public float getValorHoraVoo() {
-        return valorHoraVoo;
-    }
-
-    public void setValorHoraVoo(float valorHoraVoo) {
-        this.valorHoraVoo = valorHoraVoo;
+    public void setIdadeAeronave(int idadeAeronave) {
+        this.idadeAeronave = idadeAeronave;
     }
 
     public float getProxRevisao() {
@@ -96,5 +86,5 @@ public class Aeronave implements Serializable {
     public String toString() {
         return modelo + " - " + serial;
     }
-    
+
 }

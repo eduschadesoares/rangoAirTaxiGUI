@@ -58,7 +58,7 @@ public class InsertPilotoController implements Initializable {
         try {
             controller.piloto.setIdPiloto(txtFldId.getText());
             controller.piloto.setNomePiloto(txtFldNome.getText());
-            controller.piloto.setStatusPiloto(cmbBoxStatus.getValue().toString());
+//            controller.piloto.setStatusPiloto(cmbBoxStatus.getValue().toString());
 
             for (Piloto each : PrincipalController.lstPilotos) {
                 if (controller.piloto.getIdPiloto().equals(each.getIdPiloto())) {

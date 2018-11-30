@@ -8,6 +8,7 @@ public class ModeloAeronave implements Serializable {
     private int velocidadeMedia;
     private int limiteHorasManutencao;
     private int tempoNaRevisao;
+    private float valorHoraVoo;
     //ADD VALOR HORA VOO AERONAVE 
     //ADD VALOR VELOCIDADE MEDIA AERONAVE 
 
@@ -43,11 +44,20 @@ public class ModeloAeronave implements Serializable {
         this.tempoNaRevisao = tempoNaRevisao;
     }
 
-    public ModeloAeronave(String modelo, int velocidadeMedia, int limiteHorasManutencao, int tempoNaRevisao) {
+    public float getValorHoraVoo() {
+        return valorHoraVoo;
+    }
+
+    public void setValorHoraVoo(float valorHoraVoo) {
+        this.valorHoraVoo = valorHoraVoo;
+    }
+
+    public ModeloAeronave(String modelo, int velocidadeMedia, int limiteHorasManutencao, int tempoNaRevisao, float valorHoraVoo) {
         this.modelo = modelo;
         this.velocidadeMedia = velocidadeMedia;
         this.limiteHorasManutencao = limiteHorasManutencao;
         this.tempoNaRevisao = tempoNaRevisao;
+        this.valorHoraVoo = valorHoraVoo;
     }
 
     @Override

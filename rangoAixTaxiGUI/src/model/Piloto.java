@@ -4,9 +4,22 @@ import java.io.Serializable;
 
 public class Piloto implements Serializable {
 
+    private DataMes mes;
+
     private String idPiloto;
     private String nomePiloto;
-    private String statusPiloto;
+    private boolean statusPiloto;
+    private int bonusComissao;
+    private float comissaoMes;
+    private float salarioMes;
+
+    public DataMes getMes() {
+        return mes;
+    }
+
+    public void setMes(DataMes mes) {
+        this.mes = mes;
+    }
 
     public String getIdPiloto() {
         return idPiloto;
@@ -24,27 +37,54 @@ public class Piloto implements Serializable {
         this.nomePiloto = nomePiloto;
     }
 
-    public String getStatusPiloto() {
+    public boolean getStatusPiloto() {
         return statusPiloto;
     }
 
-    public void setStatusPiloto(String statusPiloto) {
+    public void setStatusPiloto(boolean statusPiloto) {
         this.statusPiloto = statusPiloto;
     }
 
-    public Piloto(String idPiloto, String nomePiloto, String statusPiloto) {
+    public int getBonusComissao() {
+        return bonusComissao;
+    }
+
+    public void setBonusComissao(int bonusComissao) {
+        this.bonusComissao = bonusComissao;
+    }
+
+    public float getComissaoMes() {
+        return comissaoMes;
+    }
+
+    public void setComissaoMes(float comissaoMes) {
+        this.comissaoMes = comissaoMes;
+    }
+
+    public float getSalarioMes() {
+        return salarioMes;
+    }
+
+    public void setSalarioMes(float salarioMes) {
+        this.salarioMes = salarioMes;
+    }
+
+    public Piloto(DataMes mes, String idPiloto, String nomePiloto, boolean statusPiloto, int bonusComissao, float comissaoMes, float salarioMes) {
+        this.mes = mes;
         this.idPiloto = idPiloto;
         this.nomePiloto = nomePiloto;
         this.statusPiloto = statusPiloto;
+        this.bonusComissao = bonusComissao;
+        this.comissaoMes = comissaoMes;
+        this.salarioMes = salarioMes;
     }
 
     public Piloto() {
     }
 
-       
     @Override
     public String toString() {
-        return "Piloto{" + "id=" + idPiloto + ", nomePiloto=" + nomePiloto + ", statusPiloto=" + statusPiloto + '}';
+        return  nomePiloto;
     }
 
 }

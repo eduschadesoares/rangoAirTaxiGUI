@@ -66,11 +66,11 @@ public class PrincipalController implements Initializable {
     }
 
     public void createModeloList() {
-        ModeloAeronave modelo1 = new ModeloAeronave("EUROCOPTER EC120 B", 260, 20, 3);
-        ModeloAeronave modelo2 = new ModeloAeronave("ROBINSON R66", 210, 15, 4);
-        ModeloAeronave modelo3 = new ModeloAeronave("AGUSTA A109E", 270, 18, 5);
-        ModeloAeronave modelo4 = new ModeloAeronave("ESQUILO AS350 B", 250, 18, 2);
-        ModeloAeronave modelo5 = new ModeloAeronave("EUROCOPTER EC130 T2", 245, 13, 2);
+        ModeloAeronave modelo1 = new ModeloAeronave("EUROCOPTER EC120 B", 260, 20, 3, 150);
+        ModeloAeronave modelo2 = new ModeloAeronave("ROBINSON R66", 210, 15, 4, 130);
+        ModeloAeronave modelo3 = new ModeloAeronave("AGUSTA A109E", 270, 18, 5, 200);
+        ModeloAeronave modelo4 = new ModeloAeronave("ESQUILO AS350 B", 250, 18, 2, 180);
+        ModeloAeronave modelo5 = new ModeloAeronave("EUROCOPTER EC130 T2", 245, 13, 2, 160);
         lstModelosAeronaves.add(modelo1);
         lstModelosAeronaves.add(modelo2);
         lstModelosAeronaves.add(modelo3);
@@ -111,8 +111,8 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        createModeloList();
-        createHeliportoList();
+//        createModeloList();
+//        createHeliportoList();
 
 //        
 //        
@@ -164,6 +164,11 @@ public class PrincipalController implements Initializable {
 //        lstAeronaves.add(opa);
 //        saveAeronaveList(lstAeronaves);
 //        System.out.println(lstAeronaves);
+
+        Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0);
+        lstPilotos.add(ope);
+        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
+//        savePilotoList(lstPilotos);
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));
