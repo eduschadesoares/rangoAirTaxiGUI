@@ -33,6 +33,7 @@ public class FecharAgendaController implements Initializable {
     @FXML
     public void confirmaFecharAgenda(ActionEvent event) {
         System.out.println("OPA");
+        System.out.println("OPA");
     }
 
     @FXML
