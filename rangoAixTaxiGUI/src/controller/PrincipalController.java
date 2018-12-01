@@ -111,62 +111,25 @@ public class PrincipalController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-//        createModeloList();
-//        createHeliportoList();
+        createModeloList();
+        createHeliportoList();
 
-//        
-//        
-//        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "asasgatashfuafh", 0, 0, 0, true);
-//        lstAeronaves.add(aero);
-//        saveAeronaveList(lstAeronaves);
-
-//        DataDia dt = new DataDia("Segunda");
-//
-//        Map<String, Boolean> hora2 = new LinkedHashMap<String, Boolean>();
-//
-//        hora2.put("06:00", true);
-//        hora2.put("06:30", true);
-//        hora2.put("07:00", true);
-//        hora2.put("07:30", true);
-//        hora2.put("08:00", true);
-//        hora2.put("08:30", true);
-//        hora2.put("09:00", true);
-//        hora2.put("09:30", true);
-//
-//        dt.setHora(hora2);
-//        DataMes mes = new DataMes();
-//
-//        System.out.println(mes.getSemana1().getDomingo().agendaManutencao.get("06:30"));
-//        System.out.println(mes.getSemana1().getDomingo().agendaManutencao.replace("06:30", false));
-//        System.out.println(mes.getSemana1().getDomingo().agendaManutencao.get("06:30"));
-//        for (Object each : mes.getSemana1().getDomingo().agendaServico) {
-//
-//            System.out.println(each);
-//        }
-//        System.out.println("\n\n" + mes.getSemana1().getSegunda().agendaServico.size());
-
-//        System.out.println(dt.hora);
-//        ArrayList<Aeronave> store = new ArrayList<>();
         readMes();
         readAeronaveList();
         readPilotoList();
         readModeloList();
         readHeliportoList();
         readReservaList();
+        
+        System.out.println(lstReservas);
 
-//        Aeronave opa = new Aeronave(lstModelosAeronaves.get(0), mes, "affasfasfasuhas", 0, 0, 0, 0, true);
-//        try{
-//        opa.getMes().getSemana1().getSegunda().agendaServico.set(7, false);
-//        } catch (NullPointerException e) {
-//            System.out.println(e);
-//        }
-//        lstAeronaves.add(opa);
+//        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "asasgatashfuafh", 0, 0, 0, true);
+//        lstAeronaves.add(aero);
 //        saveAeronaveList(lstAeronaves);
-//        System.out.println(lstAeronaves);
-
+//
 //        Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0);
 //        lstPilotos.add(ope);
-//        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
+////        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
 //        savePilotoList(lstPilotos);
 
         try {

@@ -1,9 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.text.*?>
-<?import javafx.scene.control.*?>
-<?import java.lang.*?>
-<?import javafx.scene.layout.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -51,7 +47,7 @@
                                 </HBox>
                                 <HBox alignment="CENTER">
                                     <children>
-                                        <TableView prefHeight="350.0" prefWidth="600.0">
+                                        <TableView fx:id="tblView" prefHeight="350.0" prefWidth="600.0">
                                             <columns>                                                
                                                 <TableColumn fx:id="colCliente" prefWidth="75.0" text="Cliente">
                                                     <cellValueFactory>
@@ -83,9 +79,19 @@
                                                         <PropertyValueFactory property="dia" />
                                                     </cellValueFactory>
                                                 </TableColumn>                                 
-                                                <TableColumn fx:id="colHora" prefWidth="75.0" text="Hora">
+                                                <TableColumn fx:id="colHora" prefWidth="75.0" text="Saída">
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="hora" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                              
+                                                <TableColumn fx:id="colRetorno" prefWidth="75.0" text="Retorno">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="retornoBase" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                             
+                                                <TableColumn fx:id="colProxHorarioDisp" prefWidth="75.0" text="Disponível">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="proxHorarioDisponivel" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                             </columns>

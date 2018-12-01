@@ -11,6 +11,9 @@ public class Reserva implements Serializable {
     private Heliporto origem;
     private Heliporto destino;
 
+    private String retornoBase;
+    private String proxHorarioDisponivel;
+
     private String idReserva;
     private String cliente;
 
@@ -88,6 +91,22 @@ public class Reserva implements Serializable {
 
     public void setHora(String Hora) {
         this.Hora = Hora;
+    }
+
+    public String getProxHorarioDisponivel() {
+        return proxHorarioDisponivel;
+    }
+
+    public void setProxHorarioDisponivel(String proxHorarioDisponivel) {
+        this.proxHorarioDisponivel = proxHorarioDisponivel;
+    }
+
+    public String getRetornoBase() {
+        return retornoBase;
+    }
+
+    public void setRetornoBase(String retornoBase) {
+        this.retornoBase = retornoBase;
     }
 
     public Reserva() {

@@ -1,6 +1,7 @@
 package controllerReserva;
 
 import static controller.PrincipalController.lstAeronaves;
+import static controller.PrincipalController.lstReservas;
 import java.util.ArrayList;
 import java.util.List;
 import java.net.URL;
@@ -21,12 +22,16 @@ import javafx.scene.input.MouseEvent;
 import static javafx.scene.input.MouseEvent.MOUSE_CLICKED;
 import javafx.scene.layout.AnchorPane;
 import model.Aeronave;
+import model.Reserva;
 import utility.Dados;
 
 public class ReservaViagensController implements Initializable {
 
     @FXML
     public AnchorPane reservaViagensPanel;
+
+    @FXML
+    public TableView<Reserva> tblView;
 
     @FXML
     private void btnAgendarVoo(ActionEvent event) {
@@ -41,6 +46,23 @@ public class ReservaViagensController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
 
+        Platform.runLater(() -> {
+            tblView.setItems(FXCollections.observableList(lstReservas));
+            tblView.requestFocus();
+
+            // Select last added item
+            if (lstReservas.size() > 1) {
+                tblView.getSelectionModel().select(lstReservas.get(lstReservas.size() - 1));
+            } else {
+                tblView.getSelectionModel().selectFirst();
+            }
+            tblView.refresh();
+        });
+
+//        if (lstAeronaves.isEmpty()) {
+//            btnDeleteAeronaveHide.setDisable(true);
+//            btnEditAeronaveHide.setDisable(true);
+//        }
     }
 
 }
