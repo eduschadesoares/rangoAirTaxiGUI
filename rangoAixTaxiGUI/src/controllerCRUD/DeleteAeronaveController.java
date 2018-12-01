@@ -56,7 +56,7 @@ public class DeleteAeronaveController implements Initializable {
         } catch (Exception e) {
             System.out.println(e);
         }
-
+        System.out.println("Aeronave deletada");
         btnCancelDeletion(event);
     }
 
