@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import fxmltableview.*?>
+
+<AnchorPane fx:id="reservaViagensPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="780.0" style="-fx-background-color: #259599;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerReserva.ReservaViagensController">
+    <children>
+        <VBox prefHeight="450.0" prefWidth="780.0">
+            <children>
+                <HBox prefHeight="450.0" prefWidth="200.0">
+                    <children>
+                        <VBox alignment="CENTER" prefHeight="450.0" prefWidth="130.0">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="100.0" />
+                                <HBox alignment="CENTER" prefHeight="100.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" onAction="#btnAgendarVoo" text="Agendar Voo" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="100.0">
+                                    <children>
+                                        <Button mnemonicParsing="false" text="Cancelar Voo" />
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER" prefHeight="100.0" />
+                                <HBox alignment="CENTER" prefHeight="100.0" />
+                            </children>
+                        </VBox>
+                        <VBox prefHeight="450.0" prefWidth="650.0">
+                            <children>
+                                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                                    <children>
+                                        <Label text="Próximos Vôos">
+                                            <font>
+                                                <Font size="24.0" />
+                                            </font>
+                                        </Label>
+                                    </children>
+                                </HBox>
+                                <HBox alignment="CENTER">
+                                    <children>
+                                        <TableView fx:id="tblView" prefHeight="350.0" prefWidth="600.0">
+                                            <columns>                                                
+                                                <TableColumn fx:id="colCliente" prefWidth="75.0" text="Cliente">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="cliente" />
+                                                    </cellValueFactory>
+                                                </TableColumn>       
+                                                <TableColumn fx:id="colPiloto" prefWidth="75.0" text="Piloto">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="piloto" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                
+                                                <TableColumn fx:id="colOrigem" prefWidth="75.0" text="Origem">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="origem" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                 
+                                                <TableColumn fx:id="colDestino" prefWidth="75.0" text="Destino">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="destino" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                
+                                                <TableColumn fx:id="colValor" prefWidth="75.0" text="Valor">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="valorViagem" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                 
+                                                <TableColumn fx:id="colSemana" prefWidth="75.0" text="Semana">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="semana" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                 
+                                                <TableColumn fx:id="colDia" prefWidth="75.0" text="Dia">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="dia" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                 
+                                                <TableColumn fx:id="colHora" prefWidth="75.0" text="Saída">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="hora" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                              
+                                                <TableColumn fx:id="colRetorno" prefWidth="75.0" text="Retorno">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="retornoBase" />
+                                                    </cellValueFactory>
+                                                </TableColumn>                                             
+                                                <TableColumn fx:id="colProxHorarioDisp" prefWidth="75.0" text="Disponível">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="proxHorarioDisponivel" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+                                            </columns>
+                                        </TableView>
+                                    </children>
+                                </HBox>
+                            </children>
+                        </VBox>
+                    </children>
+                </HBox>
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane fx:id="InsertReservaPanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="780.0" style="-fx-background-color: #259599;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerReserva.InsertReservaController">
+   <children>
+      <VBox prefHeight="450.0" prefWidth="780.0">
+         <children>
+            <HBox prefHeight="450.0" prefWidth="200.0">
+               <children>
+                  <VBox prefHeight="450.0" prefWidth="780.0">
+                     <children>
+                        <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
+                           <children>
+                              <Label text="Agende a Viagem">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                              </Label>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Cliente" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="30.0">
+                                 <children>
+                                    <TextField fx:id="txtFldCliente" prefWidth="300.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Origem" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Destino" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0" />
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxOrigem" onAction="#cmbBoxOrigemSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxDestino" disable="true" onAction="#cmbBoxDestinoSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <CheckBox fx:id="chBoxConfirmarDestinos" disable="true" mnemonicParsing="false" onMouseClicked="#confirmaDestinos" text="Confirmar" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Semana" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Dia" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Horario" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxSemana" disable="true" onAction="#cmbBoxSemanaSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxDia" disable="true" onAction="#cmbBoxDiaSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxHorario" disable="true" onAction="#cmbBoxHorarioSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <CheckBox fx:id="chBoxConfirmarHorario" disable="true" mnemonicParsing="false" onMouseClicked="#confirmaHorario" text="Confirmar" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Aeronave" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxAeronave" disable="true" onAction="#cmbBoxAeronaveSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="20.0" prefWidth="200.0">
+                                 <children>
+                                    <Label text="Piloto" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="30.0" prefWidth="200.0">
+                                 <children>
+                                    <ComboBox fx:id="cmbBoxPiloto" disable="true" onAction="#cmbBoxPilotosSelected" prefWidth="150.0" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
+                           <children>
+                              <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
+                                 <children>
+                                    <Button fx:id="btnConfirmInsertionID" disable="true" mnemonicParsing="false" onAction="#btnConfirmInsertion" text="Confirmar" />
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER" prefHeight="60.0" prefWidth="200.0">
+                                 <children>
+                                    <Button mnemonicParsing="false" onAction="#btnCancelInsertion" text="Cancelar" />
+                                 </children>
+                              </HBox>
+                           </children>
+                        </HBox>
+                     </children>
+                  </VBox>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.text.*?>
+<?import java.lang.*?>
+<?import java.util.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.cell.*?>
+<?import javafx.collections.*?>
+<?import fxmltableview.*?>
+
+<AnchorPane fx:id="EditAeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controllerCRUD.EditAeronaveController">
+    <children>
+        <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
+            <top>
+                <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+                    <children>
+                        <HBox alignment="CENTER" prefHeight="50.0">
+                            <children>
+                                <Label text="Aeronaves">
+                                    <font>
+                                        <Font size="25.0" />
+                                    </font>
+                                </Label>
+                            </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="40.0">
+                     <children>
+                        <Label fx:id="lblDuplicatedSerial" alignment="CENTER" text="Editar Aeronave" />
+                     </children>
+                        </HBox>
+                        <HBox alignment="CENTER" prefHeight="300.0">
+                            <children>
+                                <VBox prefHeight="116.0">
+                                    <children>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <Label text="Serial" />
+                                          <TextField fx:id="txtFldSerial" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                                        <HBox alignment="CENTER">
+                                            <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <Label text="Modelo" />
+                                          <TextField fx:id="txtFldModelo" />
+                                       </children>
+                                    </VBox>
+                                            </children>
+                                        </HBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <Label text="Idade" />
+                                          <TextField fx:id="txtFldIdade" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <Label text="Hora de Voo" />
+                                          <TextField fx:id="txtFldHoraVoo" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <Label text="Status" />
+                                          <ComboBox fx:id="cmbBoxStatus" prefWidth="150.0" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                              <HBox alignment="CENTER">
+                                 <children>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#btnSaveEdition" text="SALVAR" />
+                                       </children>
+                                    </VBox>
+                                    <VBox alignment="CENTER">
+                                       <children>
+                                          <Button mnemonicParsing="false" onAction="#btnCancelEditon" text="CANCELAR" />
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                                    </children>
+                                </VBox>
+                            </children>
+                        </HBox>
+                    </children>
+                </VBox>
+            </top>
+        </BorderPane>
+    </children>
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
+</AnchorPane>
