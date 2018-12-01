@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -12,70 +13,95 @@
    <children>
       <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="800.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0">
+            <HBox alignment="CENTER" prefWidth="800.0" style="-fx-background-color: #ffffff;">
                <children>
-                  <Label text="Menu">
-                     <font>
-                        <Font name="Noto Sans Regular" size="55.0" />
-                     </font>
-                  </Label>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0">
+                     <children>
+                        <Label alignment="CENTER" text="Menu" textFill="#0000b3">
+                           <font>
+                              <Font name="DejaVu Sans Condensed Bold" size="34.0" />
+                           </font>
+                        </Label>
+                     </children>
+                  </HBox>
                </children>
             </HBox>
-            <VBox>
+            <VBox alignment="CENTER" prefHeight="450.0" prefWidth="800.0" style="-fx-background-color: #ffd11a;">
                <children>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="100.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#btnCallReservaScene" text="Reservas">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnCallReservaScene" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="Reservas" textFill="#0000b3">
+                                 <font>
+                                    <Font name="DejaVu Sans Condensed Bold" size="20.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </padding>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="100.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#btnCallAeronaveScene" text="Aeronaves">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnCallAeronaveScene" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="Aeronaves" textFill="#0000b3">
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="DejaVu Sans Condensed Bold" size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
                      <VBox.margin>
                         <Insets />
                      </VBox.margin>
-                     <padding>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </padding>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="100.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#btnCallPilotoScene" text="Pilotos">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnCallPilotoScene" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="Pilotos" textFill="#0000b3">
+                                 <font>
+                                    <Font name="DejaVu Sans Condensed Bold" size="20.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </padding>
                   </HBox>
-                  <HBox alignment="CENTER">
+                  <HBox alignment="CENTER" prefHeight="100.0">
                      <children>
-                        <Button mnemonicParsing="false" onAction="#btnExitProgram" text="Sair">
-                           <font>
-                              <Font size="20.0" />
-                           </font>
-                        </Button>
+                        <HBox alignment="CENTER">
+                           <children>
+                              <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnExitProgram" prefWidth="150.0" style="-fx-background-color: #ffffff;" text="Sair" textFill="#0000b3">
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                                 <font>
+                                    <Font name="DejaVu Sans Condensed Bold" size="20.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                        </HBox>
                      </children>
-                     <padding>
-                        <Insets bottom="30.0" left="30.0" right="30.0" top="30.0" />
-                     </padding>
                   </HBox>
                </children>
             </VBox>
+            <HBox alignment="CENTER" prefWidth="800.0" style="-fx-background-color: #ffffff;">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0" />
+               </children>
+            </HBox>
          </children>
       </VBox>
    </children>

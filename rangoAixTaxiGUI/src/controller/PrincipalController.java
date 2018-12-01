@@ -120,8 +120,6 @@ public class PrincipalController implements Initializable {
         readModeloList();
         readHeliportoList();
         readReservaList();
-        
-        System.out.println(lstReservas);
 
         Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "asasgatashfuafh", 0, 0, 0, true, lstHeliportos.get(0));
         lstAeronaves.add(aero);

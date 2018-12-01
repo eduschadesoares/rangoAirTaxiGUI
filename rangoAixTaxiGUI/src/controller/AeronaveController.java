@@ -37,6 +37,8 @@ public class AeronaveController implements Initializable {
     public Button btnDeleteAeronaveHide;
     @FXML
     public Button btnEditAeronaveHide;
+    @FXML
+    public Label lblAeronaveInfo;
 
     @FXML
     private void btnCallMenuScene(ActionEvent event) {
@@ -61,7 +63,7 @@ public class AeronaveController implements Initializable {
     @FXML
     private void btnEditAeronave(ActionEvent event) {
 //        aeronave = tblView.getSelectionModel().getSelectedItem();
-//        CRUDController.EditAeronaveController.getAeronaveObj(aeronave);
+//        controllerCRUD.EditAeronaveController.getAeronaveObj(aeronave);
 //
 //        try {
 //            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlCRUDAeronave/EditAeronave.fxml"));
@@ -76,6 +78,12 @@ public class AeronaveController implements Initializable {
         MouseEvent me = null;
         if (event.getEventType() == MOUSE_CLICKED) {
             me = (MouseEvent) event;
+            if (me.getClickCount() == 1) {
+                aeronave = tblView.getSelectionModel().getSelectedItem();
+                if (aeronave != null) {
+                    lblAeronaveInfo.setText(aeronave.getInfoGeral());
+                }
+            }
             if (me.getClickCount() == 2) {
                 aeronave = tblView.getSelectionModel().getSelectedItem();
                 if (aeronave != null) {
@@ -111,8 +119,11 @@ public class AeronaveController implements Initializable {
                 tblView.getSelectionModel().select(lstAeronaves.get(lstAeronaves.size() - 1));
             } else {
                 tblView.getSelectionModel().selectFirst();
+
             }
+
             tblView.refresh();
+
         });
 
         if (lstAeronaves.isEmpty()) {

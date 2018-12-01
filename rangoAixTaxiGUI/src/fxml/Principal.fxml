@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import java.util.*?>
@@ -11,11 +12,11 @@
    <children>
       <VBox prefHeight="600.0" prefWidth="800.0">
          <children>
-            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #aaabbb;">
+            <HBox alignment="CENTER" prefHeight="100.0" prefWidth="200.0" style="-fx-background-color: #0000b3;">
                <children>
-                  <Label text="Rango Air Taxi" textAlignment="CENTER">
+                  <Label text="Rango Air Taxi" textAlignment="CENTER" textFill="WHITE">
                      <font>
-                        <Font name="Noto Sans Regular" size="52.0" />
+                        <Font name="DejaVu Sans Bold" size="49.0" />
                      </font>
                   </Label>
                </children>

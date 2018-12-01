@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
@@ -11,102 +12,146 @@
 <?import javafx.collections.*?>
 <?import fxmltableview.*?>
 
-<AnchorPane fx:id="aeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AeronaveController">
+<AnchorPane fx:id="aeronavePanel" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="800.0" style="-fx-background-color: #4d94ff;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.AeronaveController">
+    <padding>
+        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+    </padding>
     <children>
-        <BorderPane AnchorPane.bottomAnchor="5.0" AnchorPane.leftAnchor="5.0" AnchorPane.rightAnchor="5.0" AnchorPane.topAnchor="5.0">
-            <top>
-                <VBox alignment="TOP_CENTER" BorderPane.alignment="CENTER">
+        <VBox alignment="TOP_CENTER" prefHeight="500.0" prefWidth="800.0">
+            <children>
+                <HBox alignment="CENTER" prefHeight="50.0" prefWidth="800.0" style="-fx-background-color: #ffffff;">
                     <children>
                         <HBox alignment="CENTER" prefHeight="50.0">
                             <children>
-                                <Label text="Aeronaves">
+                                <Label text="Aeronaves" textFill="#ffd11a">
                                     <font>
-                                        <Font size="25.0" />
+                                        <Font name="DejaVu Sans Condensed Bold" size="34.0" />
                                     </font>
                                 </Label>
                             </children>
                         </HBox>
-                        <HBox alignment="CENTER_LEFT" prefHeight="40.0">
+                    </children>
+                </HBox>
+                <HBox prefHeight="450.0" prefWidth="800.0">
+                    <children>
+                        <VBox prefHeight="450.0" prefWidth="150.0">
                             <children>
-                                <Button mnemonicParsing="false" onAction="#btnCallMenuScene" text="Voltar para o menu">
-                                    <HBox.margin>
-                                        <Insets left="10.0" />
-                                    </HBox.margin>
-                                    <font>
-                                        <Font size="10.0" />
-                                    </font>
-                                </Button>
-                            </children>
-                        </HBox>
-                        <HBox>
-                            <children>
-                                <VBox prefWidth="200.0">
+                                <HBox alignment="CENTER" prefHeight="40.0">
                                     <children>
-                                        <HBox alignment="CENTER">
+                                        <Button alignment="CENTER" mnemonicParsing="false" onAction="#btnCallMenuScene" prefWidth="130.0" style="-fx-background-color: #0000b3;" text="Voltar para o menu" textFill="#ffd11a">
+                                            <font>
+                                                <Font name="DejaVu Sans Condensed Bold" size="11.0" />
+                                            </font>
+                                            <HBox.margin>
+                                                <Insets />
+                                            </HBox.margin>
+                                 <cursor>
+                                    <Cursor fx:constant="CLOSED_HAND" />
+                                 </cursor>
+                                        </Button>
+                                    </children>
+                                </HBox>
+                                <VBox alignment="TOP_CENTER" prefHeight="410.0">
+                                    <children>
+                                        <HBox alignment="CENTER" prefHeight="20.0" />
+                                        <HBox alignment="CENTER" prefHeight="35.0">
                                             <children>
-                                                <Button mnemonicParsing="false" onAction="#btnInsertAeronave" text="Inserir Aeronave" />
+                                                <Button mnemonicParsing="false" onAction="#btnInsertAeronave" prefWidth="130.0" style="-fx-background-color: #0000b3;" text="Inserir Aeronave" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="DejaVu Sans Condensed Bold" size="11.0" />
+                                                    </font>
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor>
+                                                </Button>
                                             </children>
                                         </HBox>
-                                        <HBox alignment="CENTER">
+                                        <HBox alignment="CENTER" prefHeight="35.0">
                                             <children>
-                                                <Button fx:id="btnEditAeronaveHide" mnemonicParsing="false" onAction="#btnEditAeronave" text="Editar Aeronave" />
+                                                <Button fx:id="btnEditAeronaveHide" mnemonicParsing="false" onAction="#btnEditAeronave" prefWidth="130.0" style="-fx-background-color: #0000b3;" text="Editar Aeronave" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="DejaVu Sans Condensed Bold" size="11.0" />
+                                                    </font>
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor>
+                                                </Button>
                                             </children>
                                         </HBox>
-                                        <HBox alignment="CENTER">
+                                        <HBox alignment="CENTER" prefHeight="35.0">
                                             <children>
-                                                <Button fx:id="btnDeleteAeronaveHide" mnemonicParsing="false" onAction="#btnDeleteAeronave" text="Remover Aeronave" />
+                                                <Button fx:id="btnDeleteAeronaveHide" mnemonicParsing="false" onAction="#btnDeleteAeronave" prefWidth="130.0" style="-fx-background-color: #0000b3;" text="Remover Aeronave" textFill="WHITE">
+                                                    <font>
+                                                        <Font name="DejaVu Sans Condensed Bold" size="11.0" />
+                                                    </font>
+                                       <cursor>
+                                          <Cursor fx:constant="CLOSED_HAND" />
+                                       </cursor>
+                                                </Button>
                                             </children>
                                         </HBox>
                                     </children>
                                 </VBox>
-                                <VBox alignment="CENTER" prefWidth="590.0">
+                            </children>
+                        </VBox>
+                        <HBox alignment="CENTER" prefWidth="650.0">
+                            <children>
+                                <VBox>
                                     <children>
-                                        <TableView fx:id="tblView" onMouseClicked="#tblViewEditAeronaveClick" prefHeight="370.0" prefWidth="248.0">
-                                            <columns>
-                                                <TableColumn fx:id="colSerial" prefWidth="75.0" text="Serial">
-                                                    <cellValueFactory>
-                                                        <PropertyValueFactory property="serial" />
-                                                    </cellValueFactory>
-                                                </TableColumn>
-                                                <TableColumn fx:id="colModelo" prefWidth="75.0" text="Modelo">                                                    
-                                                    <cellValueFactory>
-                                                        <PropertyValueFactory property="modelo" />
-                                                    </cellValueFactory>
-                                                </TableColumn>
-                                                <TableColumn fx:id="colStatusAeronave" prefWidth="75.0" text="Status">                                                    
-                                                    <cellValueFactory>
-                                                        <PropertyValueFactory property="statusAeronave" />
-                                                    </cellValueFactory>
-                                                </TableColumn>
-                                                <TableColumn fx:id="colIdade" prefWidth="75.0" text="Idade">                                                    
-                                                    <cellValueFactory>
-                                                        <PropertyValueFactory property="idadeAeronave" />
-                                                    </cellValueFactory>
-                                                </TableColumn>
-                                                <TableColumn fx:id="colHoraVoo" prefWidth="133.0" text="Horas de Voo">                                                    
-                                                    <cellValueFactory>
-                                                        <PropertyValueFactory property="horaTotalVoo" />
-                                                    </cellValueFactory>
-                                                </TableColumn>
-                                                
-                                                <TableColumn fx:id="colHeliporto" prefWidth="133.0" text="Heliporto">                                                    
-                                                    <cellValueFactory>
-                                                        <PropertyValueFactory property="heliporto" />
-                                                    </cellValueFactory>
-                                                </TableColumn>
-
-                                            </columns>
-                                        </TableView>
+                              <HBox alignment="CENTER" prefHeight="40.0" prefWidth="650.0">
+                                 <children>
+                                    <Label fx:id="lblAeronaveInfo" textFill="WHITE">
+                                       <font>
+                                          <Font name="DejaVu Sans Mono Bold" size="14.0" />
+                                       </font>
+                                    </Label>
+                                 </children>
+                              </HBox>
+                              <HBox prefHeight="400.0" prefWidth="650.0">
+                                 <children>
+                                              <TableView fx:id="tblView" onMouseClicked="#tblViewEditAeronaveClick" prefHeight="380.0" prefWidth="640.0">
+                                                  <columns>
+                                                      <TableColumn fx:id="colModelo" prefWidth="169.0" resizable="false" text="Modelo">
+                                                          <cellValueFactory>
+                                                              <PropertyValueFactory property="modelo" />
+                                                          </cellValueFactory>
+                                                      </TableColumn>
+                                                      <TableColumn fx:id="colHeliporto" prefWidth="153.0" resizable="false" text="Heliporto">
+                                                          <cellValueFactory>
+                                                              <PropertyValueFactory property="heliporto" />
+                                                          </cellValueFactory>
+                                                      </TableColumn>
+                                                      <TableColumn fx:id="colStatusAeronave" prefWidth="106.0" resizable="false" text="Status">
+                                                          <cellValueFactory>
+                                                              <PropertyValueFactory property="showStatus" />
+                                                          </cellValueFactory>
+                                                      </TableColumn>
+                                                      <TableColumn fx:id="colIdade" minWidth="0.0" prefWidth="48.0" resizable="false" text="Idade">
+                                                          <cellValueFactory>
+                                                              <PropertyValueFactory property="idadeAeronave" />
+                                                          </cellValueFactory>
+                                                      </TableColumn>
+                                                      <TableColumn fx:id="colHoraVoo" prefWidth="75.0" resizable="false" text="Horas Voo">
+                                                          <cellValueFactory>
+                                                              <PropertyValueFactory property="horaTotalVoo" />
+                                                          </cellValueFactory>
+                                                      </TableColumn>
+                                                      <TableColumn fx:id="colSerial" prefWidth="280.0" resizable="false" text="Serial">
+                                                          <cellValueFactory>
+                                                              <PropertyValueFactory property="serial" />
+                                                          </cellValueFactory>
+                                                      </TableColumn>
+                                                  </columns>
+                                              </TableView>
+                                 </children>
+                              </HBox>
                                     </children>
                                 </VBox>
                             </children>
                         </HBox>
                     </children>
-                </VBox>
-            </top>
-        </BorderPane>
+                </HBox>
+            </children>
+        </VBox>
     </children>
-    <padding>
-        <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
-    </padding>
 </AnchorPane>

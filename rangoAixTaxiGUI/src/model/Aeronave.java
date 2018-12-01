@@ -91,7 +91,19 @@ public class Aeronave implements Serializable {
     public void setStatusAeronave(boolean statusAeronave) {
         this.statusAeronave = statusAeronave;
     }
-    
+
+    public String getInfoGeral() {
+        return "Aeronave modelo " + modelo + " está no Heliporto de " + heliporto;
+    }
+
+    public String getShowStatus() {
+        if (statusAeronave) {
+            return "Disponível";
+        } else {
+            return "Manutenção";
+        }
+    }
+
     @Override
     public String toString() {
         return modelo + " - " + serial;
