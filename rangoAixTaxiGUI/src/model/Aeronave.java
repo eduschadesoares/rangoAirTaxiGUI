@@ -91,7 +91,7 @@ public class Aeronave implements Serializable {
     public void setStatusAeronave(boolean statusAeronave) {
         this.statusAeronave = statusAeronave;
     }
-
+    
     @Override
     public String toString() {
         return modelo + " - " + serial;
