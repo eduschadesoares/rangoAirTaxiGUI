@@ -68,6 +68,11 @@
                                                     <cellValueFactory>
                                                         <PropertyValueFactory property="destino" />
                                                     </cellValueFactory>
+                                                </TableColumn>                                
+                                                <TableColumn fx:id="colValor" prefWidth="75.0" text="Valor">
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="valorViagem" />
+                                                    </cellValueFactory>
                                                 </TableColumn>                                 
                                                 <TableColumn fx:id="colSemana" prefWidth="75.0" text="Semana">
                                                     <cellValueFactory>

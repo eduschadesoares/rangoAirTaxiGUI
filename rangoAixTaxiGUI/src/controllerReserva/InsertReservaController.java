@@ -134,6 +134,8 @@ public class InsertReservaController implements Initializable {
         controller.reserva.setProxHorarioDisponivel(diaSelected.tableHours.get(horaValueToKey(cmbBoxHorario.getSelectionModel().getSelectedItem().toString()) + tempoDeVooIdaVolta));
         controller.reserva.setRetornoBase(diaSelected.tableHours.get(horaValueToKey(cmbBoxHorario.getSelectionModel().getSelectedItem().toString()) + (tempoDeVooIdaVolta - 1)));
 
+        controller.reserva.setValorViagem(aeroToReserva.getModelo().getValorHoraVoo() * ((tempoDeVooIdaVolta - 1) / 2));
+
         PrincipalController.lstReservas.add(controller.reserva);
         PrincipalController.saveReservaList(lstReservas);
 

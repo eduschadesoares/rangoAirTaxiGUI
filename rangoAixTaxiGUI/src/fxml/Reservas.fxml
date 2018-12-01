@@ -49,15 +49,17 @@
                                     <tabs>
                                         <Tab onSelectionChanged="#selectionReservasDeViagens" text="Reservas de Viagens">
                                             <content>
-                                                <!--fx:include source="../fxmlReservas/ReservaViagens.fxml" /-->
+                                                <AnchorPane fx:id="reservaDeViagensPanel" />
                                             </content>
-                                 <content>
-                                    <AnchorPane fx:id="reservaDeViagensPanel" />
-                                 </content>
                                         </Tab>
                                         <Tab text="Reservas de Manutençao">
                                             <content>
                                                 <!--fx:include source="Pessoa.fxml" /-->
+                                            </content>
+                                        </Tab>                                        
+                                        <Tab onSelectionChanged="#selectionFecharAgenda" text="Fechar Agenda">
+                                            <content>
+                                                <AnchorPane fx:id="fecharAgendaPanel" />
                                             </content>
                                         </Tab>
                                     </tabs>

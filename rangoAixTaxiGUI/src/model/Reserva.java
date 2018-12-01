@@ -21,6 +21,8 @@ public class Reserva implements Serializable {
     private String Dia;
     private String Hora;
 
+    private float valorViagem;
+
     public Aeronave getAeronave() {
         return aeronave;
     }
@@ -107,6 +109,14 @@ public class Reserva implements Serializable {
 
     public void setRetornoBase(String retornoBase) {
         this.retornoBase = retornoBase;
+    }
+
+    public float getValorViagem() {
+        return valorViagem;
+    }
+
+    public void setValorViagem(float valorViagem) {
+        this.valorViagem = valorViagem;
     }
 
     public Reserva() {
