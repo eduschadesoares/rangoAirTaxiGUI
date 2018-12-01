@@ -123,14 +123,14 @@ public class PrincipalController implements Initializable {
         
         System.out.println(lstReservas);
 
-//        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "asasgatashfuafh", 0, 0, 0, true);
-//        lstAeronaves.add(aero);
-//        saveAeronaveList(lstAeronaves);
-//
-//        Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0);
-//        lstPilotos.add(ope);
-////        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
-//        savePilotoList(lstPilotos);
+        Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "asasgatashfuafh", 0, 0, 0, true, lstHeliportos.get(0));
+        lstAeronaves.add(aero);
+        saveAeronaveList(lstAeronaves);
+
+        Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0, lstHeliportos.get(1));
+        lstPilotos.add(ope);
+//        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
+        savePilotoList(lstPilotos);
 
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxml/Menu.fxml"));

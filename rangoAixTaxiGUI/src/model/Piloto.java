@@ -5,6 +5,8 @@ import java.io.Serializable;
 public class Piloto implements Serializable {
 
     private DataMes mes;
+    
+    private Heliporto heliporto;
 
     private String idPiloto;
     private String nomePiloto;
@@ -12,6 +14,14 @@ public class Piloto implements Serializable {
     private int bonusComissao;
     private float comissaoMes;
     private float salarioMes;
+
+    public Heliporto getHeliporto() {
+        return heliporto;
+    }
+
+    public void setHeliporto(Heliporto heliporto) {
+        this.heliporto = heliporto;
+    }
 
     public DataMes getMes() {
         return mes;
@@ -69,7 +79,7 @@ public class Piloto implements Serializable {
         this.salarioMes = salarioMes;
     }
 
-    public Piloto(DataMes mes, String idPiloto, String nomePiloto, boolean statusPiloto, int bonusComissao, float comissaoMes, float salarioMes) {
+    public Piloto(DataMes mes, String idPiloto, String nomePiloto, boolean statusPiloto, int bonusComissao, float comissaoMes, float salarioMes, Heliporto heliporto) {
         this.mes = mes;
         this.idPiloto = idPiloto;
         this.nomePiloto = nomePiloto;
@@ -77,6 +87,7 @@ public class Piloto implements Serializable {
         this.bonusComissao = bonusComissao;
         this.comissaoMes = comissaoMes;
         this.salarioMes = salarioMes;
+        this.heliporto = heliporto;
     }
 
     public Piloto() {
