@@ -80,14 +80,21 @@
                                                 </TableColumn>
                                                 <TableColumn fx:id="colIdade" prefWidth="75.0" text="Idade">                                                    
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="Idade" />
+                                                        <PropertyValueFactory property="idadeAeronave" />
                                                     </cellValueFactory>
                                                 </TableColumn>
                                                 <TableColumn fx:id="colHoraVoo" prefWidth="133.0" text="Horas de Voo">                                                    
                                                     <cellValueFactory>
-                                                        <PropertyValueFactory property="horaVoo" />
+                                                        <PropertyValueFactory property="horaTotalVoo" />
                                                     </cellValueFactory>
                                                 </TableColumn>
+                                                
+                                                <TableColumn fx:id="colHeliporto" prefWidth="133.0" text="Heliporto">                                                    
+                                                    <cellValueFactory>
+                                                        <PropertyValueFactory property="heliporto" />
+                                                    </cellValueFactory>
+                                                </TableColumn>
+
                                             </columns>
                                         </TableView>
                                     </children>
