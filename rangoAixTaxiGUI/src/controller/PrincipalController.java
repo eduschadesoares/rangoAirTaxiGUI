@@ -127,7 +127,7 @@ public class PrincipalController implements Initializable {
         lstAeronaves.add(aero);
         saveAeronaveList(lstAeronaves);
 
-        Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0, lstHeliportos.get(1));
+        Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0, lstHeliportos.get(0));
         lstPilotos.add(ope);
 //        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
         savePilotoList(lstPilotos);

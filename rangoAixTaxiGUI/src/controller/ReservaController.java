@@ -31,7 +31,7 @@ public class ReservaController implements Initializable {
     public Reserva reserva = new Reserva();
 
     @FXML
-    public AnchorPane reservaPanel, reservaDeViagensPanel;
+    public AnchorPane reservaPanel, reservaDeViagensPanel, fecharAgendaPanel;
 
     @FXML
     private void btnCallMenuScene(ActionEvent event) {
@@ -48,6 +48,16 @@ public class ReservaController implements Initializable {
         try {
             AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlReservas/ReservaViagens.fxml"));
             reservaDeViagensPanel.getChildren().setAll(pane);
+        } catch (Exception e) {
+            System.err.println(e);
+        }
+    }
+
+    @FXML
+    private void selectionFecharAgenda(Event event) {
+        try {
+            AnchorPane pane = FXMLLoader.load(getClass().getResource("/fxmlReservas/FecharAgenda.fxml"));
+            fecharAgendaPanel.getChildren().setAll(pane);
         } catch (Exception e) {
             System.err.println(e);
         }
