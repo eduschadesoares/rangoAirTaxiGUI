@@ -113,21 +113,22 @@ public class PrincipalController implements Initializable {
     public void initialize(URL url, ResourceBundle rb) {
         createModeloList();
         createHeliportoList();
-
+        
         readMes();
         readAeronaveList();
         readPilotoList();
         readModeloList();
         readHeliportoList();
         readReservaList();
-
+        
+        
         Aeronave aero = new Aeronave(lstModelosAeronaves.get(0), mes, "asasgatashfuafh", 0, 0, 0, true, lstHeliportos.get(0));
         lstAeronaves.add(aero);
         saveAeronaveList(lstAeronaves);
 
         Piloto ope = new Piloto(mes, "sauahsa2su", "JULIANA", true, 0, 0, 0, lstHeliportos.get(0));
-        lstPilotos.add(ope);
 //        ope.getMes().getSemana1().getSegunda().agendaServico.set(3, false);
+        lstPilotos.add(ope);
         savePilotoList(lstPilotos);
 
         try {

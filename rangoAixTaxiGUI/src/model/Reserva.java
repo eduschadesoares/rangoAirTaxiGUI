@@ -11,6 +11,8 @@ public class Reserva implements Serializable {
     private Heliporto origem;
     private Heliporto destino;
 
+    private float tempoDeViagem;
+
     private String retornoBase;
     private String proxHorarioDisponivel;
 
@@ -119,16 +121,15 @@ public class Reserva implements Serializable {
         this.valorViagem = valorViagem;
     }
 
-    public Reserva() {
+    public float getTempoDeViagem() {
+        return tempoDeViagem;
     }
 
-    public Reserva(Aeronave aeronave, Piloto piloto, Heliporto origem, Heliporto destino, String idReserva, String cliente) {
-        this.aeronave = aeronave;
-        this.piloto = piloto;
-        this.origem = origem;
-        this.destino = destino;
-        this.idReserva = idReserva;
-        this.cliente = cliente;
+    public void setTempoDeViagem(float tempoDeViagem) {
+        this.tempoDeViagem = tempoDeViagem;
+    }
+
+    public Reserva() {
     }
 
     @Override

@@ -107,20 +107,22 @@ public class InsertReservaController implements Initializable {
         piloSelected = (Piloto) cmbBoxPiloto.getSelectionModel().getSelectedItem();
 
         for (Aeronave each : lstAeronaves) {
-            if (each.equals(aeroSelected)) {
+            if (each.getSerial().equals(aeroSelected.getSerial())) {
                 salvaAgendaAeronave(each);
-                PrincipalController.saveAeronaveList(lstAeronaves);
                 aeroToReserva = each;
             }
         }
 
+        PrincipalController.saveAeronaveList(lstAeronaves);
+
         for (Piloto each : lstPilotos) {
-            if (each.equals(piloSelected)) {
+            if (each.getIdPiloto().equals(piloSelected.getIdPiloto())) {
                 salvaAgendaPiloto(each);
-                PrincipalController.savePilotoList(lstPilotos);
                 piloToReserva = each;
             }
         }
+
+        PrincipalController.savePilotoList(lstPilotos);
 
         controller.reserva.setCliente(txtFldCliente.getText());
         controller.reserva.setIdReserva(createID());
@@ -136,10 +138,25 @@ public class InsertReservaController implements Initializable {
 
         controller.reserva.setValorViagem(aeroToReserva.getModelo().getValorHoraVoo() * ((tempoDeVooIdaVolta - 1) / 2));
 
+        controller.reserva.setTempoDeViagem(tempoDeVooIdaVolta - 1);
+
         PrincipalController.lstReservas.add(controller.reserva);
         PrincipalController.saveReservaList(lstReservas);
 
-        System.out.println(lstReservas);
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.size());
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico);
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getTerca());
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getTerca().agendaServico);
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getQuarta());
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getQuarta().agendaServico);
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getQuinta());
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getQuinta().agendaServico);
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSexta());
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSexta().agendaServico);
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSabado());
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSabado().agendaServico);
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getDomingo());
+//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getDomingo().agendaServico);
 
         btnCancelInsertion(event);
 
@@ -299,9 +316,9 @@ public class InsertReservaController implements Initializable {
     private List<Aeronave> getListAeronavesAvailable() {
 
         List<Aeronave> lstAeronavesTemp = new ArrayList<>();
-
         for (Aeronave each : lstAeronaves) {
-            if (each.getStatusAeronave() && each.getHeliporto().equals(origem)) {
+            //Comparing names instead objects
+            if (each.getStatusAeronave() && each.getHeliporto().getCodigoHeliporto().equals(origem.getCodigoHeliporto())) {
                 if (verificaAgendaAeronave(each)) {
                     lstAeronavesTemp.add(each);
                 }
@@ -335,7 +352,8 @@ public class InsertReservaController implements Initializable {
         List<Piloto> lstPilotosTemp = new ArrayList<>();
 
         for (Piloto each : lstPilotos) {
-            if (each.getStatusPiloto() && each.getHeliporto().equals(origem)) {
+            //Comparing names instead objects
+            if (each.getStatusPiloto() && each.getHeliporto().getCodigoHeliporto().equals(origem.getCodigoHeliporto())) {
                 if (verificaAgendaPiloto(each)) {
                     lstPilotosTemp.add(each);
                 }
@@ -362,6 +380,7 @@ public class InsertReservaController implements Initializable {
             int minutos = (int) (60 * (tempo - hora));
             System.out.println("Modelo: " + each.getModelo() + "\nEstimativa tempo de Viagem: " + hora + "h " + minutos + "m ");
             tempoDeVooIdaVolta = ((((int) Math.ceil(tempo) * 2) + 1));
+            System.out.println("Tempo de viagem: " + ((tempoDeVooIdaVolta - 1) / 2) + " hrs");
             System.out.println("Hora de Saída: " + horaSaida);
             System.out.println("Hora de volta: " + diaSelected.tableHours.get(horaValueToKey(horaSaida) + tempoDeVooIdaVolta));
             System.out.println("-----------------------------------------------------------");
@@ -832,11 +851,11 @@ public class InsertReservaController implements Initializable {
         return true;
     }
 
-    private boolean salvaAgendaAeronave(Aeronave aeronave) {
-
+    private void salvaAgendaAeronave(Aeronave aeronave) {
         if (semanaSelected.toString().equals("Semana 1")) {
             if (diaSelected.toString().equals("Segunda")) {
                 for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
+                    System.out.println(i + " " + horaKeyToValue(i));
                     aeronave.getMes().getSemana1().getSegunda().agendaServico.set(i, false);
                 }
             } else if (diaSelected.toString().equals("Terça")) {
@@ -864,8 +883,7 @@ public class InsertReservaController implements Initializable {
                     aeronave.getMes().getSemana1().getDomingo().agendaServico.set(i, false);
                 }
             }
-        } else if (semanaSelected.toString()
-                .equals("Semana 2")) {
+        } else if (semanaSelected.toString().equals("Semana 2")) {
             if (diaSelected.toString().equals("Segunda")) {
                 for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
                     aeronave.getMes().getSemana2().getSegunda().agendaServico.set(i, false);
@@ -896,8 +914,7 @@ public class InsertReservaController implements Initializable {
                 }
             }
 
-        } else if (semanaSelected.toString()
-                .equals("Semana 3")) {
+        } else if (semanaSelected.toString().equals("Semana 3")) {
             if (diaSelected.toString().equals("Segunda")) {
                 for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
                     aeronave.getMes().getSemana3().getSegunda().agendaServico.set(i, false);
@@ -927,8 +944,7 @@ public class InsertReservaController implements Initializable {
                     aeronave.getMes().getSemana3().getDomingo().agendaServico.set(i, false);
                 }
             }
-        } else if (semanaSelected.toString()
-                .equals("Semana 4")) {
+        } else if (semanaSelected.toString().equals("Semana 4")) {
             if (diaSelected.toString().equals("Segunda")) {
                 for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
                     aeronave.getMes().getSemana4().getSegunda().agendaServico.set(i, false);
@@ -961,11 +977,9 @@ public class InsertReservaController implements Initializable {
         }
 
         System.out.println("Agenda da aeronave " + aeronave + " foi alterada.");
-        return true;
     }
 
-    private boolean salvaAgendaPiloto(Piloto piloto) {
-
+    private void salvaAgendaPiloto(Piloto piloto) {
         if (semanaSelected.toString().equals("Semana 1")) {
             if (diaSelected.toString().equals("Segunda")) {
                 for (int i = horaValueToKey(horarioSelected); i < horaValueToKey(horarioSelected) + tempoDeVooIdaVolta; i++) {
@@ -1091,9 +1105,7 @@ public class InsertReservaController implements Initializable {
                 }
             }
         }
-
         System.out.println("Agenda do piloto " + piloto + " foi alterada.");
-        return true;
     }
 
     private String createID() {

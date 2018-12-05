@@ -64,6 +64,7 @@ public class InsertAeronaveController implements Initializable {
     void btnSaveInsertion(ActionEvent event) {
         boolean duplicated = false;
         try {
+            //CRIAR UM OBJ DATA PARA AERONAVE
             controller.aeronave.setSerial(txtFldSerial.getText());
             controller.aeronave.setModelo((ModeloAeronave) cmbBoxModelo.getSelectionModel().getSelectedItem());
             controller.aeronave.setIdadeAeronave(Integer.parseInt(txtFldIdade.getText()));

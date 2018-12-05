@@ -11,6 +11,8 @@ public class Aeronave implements Serializable {
     private String serial;
     private int idadeAeronave;
     private float proxRevisao;
+    private int depreciacao;
+    //Horas de voo da aeronava, incremente conforme as reservas são feitas
     private float horaTotalVoo;
     private boolean statusAeronave;
 
@@ -60,6 +62,14 @@ public class Aeronave implements Serializable {
         this.serial = serial;
     }
 
+    public int getDepreciacao() {
+        return depreciacao;
+    }
+
+    public void setDepreciacao(int depreciacao) {
+        this.depreciacao = depreciacao;
+    }
+
     public int getIdadeAeronave() {
         return idadeAeronave;
     }
@@ -81,7 +91,7 @@ public class Aeronave implements Serializable {
     }
 
     public void setHoraTotalVoo(float horaTotalVoo) {
-        this.horaTotalVoo = horaTotalVoo;
+        this.horaTotalVoo = horaTotalVoo + this.horaTotalVoo;
     }
 
     public boolean getStatusAeronave() {
@@ -103,7 +113,7 @@ public class Aeronave implements Serializable {
             return "Manutenção";
         }
     }
-
+    
     @Override
     public String toString() {
         return modelo + " - " + serial;

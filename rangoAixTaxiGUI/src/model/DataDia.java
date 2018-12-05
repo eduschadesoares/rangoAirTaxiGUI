@@ -11,8 +11,22 @@ import java.util.Map;
 public class DataDia implements Serializable {
 
     public String nomeDia;
-    public ArrayList<Boolean> agendaServico;
-    public ArrayList<Boolean> agendaManutencao;
+
+    public ArrayList<Boolean> agendaServico = new ArrayList<>();
+
+    {
+        for (int i = 0; i < 48; i++) {
+            agendaServico.add(true);
+        }
+    }
+
+    public ArrayList<Boolean> agendaManutencao = new ArrayList<>();
+
+    {
+        for (int i = 0; i < 48; i++) {
+            agendaManutencao.add(true);
+        }
+    }
 
     public Map<Integer, String> tableHours = new LinkedHashMap<>();
 
@@ -75,10 +89,8 @@ public class DataDia implements Serializable {
         this.nomeDia = nomeDia;
     }
 
-    public DataDia(String nomeDia, ArrayList<Boolean> agendaServico, ArrayList<Boolean> agendaManutencao) {
+    public DataDia(String nomeDia) {
         this.nomeDia = nomeDia;
-        this.agendaServico = agendaServico;
-        this.agendaManutencao = agendaManutencao;
     }
 
     @Override

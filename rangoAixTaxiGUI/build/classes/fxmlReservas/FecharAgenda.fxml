@@ -18,7 +18,7 @@
             <HBox prefHeight="50.0" prefWidth="200.0" />
             <HBox alignment="CENTER" prefHeight="50.0" prefWidth="200.0">
                <children>
-                  <Label alignment="CENTER" text="Fechar Agenda?">
+                  <Label alignment="CENTER" text="Fechar Agenda do mes?">
                      <font>
                         <Font size="25.0" />
                      </font>
