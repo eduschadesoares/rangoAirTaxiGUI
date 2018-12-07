@@ -115,11 +115,18 @@ public class Aeronave implements Serializable {
         }
     }
 
-    public boolean podeViajar(int tempoDeVooIdaVolta) {
-        System.out.println("Horas necessarias" + " " + tempoDeVooIdaVolta / 2);
-        System.out.println("Tempo disponivel" + " " + (getProxRevisao() + (getProxRevisao() * 0.75)));
+    public boolean podeViajar() {
+//        System.out.println("Horas necessarias" + " " + tempoDeVooIdaVolta / 2);
+//        System.out.println("Tempo disponivel" + " " + (getProxRevisao() + (getProxRevisao() * 0.75)));
+        System.out.println("Tempo disponivel" + " " + getProxRevisao());
 
-        return (tempoDeVooIdaVolta / 2) < (getProxRevisao() + (getProxRevisao() * 0.75));
+//        return (tempoDeVooIdaVolta / 2) < (getProxRevisao() + (getProxRevisao() * 0.75));
+        if (getProxRevisao() > 0) {
+            return true;
+        } else {
+            setStatusAeronave(false);
+            return false;
+        }
     }
 
     @Override

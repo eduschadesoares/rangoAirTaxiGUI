@@ -40,9 +40,11 @@ public class FecharAgendaController implements Initializable {
 
     @FXML
     public void confirmaFecharAgenda(ActionEvent event) {
+        fechaMesPiloto();
         fechaMesAeronave();
+        mostraResultadoMes();
         criaNovoMes();
-
+        clearReservaList();
     }
 
     @FXML
@@ -55,6 +57,19 @@ public class FecharAgendaController implements Initializable {
         }
     }
 
+    public void fechaMesPiloto() {
+        for (Reserva eachReserva : lstReservas) {
+            for (Piloto eachPiloto : lstPilotos) {
+                if (eachReserva.getPiloto().getIdPiloto().equals(eachPiloto.getIdPiloto())) {
+                    eachPiloto.setHoraTotalVoo(eachReserva.getTempoDeViagem() / 2);
+                    eachPiloto.setBonusComissao();
+                    eachPiloto.setComissao(eachReserva.getAeronave().getModelo().getValorHoraVoo(), ((int) eachReserva.getTempoDeViagem() / 2));
+                }
+            }
+            PrincipalController.savePilotoList(lstPilotos);
+        }
+    }
+
     public void fechaMesAeronave() {
         for (Reserva eachReserva : lstReservas) {
             for (Aeronave eachAeronave : lstAeronaves) {
@@ -63,7 +78,22 @@ public class FecharAgendaController implements Initializable {
                     break;
                 }
             }
+            PrincipalController.saveAeronaveList(lstAeronaves);
         }
+    }
+
+    public void mostraResultadoMes() {
+        for (Piloto eachPiloto : lstPilotos) {
+            System.out.println("Piloto: " + eachPiloto.getNomePiloto());
+            System.out.println("Bônus: " + eachPiloto.getBonusComissao() + "%");
+            System.out.println("Comissão total: " + eachPiloto.getComissaoMes());
+            System.out.println("Salário: " + eachPiloto.getRecebimentoMensal());
+        }
+    }
+
+    public void clearReservaList() {
+        PrincipalController.lstReservas.clear();
+        PrincipalController.saveReservaList(lstReservas);
     }
 
     public void criaNovoMes() {
