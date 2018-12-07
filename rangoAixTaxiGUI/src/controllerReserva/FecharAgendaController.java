@@ -67,8 +67,6 @@ public class FecharAgendaController implements Initializable {
     }
 
     public void criaNovoMes() {
-        System.out.println(PrincipalController.mes.getNumMes());
-
         int mesAtual;
         int anoAtual;
 
@@ -78,11 +76,14 @@ public class FecharAgendaController implements Initializable {
         PrincipalController.mes = new DataMes();
 
         if (mesAtual < 12) {
+            PrincipalController.mes.setNumAno(anoAtual);
             PrincipalController.mes.setNumMes(mesAtual + 1);
         } else {
             PrincipalController.mes.setNumAno(anoAtual + 1);
             PrincipalController.mes.setNumMes(1);
+            incrementaIdadeAeronave();
         }
+
         for (Aeronave each : lstAeronaves) {
             each.setMes(PrincipalController.mes);
         }
@@ -96,6 +97,18 @@ public class FecharAgendaController implements Initializable {
         PrincipalController.savePilotoList(lstPilotos);
 
         PrincipalController.saveMonth(PrincipalController.mes);
+
+        System.out.println(PrincipalController.mes.getNumAno() + " " + PrincipalController.mes.getNumMes());
+
+    }
+
+    public void incrementaIdadeAeronave() {
+        for (Aeronave each : lstAeronaves) {
+            each.incrementaIdade();
+            each.setHorasVooDisponiveis();
+        }
+
+        PrincipalController.savePilotoList(lstPilotos);
 
     }
 

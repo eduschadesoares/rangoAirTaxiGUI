@@ -10,24 +10,23 @@ public class Aeronave implements Serializable {
 
     private String serial;
     private int idadeAeronave;
-    private float proxRevisao;
-    private int depreciacao;
     //Horas de voo da aeronava, incremente conforme as reservas são feitas
+    private float proxRevisao;
     private float horaTotalVoo;
     private boolean statusAeronave;
 
     public Aeronave() {
     }
 
-    public Aeronave(ModeloAeronave modelo, DataMes mes, String serial, int idadeAeronave, float proxRevisao, float horaTotalVoo, boolean statusAeronave, Heliporto heliporto) {
+    public Aeronave(ModeloAeronave modelo, DataMes mes, String serial, int idadeAeronave, float horaTotalVoo, boolean statusAeronave, Heliporto heliporto) {
         this.modelo = modelo;
         this.mes = mes;
         this.serial = serial;
         this.idadeAeronave = idadeAeronave;
-        this.proxRevisao = proxRevisao;
         this.horaTotalVoo = horaTotalVoo;
         this.statusAeronave = statusAeronave;
         this.heliporto = heliporto;
+        setHorasVooDisponiveis();
     }
 
     public Heliporto getHeliporto() {
@@ -62,14 +61,6 @@ public class Aeronave implements Serializable {
         this.serial = serial;
     }
 
-    public int getDepreciacao() {
-        return depreciacao;
-    }
-
-    public void setDepreciacao(int depreciacao) {
-        this.depreciacao = depreciacao;
-    }
-
     public int getIdadeAeronave() {
         return idadeAeronave;
     }
@@ -83,7 +74,7 @@ public class Aeronave implements Serializable {
     }
 
     public void setProxRevisao(float proxRevisao) {
-        this.proxRevisao = proxRevisao;
+        this.proxRevisao = getProxRevisao() - (proxRevisao / 2);
     }
 
     public float getHoraTotalVoo() {
@@ -102,8 +93,18 @@ public class Aeronave implements Serializable {
         this.statusAeronave = statusAeronave;
     }
 
+    public void incrementaIdade() {
+        this.idadeAeronave = getIdadeAeronave() + 1;
+    }
+
     public String getInfoGeral() {
         return "Aeronave modelo " + modelo + " está no Heliporto de " + heliporto;
+    }
+
+    public void setHorasVooDisponiveis() {
+        System.out.println(getIdadeAeronave() * 0.1);
+        this.proxRevisao = (float) (getModelo().getLimiteHorasManutencao() - (getIdadeAeronave() * 0.1));
+        System.out.println(this.proxRevisao);
     }
 
     public String getShowStatus() {
@@ -113,7 +114,14 @@ public class Aeronave implements Serializable {
             return "Manutenção";
         }
     }
-    
+
+    public boolean podeViajar(int tempoDeVooIdaVolta) {
+        System.out.println("Horas necessarias" + " " + tempoDeVooIdaVolta / 2);
+        System.out.println("Tempo disponivel" + " " + (getProxRevisao() + (getProxRevisao() * 0.75)));
+
+        return (tempoDeVooIdaVolta / 2) < (getProxRevisao() + (getProxRevisao() * 0.75));
+    }
+
     @Override
     public String toString() {
         return modelo + " - " + serial;

@@ -109,6 +109,7 @@ public class InsertReservaController implements Initializable {
         for (Aeronave each : lstAeronaves) {
             if (each.getSerial().equals(aeroSelected.getSerial())) {
                 salvaAgendaAeronave(each);
+                each.setProxRevisao(tempoDeVooIdaVolta);
                 aeroToReserva = each;
             }
         }
@@ -139,24 +140,11 @@ public class InsertReservaController implements Initializable {
         controller.reserva.setValorViagem(aeroToReserva.getModelo().getValorHoraVoo() * ((tempoDeVooIdaVolta - 1) / 2));
 
         controller.reserva.setTempoDeViagem(tempoDeVooIdaVolta - 1);
+        
+        
 
         PrincipalController.lstReservas.add(controller.reserva);
         PrincipalController.saveReservaList(lstReservas);
-
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico.size());
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSegunda().agendaServico);
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getTerca());
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getTerca().agendaServico);
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getQuarta());
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getQuarta().agendaServico);
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getQuinta());
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getQuinta().agendaServico);
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSexta());
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSexta().agendaServico);
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSabado());
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getSabado().agendaServico);
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getDomingo());
-//        System.out.println(lstAeronaves.get(0).getMes().getSemana1().getDomingo().agendaServico);
 
         btnCancelInsertion(event);
 
@@ -318,7 +306,7 @@ public class InsertReservaController implements Initializable {
         List<Aeronave> lstAeronavesTemp = new ArrayList<>();
         for (Aeronave each : lstAeronaves) {
             //Comparing names instead objects
-            if (each.getStatusAeronave() && each.getHeliporto().getCodigoHeliporto().equals(origem.getCodigoHeliporto())) {
+            if (each.getStatusAeronave() && each.getHeliporto().getCodigoHeliporto().equals(origem.getCodigoHeliporto()) && each.podeViajar(tempoDeVooIdaVolta)) {
                 if (verificaAgendaAeronave(each)) {
                     lstAeronavesTemp.add(each);
                 }
